@@ -4,7 +4,6 @@ import random
 import json
 import threading
 import os
-import eventlet
 
 eventlet.monkey_patch()
 
