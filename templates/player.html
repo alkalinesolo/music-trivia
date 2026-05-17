@@ -307,6 +307,11 @@ socket.on('round_results', (data) => {
     const feedbackDiv = document.getElementById('personal-feedback');
     feedbackDiv.innerHTML = '';
 
+    const answerHeader = document.createElement('p');
+    answerHeader.className = 'status-message';
+    answerHeader.innerHTML = `<strong>Answer:</strong> ${data.answer} by ${data.artist} (${data.year}, ${data.genre_label || data.genre})`;
+    feedbackDiv.appendChild(answerHeader);
+
     // Fix 1 Mapping Verification: Match objects safely using the standardized key mapping formula
     const myResult = data.results.find(r => r.player.trim().toLowerCase() === playerNameNormalized);
 
@@ -342,8 +347,48 @@ socket.on('round_results', (data) => {
             preview.className = 'status-message';
             preview.innerHTML = `iTunes Preview available: ${data.preview.track_name} - ${data.preview.artist_name}`;
             feedbackDiv.appendChild(preview);
+
+            const audio = document.createElement('audio');
+            audio.controls = true;
+            audio.preload = 'auto';
+            audio.src = data.preview.preview_url;
+            audio.style.marginTop = '8px';
+            feedbackDiv.appendChild(audio);
+
+            const playButton = document.createElement('button');
+            playButton.innerText = 'Play iTunes Preview';
+            playButton.style.marginTop = '10px';
+            playButton.onclick = () => {
+                audio.play().catch(() => {
+                    alert('Browser blocked autoplay. Tap play in the audio controls.');
+                });
+            };
+            feedbackDiv.appendChild(playButton);
         }
     }
+
+    const allResultsHeader = document.createElement('h3');
+    allResultsHeader.style.color = '#1db954';
+    allResultsHeader.style.marginTop = '20px';
+    allResultsHeader.innerText = 'All Player Guesses';
+    feedbackDiv.appendChild(allResultsHeader);
+
+    data.results.forEach(result => {
+        const card = document.createElement('div');
+        card.className = 'status-message';
+        card.style.textAlign = 'left';
+        card.style.background = '#222';
+        card.style.padding = '10px 12px';
+        card.style.borderRadius = '8px';
+        card.style.marginTop = '10px';
+        card.innerHTML = `
+            <strong>${result.player}</strong><br>
+            Song Guess: ${result.title_guess || '[No Guess]'}<br>
+            Artist Guess: ${result.artist_guess || '[No Guess]'}<br>
+            Round Points: +${result.round_score} (Title +${result.title_score}, Artist +${result.artist_score}, Both +${result.both_bonus}, Early +${result.early_lock_bonus})
+        `;
+        feedbackDiv.appendChild(card);
+    });
 });
 </script>
 

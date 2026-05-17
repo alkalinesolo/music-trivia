@@ -222,7 +222,7 @@ function renderHostClues(clues, elapsedSeconds) {
     const lyric2At = 15;
     const lyric1At = 45;
 
-    document.getElementById('host-meta').innerText = `Genre: ${clues.genre} | Year: ${clues.year}`;
+    document.getElementById('host-meta').innerText = `Genre: ${clues.genre_label || clues.genre} | Year: ${clues.year}`;
     document.getElementById('lyric3').innerText = clues.lyric3 ? `Lyric 3: "${clues.lyric3}"` : '';
 
     if (elapsed >= lyric2At) {
@@ -356,7 +356,7 @@ socket.on('round_results', (data) => {
 
     const title = document.createElement('h2');
     title.style.color = "#1db954";
-    title.innerText = `Answer: ${data.answer} by ${data.artist} (${data.year}, ${data.genre})`;
+    title.innerText = `Answer: ${data.answer} by ${data.artist} (${data.year}, ${data.genre_label || data.genre})`;
     resultsDiv.appendChild(title);
 
     if (data.preview && data.preview.preview_url) {
@@ -366,10 +366,37 @@ socket.on('round_results', (data) => {
 
         const audio = document.createElement('audio');
         audio.controls = true;
-        audio.autoplay = true;
+        audio.preload = 'auto';
         audio.src = data.preview.preview_url;
         audio.style.marginBottom = '16px';
         resultsDiv.appendChild(audio);
+
+        const playButton = document.createElement('button');
+        playButton.innerText = 'Play iTunes Preview';
+        playButton.style.marginBottom = '16px';
+        playButton.onclick = () => {
+            audio.play().catch(() => {
+                alert('Browser blocked autoplay. Tap play in the audio controls.');
+            });
+        };
+        resultsDiv.appendChild(playButton);
+
+        if (data.preview.candidates && data.preview.candidates.length > 1) {
+            const altWrap = document.createElement('div');
+            altWrap.style.marginBottom = '14px';
+            altWrap.innerHTML = '<strong>Alternate Previews:</strong>';
+            data.preview.candidates.slice(1).forEach((candidate) => {
+                const link = document.createElement('a');
+                link.href = candidate.preview_url;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.style.display = 'block';
+                link.style.color = '#1db954';
+                link.innerText = `${candidate.track_name} - ${candidate.artist_name}`;
+                altWrap.appendChild(link);
+            });
+            resultsDiv.appendChild(altWrap);
+        }
     }
 
     data.results.forEach(result => {

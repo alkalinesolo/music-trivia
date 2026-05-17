@@ -94,6 +94,7 @@ def get_song_year(song):
 def build_clues(song):
     return {
         'genre': song.get('genre', 'unknown'),
+        'genre_label': format_genre_label(song.get('genre', 'unknown')),
         'year': get_song_year(song),
         'lyric3': song.get('lyric3', ''),
         'lyric2': song.get('lyric2', ''),
@@ -419,6 +420,7 @@ def finalize_results_for_room(room_code):
         'answer': correct_title,
         'artist': correct_artist,
         'genre': room_state['current_song'].get('genre', 'unknown'),
+        'genre_label': format_genre_label(room_state['current_song'].get('genre', 'unknown')),
         'year': get_song_year(room_state['current_song']),
         'preview': fetch_itunes_preview(correct_title, correct_artist),
         'scoring': {
@@ -450,6 +452,17 @@ def sanitize_text(text):
     for char in [".", ",", "!", "?", "'", '"', "(", ")", "-", "_"]:
         text = text.replace(char, "")
     return text.strip()
+
+
+def format_genre_label(genre):
+    if not genre:
+        return 'Unknown'
+
+    normalized = str(genre).strip().lower()
+    if normalized == 'r_and_b_soul' or normalized == 'hip_hop_r_and_b':
+        return 'R&B'
+
+    return str(genre).replace('_', ' ').title()
 
 
 def split_words(text):
@@ -529,6 +542,8 @@ def fetch_itunes_preview(title, artist):
     title_clean = sanitize_text(title)
     artist_clean = sanitize_text(artist)
 
+    candidates = []
+
     for item in results:
         preview_url = item.get('previewUrl')
         if not preview_url:
@@ -538,20 +553,41 @@ def fetch_itunes_preview(title, artist):
         artist_name = sanitize_text(item.get('artistName', ''))
 
         if title_clean in track_name and (artist_clean in artist_name or artist_name in artist_clean):
-            return {
+            candidates.append({
                 'preview_url': preview_url,
                 'track_name': item.get('trackName'),
-                'artist_name': item.get('artistName')
-            }
+                'artist_name': item.get('artistName'),
+                'is_best_match': True
+            })
 
     for item in results:
         preview_url = item.get('previewUrl')
         if preview_url:
-            return {
+            candidates.append({
                 'preview_url': preview_url,
                 'track_name': item.get('trackName'),
-                'artist_name': item.get('artistName')
-            }
+                'artist_name': item.get('artistName'),
+                'is_best_match': False
+            })
+
+    if candidates:
+        unique = []
+        seen = set()
+        for candidate in candidates:
+            key = candidate['preview_url']
+            if key in seen:
+                continue
+            seen.add(key)
+            unique.append(candidate)
+            if len(unique) == 3:
+                break
+
+        return {
+            'preview_url': unique[0]['preview_url'],
+            'track_name': unique[0]['track_name'],
+            'artist_name': unique[0]['artist_name'],
+            'candidates': unique
+        }
 
     return None
 
