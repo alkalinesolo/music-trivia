@@ -5,9 +5,6 @@ import json
 import threading
 import os
 
-eventlet.monkey_patch()
-
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret'
 socketio = SocketIO(app, cors_allowed_origins="*")
