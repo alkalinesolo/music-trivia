@@ -130,7 +130,10 @@
 <!-- ========================= -->
 <div id="game-view" class="game-phase hidden">
     <h2 id="guessCount" style="color: #aaa;">Guesses: 0/0</h2>
-    <h1 id="lyric"></h1>
+    <h3 id="host-meta" style="color: #1db954;"></h3>
+    <h1 id="lyric3" style="font-size: 34px;"></h1>
+    <h2 id="lyric2" style="font-size: 28px; color: #ddd;"></h2>
+    <h3 id="lyric1" style="font-size: 22px; color: #bbb;"></h3>
 </div>
 
 <!-- ========================= -->
@@ -152,6 +155,7 @@ const socket = io();
 const baseJoinURL = "{{ join_url }}";
 let activeRoomCode = "";
 let hostCountdownInterval = null;
+let hostRevealTimeouts = [];
 
 const qrCode = new QRCode(document.getElementById("qrcode"), {
     text: baseJoinURL,
@@ -208,6 +212,38 @@ function startHostTimer(seconds) {
     }, 1000);
 }
 
+function clearHostRevealTimers() {
+    hostRevealTimeouts.forEach(timerId => clearTimeout(timerId));
+    hostRevealTimeouts = [];
+}
+
+function renderHostClues(clues, elapsedSeconds) {
+    const elapsed = Math.max(0, Number(elapsedSeconds) || 0);
+    const lyric2At = 15;
+    const lyric1At = 45;
+
+    document.getElementById('host-meta').innerText = `Genre: ${clues.genre} | Year: ${clues.year}`;
+    document.getElementById('lyric3').innerText = clues.lyric3 ? `Lyric 3: "${clues.lyric3}"` : '';
+
+    if (elapsed >= lyric2At) {
+        document.getElementById('lyric2').innerText = clues.lyric2 ? `Lyric 2: "${clues.lyric2}"` : '';
+    } else {
+        document.getElementById('lyric2').innerText = '';
+        hostRevealTimeouts.push(setTimeout(() => {
+            document.getElementById('lyric2').innerText = clues.lyric2 ? `Lyric 2: "${clues.lyric2}"` : '';
+        }, (lyric2At - elapsed) * 1000));
+    }
+
+    if (elapsed >= lyric1At) {
+        document.getElementById('lyric1').innerText = clues.lyric1 ? `Lyric 1: "${clues.lyric1}"` : '';
+    } else {
+        document.getElementById('lyric1').innerText = '';
+        hostRevealTimeouts.push(setTimeout(() => {
+            document.getElementById('lyric1').innerText = clues.lyric1 ? `Lyric 1: "${clues.lyric1}"` : '';
+        }, (lyric1At - elapsed) * 1000));
+    }
+}
+
 // Centralized Phase Controller
 function showView(activeViewId) {
     // Hide all main game views instantly
@@ -233,6 +269,11 @@ function startRound() {
     // Completely wipe out previous results DOM element tree and reset counters
     document.getElementById('results-view').innerHTML = '';
     document.getElementById('guessCount').innerText = 'Guesses: 0/0';
+    document.getElementById('host-meta').innerText = '';
+    document.getElementById('lyric3').innerText = '';
+    document.getElementById('lyric2').innerText = '';
+    document.getElementById('lyric1').innerText = '';
+    clearHostRevealTimers();
     
     // Switch Views via central state switcher
     showView('game-view');
@@ -286,9 +327,14 @@ socket.on('update_players', (data) => {
 });
 
 socket.on('host_round_started', (data) => {
-    document.getElementById('lyric').innerText = `"${data.song.lyric}"`;
+    clearHostRevealTimers();
+    const totalTime = data.timing.total_time;
+    const remainingTime = data.timing.remaining_time;
+    const elapsed = Math.max(0, totalTime - remainingTime);
+
+    renderHostClues(data.clues, elapsed);
     document.getElementById('guessCount').innerText = `Guesses: 0/${data.total_players}`;
-    startHostTimer(data.time);
+    startHostTimer(remainingTime);
 });
 
 socket.on('guess_count', (data) => {
@@ -310,8 +356,21 @@ socket.on('round_results', (data) => {
 
     const title = document.createElement('h2');
     title.style.color = "#1db954";
-    title.innerText = `Answer: ${data.answer} by ${data.artist}`;
+    title.innerText = `Answer: ${data.answer} by ${data.artist} (${data.year}, ${data.genre})`;
     resultsDiv.appendChild(title);
+
+    if (data.preview && data.preview.preview_url) {
+        const audioTitle = document.createElement('p');
+        audioTitle.innerHTML = `<strong>iTunes Preview:</strong> ${data.preview.track_name} - ${data.preview.artist_name}`;
+        resultsDiv.appendChild(audioTitle);
+
+        const audio = document.createElement('audio');
+        audio.controls = true;
+        audio.autoplay = true;
+        audio.src = data.preview.preview_url;
+        audio.style.marginBottom = '16px';
+        resultsDiv.appendChild(audio);
+    }
 
     data.results.forEach(result => {
         const div = document.createElement('div');
@@ -320,6 +379,10 @@ socket.on('round_results', (data) => {
             <h3>${result.player}</h3>
             <p><strong>Song Guess:</strong> ${result.title_guess || '[No Guess]'}</p>
             <p><strong>Artist Guess:</strong> ${result.artist_guess || '[No Guess]'}</p>
+            <p><strong>Title Points:</strong> +${result.title_score}</p>
+            <p><strong>Artist Points:</strong> +${result.artist_score} (${result.artist_match})</p>
+            <p><strong>Both Correct Bonus:</strong> +${result.both_bonus}</p>
+            <p><strong>Early Lock Bonus:</strong> +${result.early_lock_bonus}</p>
             <p><strong>Round Points:</strong> +${result.round_score}</p>
             <p><strong>Total Running Score:</strong> ${result.total_score}</p>
         `;

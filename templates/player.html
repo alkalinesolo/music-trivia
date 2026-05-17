@@ -133,7 +133,10 @@
     <!-- GUESSING VIEW             -->
     <!-- ========================= -->
     <div id="guessing-view" class="phase-view hidden">
-        <div class="lyric-box" id="player-lyric"></div>
+        <div class="status-message" id="player-meta"></div>
+        <div class="lyric-box" id="player-lyric3"></div>
+        <div class="lyric-box" id="player-lyric2"></div>
+        <div class="lyric-box" id="player-lyric1"></div>
         
         <div id="input-area">
             <input type="text" id="player-title-guess" placeholder="Song title..." autocomplete="off">
@@ -165,6 +168,7 @@ const playerNameNormalized = playerNameRaw.trim().toLowerCase();
 const playerRoomCode = "{{ room_code }}";
 
 let countdownInterval = null;
+let playerRevealTimeouts = [];
 
 // Announce presence to the backend socket network
 socket.emit('player_join', { name: playerNameRaw, room_code: playerRoomCode });
@@ -200,6 +204,38 @@ function startUiTimer(seconds) {
     }, 1000);
 }
 
+function clearPlayerRevealTimers() {
+    playerRevealTimeouts.forEach(timerId => clearTimeout(timerId));
+    playerRevealTimeouts = [];
+}
+
+function renderPlayerClues(clues, elapsedSeconds) {
+    const elapsed = Math.max(0, Number(elapsedSeconds) || 0);
+    const lyric2At = 15;
+    const lyric1At = 45;
+
+    document.getElementById('player-meta').innerText = `Genre: ${clues.genre} | Year: ${clues.year}`;
+    document.getElementById('player-lyric3').innerText = clues.lyric3 ? `Lyric 3: "${clues.lyric3}"` : '';
+
+    if (elapsed >= lyric2At) {
+        document.getElementById('player-lyric2').innerText = clues.lyric2 ? `Lyric 2: "${clues.lyric2}"` : '';
+    } else {
+        document.getElementById('player-lyric2').innerText = '';
+        playerRevealTimeouts.push(setTimeout(() => {
+            document.getElementById('player-lyric2').innerText = clues.lyric2 ? `Lyric 2: "${clues.lyric2}"` : '';
+        }, (lyric2At - elapsed) * 1000));
+    }
+
+    if (elapsed >= lyric1At) {
+        document.getElementById('player-lyric1').innerText = clues.lyric1 ? `Lyric 1: "${clues.lyric1}"` : '';
+    } else {
+        document.getElementById('player-lyric1').innerText = '';
+        playerRevealTimeouts.push(setTimeout(() => {
+            document.getElementById('player-lyric1').innerText = clues.lyric1 ? `Lyric 1: "${clues.lyric1}"` : '';
+        }, (lyric1At - elapsed) * 1000));
+    }
+}
+
 function submitGuess() {
     const titleInput = document.getElementById('player-title-guess');
     const artistInput = document.getElementById('player-artist-guess');
@@ -228,6 +264,7 @@ socket.on('game_state', (data) => {
     if (data.state === 'guessing') {
         // Fix 5: Clean old result text elements instantly to clear visual ghosting
         document.getElementById('personal-feedback').innerHTML = '';
+        clearPlayerRevealTimers();
         
         document.getElementById('player-title-guess').disabled = false;
         document.getElementById('player-artist-guess').disabled = false;
@@ -247,7 +284,12 @@ socket.on('game_state', (data) => {
 
 // Fix 3: Standardize text input wiping and state unlocking within the round creation hook
 socket.on('new_round', (data) => {
-    document.getElementById('player-lyric').innerText = `"${data.lyric}"`;
+    clearPlayerRevealTimers();
+
+    const totalTime = data.timing.total_time;
+    const remainingTime = data.timing.remaining_time;
+    const elapsed = Math.max(0, totalTime - remainingTime);
+    renderPlayerClues(data.clues, elapsed);
     
     const titleInput = document.getElementById('player-title-guess');
     const artistInput = document.getElementById('player-artist-guess');
@@ -256,8 +298,8 @@ socket.on('new_round', (data) => {
     titleInput.disabled = false;
     artistInput.disabled = false;
 
-    if (data && data.time !== undefined) {
-        startUiTimer(data.time);
+    if (remainingTime !== undefined) {
+        startUiTimer(remainingTime);
     }
 });
 
@@ -278,9 +320,12 @@ socket.on('round_results', (data) => {
             `;
         } else {
             scoreHeader.innerHTML = `
-                <p class="status-message">Song guess: <strong>${myResult.title_guess || '[No Guess]'}</strong> (${myResult.title_correct ? 'Correct' : 'Incorrect'})</p>
-                <p class="status-message">Artist guess: <strong>${myResult.artist_guess || '[No Guess]'}</strong> (${myResult.artist_correct ? 'Correct' : 'Incorrect'})</p>
-                <p class="status-message">Round Score:</p>
+                <p class="status-message">Song guess: <strong>${myResult.title_guess || '[No Guess]'}</strong> (${myResult.title_correct ? 'Correct' : 'Partial/Incorrect'})</p>
+                <p class="status-message">Artist guess: <strong>${myResult.artist_guess || '[No Guess]'}</strong> (${myResult.artist_match})</p>
+                <p class="status-message">Title points: +${myResult.title_score}</p>
+                <p class="status-message">Artist points: +${myResult.artist_score}</p>
+                <p class="status-message">Both bonus: +${myResult.both_bonus}</p>
+                <p class="status-message">Early lock bonus: +${myResult.early_lock_bonus}</p>
                 <div class="score-display">+${myResult.round_score}</div>
             `;
         }
@@ -291,6 +336,13 @@ socket.on('round_results', (data) => {
         
         feedbackDiv.appendChild(scoreHeader);
         feedbackDiv.appendChild(runningTotal);
+
+        if (data.preview && data.preview.preview_url) {
+            const preview = document.createElement('p');
+            preview.className = 'status-message';
+            preview.innerHTML = `iTunes Preview available: ${data.preview.track_name} - ${data.preview.artist_name}`;
+            feedbackDiv.appendChild(preview);
+        }
     }
 });
 </script>
