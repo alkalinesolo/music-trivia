@@ -333,6 +333,11 @@ def handle_submit_guess(data):
         {'count': len(room_state['guesses']), 'total': len(room_state['players'])},
         room=get_host_room(room_code)
     )
+
+    # Auto-advance: If all players have submitted, automatically show results
+    if len(room_state['guesses']) == len(room_state['players']):
+        print(f"All players guessed in {room_code}. Auto-advancing to results.")
+        finalize_results_for_room(room_code)
     
 @socketio.on('show_results')
 def handle_show_results(data):
@@ -435,10 +440,11 @@ def finalize_results_for_room(room_code):
     }
     room_state['last_results'] = payload
 
-    # Shift UX states globally across all phone devices
+    # Emit game state to BOTH host and players to trigger results display
     emit('game_state', {'state': 'results'}, room=get_player_room(room_code))
+    emit('game_state', {'state': 'results'}, room=get_host_room(room_code))
     
-    # Broadcast scoreboard lists
+    # Broadcast scoreboard lists to both
     emit('round_results', payload, room=get_player_room(room_code))
     emit('round_results', payload, room=get_host_room(room_code))
 

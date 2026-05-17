@@ -341,6 +341,16 @@ socket.on('guess_count', (data) => {
     document.getElementById('guessCount').innerText = `Guesses: ${data.count}/${data.total}`;
 });
 
+socket.on('game_state', (data) => {
+    if (data.state === 'results') {
+        if (hostCountdownInterval) {
+            clearInterval(hostCountdownInterval);
+            hostCountdownInterval = null;
+        }
+        document.getElementById('host-timer').innerText = 'Time Left: 0s';
+    }
+});
+
 socket.on('round_results', (data) => {
     if (hostCountdownInterval) {
         clearInterval(hostCountdownInterval);
