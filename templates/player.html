@@ -92,7 +92,7 @@
 
         /* Live Visual Timer Interface */
         .timer-badge {
-            font-size: 24px;
+            font-size: 18px;
             font-weight: bold;
             background: #282828;
             border: 2px solid #1db954;
@@ -100,7 +100,7 @@
             display: inline-block;
             padding: 5px 20px;
             border-radius: 20px;
-            margin-bottom: 15px;
+            margin-top: 12px;
         }
 
         .timer-warning {
@@ -118,6 +118,7 @@
 <div class="container">
     <h1>📱 Mobile Controller</h1>
     <h3>Player: <span style="color: #1db954;">{{ name }}</span></h3>
+    <h3>Room: <span style="color: #1db954;">{{ room_code }}</span></h3>
     <hr style="border-color: #252525;">
 
     <!-- ========================= -->
@@ -132,12 +133,13 @@
     <!-- GUESSING VIEW             -->
     <!-- ========================= -->
     <div id="guessing-view" class="phase-view hidden">
-        <div id="timer-display" class="timer-badge">--</div>
         <div class="lyric-box" id="player-lyric"></div>
         
         <div id="input-area">
-            <input type="text" id="player-guess" placeholder="Type song title here..." autocomplete="off">
+            <input type="text" id="player-title-guess" placeholder="Song title..." autocomplete="off">
+            <input type="text" id="player-artist-guess" placeholder="Artist name..." autocomplete="off">
             <button id="btn-submit" onclick="submitGuess()">Lock In Guess</button>
+            <div id="timer-display" class="timer-badge">Time Left: --</div>
         </div>
         
         <div id="lock-status" class="status-message hidden">
@@ -160,11 +162,12 @@ const socket = io();
 // Fix 1: Normalize name parameters globally to safeguard string match routines
 const playerNameRaw = "{{ name }}";
 const playerNameNormalized = playerNameRaw.trim().toLowerCase();
+const playerRoomCode = "{{ room_code }}";
 
 let countdownInterval = null;
 
 // Announce presence to the backend socket network
-socket.emit('player_join', { name: playerNameRaw });
+socket.emit('player_join', { name: playerNameRaw, room_code: playerRoomCode });
 
 function changeView(activeViewId) {
     document.querySelectorAll('.phase-view').forEach(view => {
@@ -180,12 +183,12 @@ function startUiTimer(seconds) {
     let timeLeft = seconds;
     const timerEl = document.getElementById("timer-display");
     
-    timerEl.innerText = timeLeft;
+    timerEl.innerText = `Time Left: ${timeLeft}s`;
     timerEl.classList.remove("timer-warning");
 
     countdownInterval = setInterval(() => {
         timeLeft--;
-        timerEl.innerText = timeLeft;
+        timerEl.innerText = `Time Left: ${Math.max(0, timeLeft)}s`;
 
         if (timeLeft <= 5) {
             timerEl.classList.add("timer-warning");
@@ -198,20 +201,25 @@ function startUiTimer(seconds) {
 }
 
 function submitGuess() {
-    const guessInput = document.getElementById('player-guess');
-    const guessValue = guessInput.value.trim();
+    const titleInput = document.getElementById('player-title-guess');
+    const artistInput = document.getElementById('player-artist-guess');
+    const titleGuessValue = titleInput.value.trim();
+    const artistGuessValue = artistInput.value.trim();
     
-    if (!guessValue) return;
+    if (!titleGuessValue && !artistGuessValue) return;
 
     // Immediately lock controls to prevent multi-tap submission spikes
-    guessInput.disabled = true;
+    titleInput.disabled = true;
+    artistInput.disabled = true;
     document.getElementById('btn-submit').disabled = true;
     document.getElementById('input-area').classList.add('hidden');
     document.getElementById('lock-status').classList.remove('hidden');
 
     socket.emit('submit_guess', {
         name: playerNameRaw,
-        guess: guessValue
+        room_code: playerRoomCode,
+        title_guess: titleGuessValue,
+        artist_guess: artistGuessValue
     });
 }
 
@@ -221,7 +229,8 @@ socket.on('game_state', (data) => {
         // Fix 5: Clean old result text elements instantly to clear visual ghosting
         document.getElementById('personal-feedback').innerHTML = '';
         
-        document.getElementById('player-guess').disabled = false;
+        document.getElementById('player-title-guess').disabled = false;
+        document.getElementById('player-artist-guess').disabled = false;
         document.getElementById('btn-submit').disabled = false;
         document.getElementById('input-area').classList.remove('hidden');
         document.getElementById('lock-status').classList.add('hidden');
@@ -240,14 +249,14 @@ socket.on('game_state', (data) => {
 socket.on('new_round', (data) => {
     document.getElementById('player-lyric').innerText = `"${data.lyric}"`;
     
-    const guessInput = document.getElementById('player-guess');
-    guessInput.value = '';
-    guessInput.disabled = false;
-});
+    const titleInput = document.getElementById('player-title-guess');
+    const artistInput = document.getElementById('player-artist-guess');
+    titleInput.value = '';
+    artistInput.value = '';
+    titleInput.disabled = false;
+    artistInput.disabled = false;
 
-// Fix 4: Intercept host timer updates to synchronize the client tracking widget
-socket.on('host_round_started', (data) => {
-    if (data && data.time) {
+    if (data && data.time !== undefined) {
         startUiTimer(data.time);
     }
 });
@@ -269,8 +278,9 @@ socket.on('round_results', (data) => {
             `;
         } else {
             scoreHeader.innerHTML = `
-                <p class="status-message">Your guess: <strong>${myResult.guess}</strong></p>
-                <p class="status-message">Accuracy Score:</p>
+                <p class="status-message">Song guess: <strong>${myResult.title_guess || '[No Guess]'}</strong> (${myResult.title_correct ? 'Correct' : 'Incorrect'})</p>
+                <p class="status-message">Artist guess: <strong>${myResult.artist_guess || '[No Guess]'}</strong> (${myResult.artist_correct ? 'Correct' : 'Incorrect'})</p>
+                <p class="status-message">Round Score:</p>
                 <div class="score-display">+${myResult.round_score}</div>
             `;
         }

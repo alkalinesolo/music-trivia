@@ -94,7 +94,26 @@
 <!-- LOBBY SCREEN              -->
 <!-- ========================= -->
 <div id="lobby-view" class="game-phase">
-    <h2>Room Code: <span style="color: #1db954;">{{ room_code }}</span></h2>
+    <h2>Room Code: <span id="active-room-code" style="color: #1db954;">Not set</span></h2>
+    <div style="max-width: 360px; margin: 0 auto 20px auto;">
+        <input
+            type="text"
+            id="room-code-input"
+            placeholder="Enter room code..."
+            maxlength="20"
+            style="
+                width: 100%;
+                padding: 12px;
+                border-radius: 8px;
+                border: 2px solid #2f2f2f;
+                background: #1b1b1b;
+                color: #ffffff;
+                box-sizing: border-box;
+                font-size: 18px;
+            "
+        >
+        <button onclick="setHostRoom()" style="width: 100%; margin-top: 10px;">Set Host Room</button>
+    </div>
     <p>Scan to Join Game:</p>
     <div id="qrcode"></div>
     <p>
@@ -125,22 +144,69 @@
 <div id="controls" style="margin-top: 40px;">
     <button id="btn-start" onclick="startRound()" disabled>Start Round</button>
     <button id="btn-results" onclick="showResults()" class="hidden">Show Results</button>
+    <div id="host-timer" style="margin-top: 10px; color: #bdbdbd; font-size: 18px;">Time Left: --</div>
 </div>
 
 <script>
 const socket = io();
+const baseJoinURL = "{{ join_url }}";
+let activeRoomCode = "";
+let hostCountdownInterval = null;
 
-// Join host session on load
-socket.emit('host_join');
-
-// Fixed: Safely uses the backend variable passed explicitly from app.py
-const joinURL = "{{ join_url }}";
-
-new QRCode(document.getElementById("qrcode"), {
-    text: joinURL,
+const qrCode = new QRCode(document.getElementById("qrcode"), {
+    text: baseJoinURL,
     width: 200,
     height: 200
 });
+
+function sanitizeRoomCode(rawValue) {
+    return (rawValue || '').trim().toUpperCase().replace(/[^A-Z0-9_-]/g, '').slice(0, 20);
+}
+
+function setHostRoom() {
+    const input = document.getElementById('room-code-input');
+    const cleanedRoomCode = sanitizeRoomCode(input.value);
+
+    if (!cleanedRoomCode) {
+        alert('Please enter a valid room code.');
+        return;
+    }
+
+    activeRoomCode = cleanedRoomCode;
+    input.value = cleanedRoomCode;
+
+    const joinLink = `${baseJoinURL}/?room=${encodeURIComponent(activeRoomCode)}`;
+    const joinLinkElement = document.getElementById('join-link');
+
+    document.getElementById('active-room-code').innerText = activeRoomCode;
+    joinLinkElement.href = joinLink;
+    joinLinkElement.innerText = joinLink;
+
+    qrCode.clear();
+    qrCode.makeCode(joinLink);
+
+    socket.emit('host_join', { room_code: activeRoomCode });
+}
+
+function startHostTimer(seconds) {
+    if (hostCountdownInterval) {
+        clearInterval(hostCountdownInterval);
+    }
+
+    let timeLeft = Number(seconds) || 0;
+    const timerEl = document.getElementById('host-timer');
+    timerEl.innerText = `Time Left: ${timeLeft}s`;
+
+    hostCountdownInterval = setInterval(() => {
+        timeLeft -= 1;
+        timerEl.innerText = `Time Left: ${Math.max(0, timeLeft)}s`;
+
+        if (timeLeft <= 0) {
+            clearInterval(hostCountdownInterval);
+            hostCountdownInterval = null;
+        }
+    }, 1000);
+}
 
 // Centralized Phase Controller
 function showView(activeViewId) {
@@ -153,6 +219,11 @@ function showView(activeViewId) {
 }
 
 function startRound() {
+    if (!activeRoomCode) {
+        alert('Set a room code first.');
+        return;
+    }
+
     const playerCount = document.querySelectorAll('#players li').length;
     if (playerCount === 0) {
         alert('At least one player must join before starting.');
@@ -171,14 +242,35 @@ function startRound() {
     document.getElementById('btn-start').classList.add('hidden');
     document.getElementById('btn-results').classList.remove('hidden');
 
-    socket.emit('start_round');
+    socket.emit('start_round', { room_code: activeRoomCode });
 }
 
 function showResults() {
     document.getElementById('btn-results').classList.add('hidden');
     document.getElementById('btn-start').classList.remove('hidden');
-    socket.emit('show_results');
+    socket.emit('show_results', { room_code: activeRoomCode });
 }
+
+socket.on('host_error', (data) => {
+    if (data && data.message) {
+        alert(data.message);
+    }
+});
+
+socket.on('host_room_joined', (data) => {
+    activeRoomCode = data.room_code;
+    document.getElementById('active-room-code').innerText = data.room_code;
+
+    const list = document.getElementById('players');
+    list.innerHTML = '';
+    data.players.forEach(player => {
+        const li = document.createElement('li');
+        li.textContent = player;
+        list.appendChild(li);
+    });
+
+    document.getElementById('btn-start').disabled = data.players.length === 0;
+});
 
 socket.on('update_players', (data) => {
     const list = document.getElementById('players');
@@ -196,6 +288,7 @@ socket.on('update_players', (data) => {
 socket.on('host_round_started', (data) => {
     document.getElementById('lyric').innerText = `"${data.song.lyric}"`;
     document.getElementById('guessCount').innerText = `Guesses: 0/${data.total_players}`;
+    startHostTimer(data.time);
 });
 
 socket.on('guess_count', (data) => {
@@ -203,6 +296,12 @@ socket.on('guess_count', (data) => {
 });
 
 socket.on('round_results', (data) => {
+    if (hostCountdownInterval) {
+        clearInterval(hostCountdownInterval);
+        hostCountdownInterval = null;
+    }
+    document.getElementById('host-timer').innerText = 'Time Left: 0s';
+
     const resultsDiv = document.getElementById('results-view');
     resultsDiv.innerHTML = '';
     
@@ -219,8 +318,9 @@ socket.on('round_results', (data) => {
         div.className = 'result';
         div.innerHTML = `
             <h3>${result.player}</h3>
-            <p><strong>Guess:</strong> ${result.guess}</p>
-            <p><strong>Round Points:</strong> +${result.score}</p>
+            <p><strong>Song Guess:</strong> ${result.title_guess || '[No Guess]'}</p>
+            <p><strong>Artist Guess:</strong> ${result.artist_guess || '[No Guess]'}</p>
+            <p><strong>Round Points:</strong> +${result.round_score}</p>
             <p><strong>Total Running Score:</strong> ${result.total_score}</p>
         `;
         resultsDiv.appendChild(div);
