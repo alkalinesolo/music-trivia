@@ -73,6 +73,18 @@
             color: #444;
             letter-spacing: 0.5px;
         }
+
+        .host-link {
+            margin-top: 14px;
+            display: block;
+            color: #1db954;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .host-link:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -93,6 +105,8 @@
         >
         <button type="submit">Join Game</button>
     </form>
+
+    <a class="host-link" href="/host">Hosting on a TV? Open Host Screen</a>
 
     <div class="footer">
         Powered by Flask + SocketIO Engine

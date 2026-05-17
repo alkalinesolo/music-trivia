@@ -50,7 +50,7 @@ def index():
 
 @app.route('/host')
 def host():
-    join_url = request.host_url
+    join_url = request.host_url.rstrip('/')
     return render_template(
         'host.html',
         room_code=ROOM_CODE,
@@ -133,7 +133,11 @@ def handle_start_round():
     emit('new_round', {'lyric': current_song['lyric']}, room=PLAYER_ROOM)
 
     # Notify host screen with full data and start clock countdown
-    emit('host_round_started', {'song': current_song, 'time': ROUND_TIME}, room=HOST_ROOM)
+    emit(
+        'host_round_started',
+        {'song': current_song, 'time': ROUND_TIME, 'total_players': len(players)},
+        room=HOST_ROOM
+    )
 
     # Start the automated round closing countdown thread
     round_timer = threading.Timer(ROUND_TIME, auto_close_round)
@@ -194,6 +198,7 @@ def handle_show_results():
 
     for player in players:
         guess = guesses.get(player, "").strip()
+        no_guess = not bool(guess)
         if guess:
             score = calculate_score(guess, correct_answer)
         else:
@@ -205,6 +210,8 @@ def handle_show_results():
             'player': player,
             'guess': guess,
             'score': score,
+            'round_score': score,
+            'no_guess': no_guess,
             'total_score': leaderboard[player]
         })
 

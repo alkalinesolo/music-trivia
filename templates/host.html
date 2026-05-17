@@ -97,6 +97,10 @@
     <h2>Room Code: <span style="color: #1db954;">{{ room_code }}</span></h2>
     <p>Scan to Join Game:</p>
     <div id="qrcode"></div>
+    <p>
+        <strong>Join URL:</strong>
+        <a id="join-link" href="{{ join_url }}" style="color: #1db954;">{{ join_url }}</a>
+    </p>
     
     <h2>Connected Players</h2>
     <ul id="players"></ul>
@@ -119,7 +123,7 @@
 <!-- HOST CONTROLS             -->
 <!-- ========================= -->
 <div id="controls" style="margin-top: 40px;">
-    <button id="btn-start" onclick="startRound()">Start Round</button>
+    <button id="btn-start" onclick="startRound()" disabled>Start Round</button>
     <button id="btn-results" onclick="showResults()" class="hidden">Show Results</button>
 </div>
 
@@ -149,6 +153,12 @@ function showView(activeViewId) {
 }
 
 function startRound() {
+    const playerCount = document.querySelectorAll('#players li').length;
+    if (playerCount === 0) {
+        alert('At least one player must join before starting.');
+        return;
+    }
+
     // Completely wipe out previous results DOM element tree and reset counters
     document.getElementById('results-view').innerHTML = '';
     document.getElementById('guessCount').innerText = 'Guesses: 0/0';
@@ -179,10 +189,13 @@ socket.on('update_players', (data) => {
         li.textContent = player;
         list.appendChild(li);
     });
+
+    document.getElementById('btn-start').disabled = data.players.length === 0;
 });
 
-socket.on('host_round_started', (song) => {
-    document.getElementById('lyric').innerText = `"${song.lyric}"`;
+socket.on('host_round_started', (data) => {
+    document.getElementById('lyric').innerText = `"${data.song.lyric}"`;
+    document.getElementById('guessCount').innerText = `Guesses: 0/${data.total_players}`;
 });
 
 socket.on('guess_count', (data) => {
