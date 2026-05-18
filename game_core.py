@@ -44,6 +44,9 @@ def get_room_state(room_code):
             "last_results": None,
             "owner_sid": None,
             "owner_name": None,
+            "rounds_per_game": 5,
+            "decades_filter": {"1960s", "1970s", "1980s", "1990s"},
+            "genres_filter": {"rock", "pop", "country", "r&b", "motown", "hip hop", "hip-hop", "hip_hop_r_and_b", "r_and_b_soul", "reggae", "grunge", "alternative rock", "soft rock", "folk rock"},
         }
     return rooms[room_code]
 

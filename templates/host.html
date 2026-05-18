@@ -145,9 +145,77 @@
 <!-- HOST CONTROLS             -->
 <!-- ========================= -->
 <div id="controls" style="margin-top: 40px;">
+    <button id="btn-settings" onclick="openSettings()" style="background: #ff6b35; margin-bottom: 20px;">⚙️ Settings</button>
     <button id="btn-start" onclick="startRound()" disabled>Start Round</button>
     <button id="btn-results" onclick="showResults()" class="hidden">Show Results</button>
     <div id="host-timer" style="margin-top: 10px; color: #bdbdbd; font-size: 18px;">Time Left: --</div>
+</div>
+
+<!-- ========================= -->
+<!-- SETTINGS MODAL            -->
+<!-- ========================= -->
+<div id="settings-modal" class="hidden" style="
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+">
+    <div style="
+        background: #222;
+        padding: 30px;
+        border-radius: 12px;
+        border: 2px solid #1db954;
+        max-height: 90vh;
+        overflow-y: auto;
+        max-width: 600px;
+        width: 90%;
+    ">
+        <h2 style="margin-top: 0; color: #1db954;">Game Settings</h2>
+        
+        <div style="margin-bottom: 25px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: bold;">
+                Rounds Per Game:
+            </label>
+            <input 
+                id="rounds-input" 
+                type="number" 
+                min="1" 
+                max="20" 
+                value="5"
+                style="
+                    width: 80px;
+                    padding: 8px;
+                    border-radius: 6px;
+                    border: 2px solid #1db954;
+                    background: #1b1b1b;
+                    color: white;
+                    font-size: 16px;
+                "
+            >
+        </div>
+        
+        <div style="margin-bottom: 25px;">
+            <h3 style="margin: 0 0 12px 0; color: #bbb;">Decades:</h3>
+            <div id="decades-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 25px;">
+            <h3 style="margin: 0 0 12px 0; color: #bbb;">Genres:</h3>
+            <div id="genres-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; max-height: 250px; overflow-y: auto;">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+        
+        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+            <button onclick="closeSettings()" style="background: #666; flex: 1;">Cancel</button>
+            <button onclick="saveSettings()" style="background: #1db954; flex: 1;">Save Settings</button>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -157,11 +225,86 @@ let activeRoomCode = "";
 let hostCountdownInterval = null;
 let hostRevealTimeouts = [];
 
+const DECADES = ['1960s', '1970s', '1980s', '1990s'];
+const GENRES = ['rock', 'pop', 'country', 'r&b', 'motown', 'hip hop', 'hip-hop', 'hip_hop_r_and_b', 'r_and_b_soul', 'reggae', 'grunge', 'alternative rock', 'soft rock', 'folk rock'];
+
+let hostSettings = {
+    rounds: 5,
+    decades: new Set(DECADES),
+    genres: new Set(GENRES)
+};
+
 const qrCode = new QRCode(document.getElementById("qrcode"), {
     text: baseJoinURL,
     width: 200,
     height: 200
 });
+
+function initializeSettingsUI() {
+    const decadesContainer = document.getElementById('decades-container');
+    DECADES.forEach(decade => {
+        const label = document.createElement('label');
+        label.style.display = 'flex';
+        label.style.alignItems = 'center';
+        label.style.cursor = 'pointer';
+        label.innerHTML = `<input type="checkbox" class="decade-checkbox" value="${decade}" checked style="margin-right: 8px;"> ${decade}`;
+        decadesContainer.appendChild(label);
+    });
+
+    const genresContainer = document.getElementById('genres-container');
+    GENRES.forEach(genre => {
+        const label = document.createElement('label');
+        label.style.display = 'flex';
+        label.style.alignItems = 'center';
+        label.style.cursor = 'pointer';
+        label.innerHTML = `<input type="checkbox" class="genre-checkbox" value="${genre}" checked style="margin-right: 8px;"> ${genre}`;
+        genresContainer.appendChild(label);
+    });
+}
+
+function openSettings() {
+    document.getElementById('settings-modal').classList.remove('hidden');
+    // Sync modal state with current settings
+    document.getElementById('rounds-input').value = hostSettings.rounds;
+    document.querySelectorAll('.decade-checkbox').forEach(cb => {
+        cb.checked = hostSettings.decades.has(cb.value);
+    });
+    document.querySelectorAll('.genre-checkbox').forEach(cb => {
+        cb.checked = hostSettings.genres.has(cb.value);
+    });
+}
+
+function closeSettings() {
+    document.getElementById('settings-modal').classList.add('hidden');
+}
+
+function saveSettings() {
+    hostSettings.rounds = parseInt(document.getElementById('rounds-input').value) || 5;
+    
+    hostSettings.decades.clear();
+    document.querySelectorAll('.decade-checkbox:checked').forEach(cb => {
+        hostSettings.decades.add(cb.value);
+    });
+    
+    hostSettings.genres.clear();
+    document.querySelectorAll('.genre-checkbox:checked').forEach(cb => {
+        hostSettings.genres.add(cb.value);
+    });
+    
+    if (activeRoomCode) {
+        socket.emit('update_game_settings', {
+            room_code: activeRoomCode,
+            rounds: hostSettings.rounds,
+            decades: Array.from(hostSettings.decades),
+            genres: Array.from(hostSettings.genres)
+        });
+    }
+    
+    closeSettings();
+    alert('Settings saved!');
+}
+
+initializeSettingsUI();
 
 function sanitizeRoomCode(rawValue) {
     return (rawValue || '').trim().toUpperCase().replace(/[^A-Z0-9_-]/g, '').slice(0, 20);
@@ -289,6 +432,7 @@ function startRound() {
 function showResults() {
     document.getElementById('btn-results').classList.add('hidden');
     document.getElementById('btn-start').classList.remove('hidden');
+    document.getElementById('btn-start').disabled = false;
     socket.emit('show_results', { room_code: activeRoomCode });
 }
 
@@ -311,6 +455,11 @@ socket.on('host_room_joined', (data) => {
     });
 
     document.getElementById('btn-start').disabled = data.players.length === 0;
+    document.getElementById('btn-settings').disabled = false;
+});
+
+socket.on('settings_updated', (data) => {
+    console.log('Settings updated on host screen');
 });
 
 socket.on('update_players', (data) => {

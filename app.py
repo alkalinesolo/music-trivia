@@ -41,6 +41,28 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 with open('data/songs.json', 'r', encoding='utf-8') as f:
     songs = json.load(f)
 
+# Helper function to map year to decade
+def get_decade(year):
+    if not isinstance(year, (int, float)):
+        return None
+    decade = int(year / 10) * 10
+    return f"{decade}s"
+
+# Helper function to filter songs by decades and genres
+def filter_songs_by_settings(song_list, decades_filter, genres_filter):
+    if not decades_filter or not genres_filter:
+        return song_list
+    
+    filtered = []
+    for song in song_list:
+        song_decade = get_decade(song.get('year'))
+        song_genre = song.get('genre', '').lower()
+        
+        if song_decade in decades_filter and song_genre in genres_filter:
+            filtered.append(song)
+    
+    return filtered if filtered else song_list  # Fallback to all songs if filter results in empty
+
 # =========================
 # ROUTES
 # =========================
@@ -187,7 +209,15 @@ def start_round_for_room(room_code):
         return
 
     room_state['guesses'] = {}
-    room_state['current_song'] = random.choice(songs)
+    
+    # Filter songs based on room settings
+    filtered_songs = filter_songs_by_settings(
+        songs, 
+        room_state.get('decades_filter', set()),
+        room_state.get('genres_filter', set())
+    )
+    
+    room_state['current_song'] = random.choice(filtered_songs)
     room_state['phase'] = 'guessing'
     room_state['round_started_at'] = time.time()
     room_state['last_results'] = None
@@ -290,6 +320,29 @@ def handle_start_round(data):
     start_round_for_room(room_code)
 
 
+@socketio.on('update_game_settings')
+def handle_update_game_settings(data):
+    room_code = normalize_room_code((data or {}).get('room_code'))
+    if not room_code:
+        emit('host_error', {'message': 'Please choose a valid room code first.'}, to=request.sid)
+        return
+    if not room_has_host_control(room_code, request.sid):
+        emit('host_error', {'message': 'Only the room host can change settings.'}, to=request.sid)
+        return
+    
+    room_state = get_room_state(room_code)
+    
+    # Update settings
+    if 'rounds' in data:
+        room_state['rounds_per_game'] = max(1, min(20, int(data.get('rounds', 5))))
+    if 'decades' in data:
+        room_state['decades_filter'] = set(data.get('decades', []))
+    if 'genres' in data:
+        room_state['genres_filter'] = set(g.lower() for g in data.get('genres', []))
+    
+    emit('settings_updated', {'message': 'Settings updated successfully'}, to=request.sid)
+
+
 @socketio.on('disconnect')
 def handle_disconnect():
     if request.sid in host_room_by_sid:
@@ -326,7 +379,9 @@ def finalize_results_for_room(room_code):
         title_score, title_correct = calculate_title_score(title_guess, correct_title)
         artist_score, artist_match = calculate_artist_score(artist_guess, correct_artist)
         artist_correct = artist_match == 'full'
-        early_lock_bonus = calculate_early_lock_bonus(round_started_at, submitted_at)
+        early_lock_bonus = 0
+        if title_correct:
+            early_lock_bonus = calculate_early_lock_bonus(round_started_at, submitted_at)
 
         score = title_score + artist_score + early_lock_bonus
         both_bonus = 0
