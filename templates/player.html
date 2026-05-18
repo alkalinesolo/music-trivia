@@ -129,6 +129,13 @@
         <p class="status-message">Hang tight. The round will begin as soon as the host starts the game on the main screen.</p>
     </div>
 
+    <div id="host-controls" class="phase-view hidden" style="margin-top: 20px;">
+        <h2>Host Controls</h2>
+        <p class="status-message">You created this room, so you can control the round from this device.</p>
+        <button id="btn-host-start" onclick="startRoundAsHost()">Start Round</button>
+        <button id="btn-host-results" onclick="showResultsAsHost()" style="margin-top: 10px;">Show Results</button>
+    </div>
+
     <!-- ========================= -->
     <!-- GUESSING VIEW             -->
     <!-- ========================= -->
@@ -169,9 +176,20 @@ const playerRoomCode = "{{ room_code }}";
 
 let countdownInterval = null;
 let playerRevealTimeouts = [];
+let isRoomHost = false;
 
 // Announce presence to the backend socket network
 socket.emit('player_join', { name: playerNameRaw, room_code: playerRoomCode });
+
+function startRoundAsHost() {
+    if (!isRoomHost) return;
+    socket.emit('start_round', { room_code: playerRoomCode });
+}
+
+function showResultsAsHost() {
+    if (!isRoomHost) return;
+    socket.emit('show_results', { room_code: playerRoomCode });
+}
 
 function changeView(activeViewId) {
     document.querySelectorAll('.phase-view').forEach(view => {
@@ -279,6 +297,16 @@ socket.on('game_state', (data) => {
         // Fix 2: Handle explicit session resets down to baseline lobby
         if (countdownInterval) clearInterval(countdownInterval);
         changeView('lobby-view');
+    }
+});
+
+socket.on('player_role', (data) => {
+    isRoomHost = !!(data && data.is_host);
+    const hostControls = document.getElementById('host-controls');
+    if (isRoomHost) {
+        hostControls.classList.remove('hidden');
+    } else {
+        hostControls.classList.add('hidden');
     }
 });
 

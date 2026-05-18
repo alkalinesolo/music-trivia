@@ -1,0 +1,2522 @@
+Invalid JSON primitive: 
+[
+  {
+    "title": "Don't Stop 'Til You Get Enough",
+    "artist": "Michael Jackson",
+    "genre": "pop",
+    "year": 1979,
+    "lyric1": "Keep on with the force don't stop, don't stop 'til you get enough",
+    "lyric2": "Touch me and I feel the fire, love is a burning desire",
+    "lyric3": "Heartbreak enemy leave me alone, close up your mouth now or not at all"
+  },
+  {
+    "title": "London Calling",
+    "artist": "The Clash",
+    "genre": "rock",
+    "year": 1979,
+    "lyric1": "London calling to the faraway towns, now war is declared and battle come down",
+    "lyric2": "London calling to the underworld, come out of the cupboard, you boys and girls",
+    "lyric3": "The ice age is coming, the sun's zooming in, meltdown expected, the wheat is growing thin"
+  },
+  {
+    "title": "Comfortably Numb",
+    "artist": "Pink Floyd",
+    "genre": "rock",
+    "year": 1979,
+    "lyric1": "Hello? Is there anybody in there? Just nod if you can hear me, is there anyone at home?",
+    "lyric2": "There is no pain you are receding, a distant ship smoke on the horizon",
+    "lyric3": "I have become comfortably numb"
+  },
+  {
+    "title": "Heart of Glass",
+    "artist": "Blondie",
+    "genre": "rock",
+    "year": 1978,
+    "lyric1": "Once I had a love and it was a gas, soon turned out to be a pain in the ass",
+    "lyric2": "Seemed like the real thing, only to find, much mistrust, love's gone behind",
+    "lyric3": "In between, what I find is pleasing and I'm feeling fine"
+  },
+  {
+    "title": "My Sharona",
+    "artist": "The Knack",
+    "genre": "rock",
+    "year": 1979,
+    "lyric1": "Ooh, my little pretty one, my pretty one, when you gonna give me some time, Sharona?",
+    "lyric2": "Never gonna stop, give it up, such a dirty mind, I always get it up for the touch of the younger kind",
+    "lyric3": "M-m-m-my Sharona"
+  },
+  {
+    "title": "Message in a Bottle",
+    "artist": "The Police",
+    "genre": "rock",
+    "year": 1979,
+    "lyric1": "I'll send an S.O.S. to the world, I hope that someone gets my message in a bottle",
+    "lyric2": "A year has passed since I wrote my note, I should have known this right from the start",
+    "lyric3": "Walked out this morning, don't believe what I saw, a hundred billion bottles washed up on the shore"
+  },
+  {
+    "title": "Good Times",
+    "artist": "Chic",
+    "genre": "pop",
+    "year": 1979,
+    "lyric1": "Good times, these are the good times, leave your cares behind, these are the good times",
+    "lyric2": "Happy days are here again, the time is right for makin' friends",
+    "lyric3": "You silly fool, you can't change the past, make up your mind, buddy, before it's too late"
+  },
+  {
+    "title": "Highway to Hell",
+    "artist": "AC/DC",
+    "genre": "rock",
+    "year": 1979,
+    "lyric1": "I'm on the highway to hell, on the highway to hell",
+    "lyric2": "Living easy, living free, season ticket on a one-way ride",
+    "lyric3": "No stop signs, speed limit, nobody's gonna slow me down"
+  },
+  {
+    "title": "Cruel to Be Kind",
+    "artist": "Nick Lowe",
+    "genre": "pop",
+    "year": 1979,
+    "lyric1": "You've gotta be cruel to be kind, in the right measure, cruel to be kind, it's a very good sign",
+    "lyric2": "You say your love is bona fide, I can't decide if you're a thief or a saint",
+    "lyric3": "Cruel to be kind, means that I love you baby"
+  },
+  {
+    "title": "Another Brick in the Wall, Pt. 2",
+    "artist": "Pink Floyd",
+    "genre": "rock",
+    "year": 1979,
+    "lyric1": "We don't need no education, we don't need no thought control",
+    "lyric2": "No dark sarcasm in the classroom, teachers leave them kids alone",
+    "lyric3": "Hey! Teachers! Leave them kids alone! All in all it's just another brick in the wall"
+  },
+  {
+    "title": "Bad Girls",
+    "artist": "Donna Summer",
+    "genre": "pop",
+    "year": 1979,
+    "lyric1": "Talkin' 'bout sad girls, sad girls, talkin' 'bout bad girls, yeah",
+    "lyric2": "See them out on the street at night, walking up and down the line",
+    "lyric3": "Toot toot, hey, beep beep"
+  },
+  {
+    "title": "Rock Lobster",
+    "artist": "The B-52's",
+    "genre": "rock",
+    "year": 1978,
+    "lyric1": "We were at a party, his earlobe fell in the deep, someone reached in and grabbed it",
+    "lyric2": "It was a rock lobster, rock lobster",
+    "lyric3": "Let's rock, rock lobster, rock lobster"
+  },
+  {
+    "title": "I Want You to Want Me",
+    "artist": "Cheap Trick",
+    "genre": "rock",
+    "year": 1977,
+    "lyric1": "I want you to want me, I need you to need me, I'd love you to love me, I'm beggin' you to beg me",
+    "lyric2": "I'll shine up my old brown shoes, I'll put on a brand new shirt",
+    "lyric3": "I'll come home early from work if you say that you love me"
+  },
+  {
+    "title": "Cars",
+    "artist": "Gary Numan",
+    "genre": "pop",
+    "year": 1979,
+    "lyric1": "Here in my car, I feel safest of all, I can lock all my doors, it's the only way to live",
+    "lyric2": "Here in my car, I can only receive, I can listen to me, it keeps me stable for days",
+    "lyric3": "Here in my car, where the image breaks down, will visitors please leave?"
+  },
+  {
+    "title": "Escape (The Piña Colada Song)",
+    "artist": "Rupert Holmes",
+    "genre": "pop",
+    "year": 1979,
+    "lyric1": "If you like piña coladas and getting caught in the rain, if you're not into yoga, if you have half a brain",
+    "lyric2": "I was tired of my lady, we'd been together too long, like a worn-out recording of a favorite song",
+    "lyric3": "So I wrote to the paper, took out a personal ad, and though I'm nobody's poet, I thought it wasn't half bad"
+  },
+  {
+    "title": "Boys Don't Cry",
+    "artist": "The Cure",
+    "genre": "rock",
+    "year": 1979,
+    "lyric1": "I would say I'm sorry if I thought that it would change your mind, but I know that this time I have said too much",
+    "lyric2": "I try to laugh about it, cover it all up with lies, I try to laugh about it, hiding the tears in my eyes",
+    "lyric3": "'Cause boys don't cry, boys don't cry"
+  },
+  {
+    "title": "Crazy Little Thing Called Love",
+    "artist": "Queen",
+    "genre": "rock",
+    "year": 1979,
+    "lyric1": "This thing called love, I just can't handle it, this thing called love, I must get round to it",
+    "lyric2": "There goes my baby, she knows how to rock and roll, she drives me crazy",
+    "lyric3": "She gives me hot and cold fever, then she leaves me in a cool, cool sweat"
+  },
+  {
+    "title": "What a Fool Believes",
+    "artist": "The Doobie Brothers",
+    "genre": "rock",
+    "year": 1978,
+    "lyric1": "But what a fool believes he sees, no wise man has the power to reason away",
+    "lyric2": "He came from somewhere back in her long ago, the sentimental fool muses on to old relations",
+    "lyric3": "She rises to his apology, it's passport to a new road, bygone, she's a traveler on"
+  },
+  {
+    "title": "Babe",
+    "artist": "Styx",
+    "genre": "rock",
+    "year": 1979,
+    "lyric1": "Babe, I'm leaving, I must be on my way, the time is drawing near",
+    "lyric2": "The train is at the station and I'm conversely on my way, but I'll be back before too long",
+    "lyric3": "Babe, I love you, babe, I love you, more than words can say"
+  },
+  
+
+  {
+    "title": "Tusk",
+    "artist": "Fleetwood Mac",
+    "genre": "rock",
+    "year": 1979,
+    "lyric1": "Don't say that you love me (Hiyee) Just tell me that you want me (Hiyee)",
+    "lyric2": "Why don't you ask him what's going wrong? Why don't you ask him the latest on his throne?",
+    "lyric3": "Why don't you ask him if he's gonna stay?"
+  }
+]
+
+[
+{
+    "title": "Back in Black",
+    "artist": "AC/DC",
+    "genre": "rock",
+    "year": 1980,
+    "lyric1": "Back in black, I hit the sack, I've been too long, I'm glad to be back",
+    "lyric2": "Yes, I'm let loose from the noose, that's kept me hanging about",
+    "lyric3": "I'm just looking at the sky 'cause it's getting me high, forget the hearse 'cause I'll never die"
+  },
+  {
+    "title": "Another One Bites the Dust",
+    "artist": "Queen",
+    "genre": "rock",
+    "year": 1980,
+    "lyric1": "Steve walks warily down the street, with the brim pulled way down low",
+    "lyric2": "Ain't no sound but the sound of his feet, machine guns ready to go",
+    "lyric3": "Another one bites the dust, another one bites the dust"
+  },
+  {
+    "title": "Crazy Train",
+    "artist": "Ozzy Osbourne",
+    "genre": "rock",
+    "year": 1980,
+    "lyric1": "Crazy, but that's how it goes, millions of people living as foes",
+    "lyric2": "Maybe it's not too late, to learn how to love, and forget how to hate",
+    "lyric3": "Mental wounds still screaming, driving me insane, I'm going off the rails on a crazy train"
+  },
+  {
+    "title": "Breaking the Law",
+    "artist": "Judas Priest",
+    "genre": "rock",
+    "year": 1980,
+    "lyric1": "There I was completely wasted, out of work and down",
+    "lyric2": "All inside it's so frustrating, as I drift from town to town",
+    "lyric3": "Breaking the law, breaking the law, breaking the law, breaking the law"
+  },
+  {
+    "title": "Love Will Tear Us Part",
+    "artist": "Joy Division",
+    "genre": "rock",
+    "year": 1980,
+    "lyric1": "When routine bites hard and ambitions are low, and resentment rides high but emotions won't grow",
+    "lyric2": "And we're changing our ways, taking different roads",
+    "lyric3": "Then love, love will tear us part again, love, love will tear us part again"
+  },
+  {
+    "title": "Celebration",
+    "artist": "Kool & The Gang",
+    "genre": "pop",
+    "year": 1980,
+    "lyric1": "Yahoo! It's a celebration, celebrate good times, come on",
+    "lyric2": "There's a party goin' on right here, a celebration to last throughout the years",
+    "lyric3": "So bring your good times and your laughter too, we're gonna celebrate your party with you"
+  },
+  {
+    "title": "Ace of Spades",
+    "artist": "Motörhead",
+    "genre": "rock",
+    "year": 1980,
+    "lyric1": "If you like to gamble, I tell you I'm your man, you win some, lose some, it's all the same to me",
+    "lyric2": "The pleasure is to play, makes no difference what you say, I don't share your greed, the only card I need is the ace of spades",
+    "lyric3": "The ace of spades, the ace of spades"
+  },
+  {
+    "title": "Don't Stand So Close to Me",
+    "artist": "The Police",
+    "genre": "rock",
+    "year": 1980,
+    "lyric1": "Young teacher, the subject of schoolgirl fantasy",
+    "lyric2": "She wants him so badly, knows what she wants to be",
+    "lyric3": "Don't stand so close to me, don't stand so close to me"
+  },
+  {
+    "title": "Hit Me with Your Best Shot",
+    "artist": "Pat Benatar",
+    "genre": "rock",
+    "year": 1980,
+    "lyric1": "You're a real tough cookie with a long history of breaking little hearts like the one in me",
+    "lyric2": "Well, before I put another notch in my lipstick case, you better make sure you put me in my place",
+    "lyric3": "Hit me with your best shot, why don't you hit me with your best shot? Hit me with your best shot, fire away"
+  },
+  {
+    "title": "Against the Wind",
+    "artist": "Bob Seger",
+    "genre": "rock",
+    "year": 1980,
+    "lyric1": "Against the wind, we were running against the wind",
+    "lyric2": "Janey was lovely, she was the queen of my nights",
+    "lyric3": "It seems like yesterday, but it was long ago"
+  },
+  {
+    "title": "The Tide Is High",
+    "artist": "Blondie",
+    "genre": "pop",
+    "year": 1980,
+    "lyric1": "The tide is high but I'm holding on, I'm gonna be your number one",
+    "lyric2": "I'm not the kind of girl who gives up just like that, oh no",
+    "lyric3": "It's not the things you do that tease and hurt me bad, But it's the way you do the things you do to me"
+  },
+  {
+    "title": "Funkytown",
+    "artist": "Lipps Inc.",
+    "genre": "pop",
+    "year": 1980,
+    "lyric1": "Gotta move on to a town that's right for me, town to keep me movin', keep me groovin' with some energy",
+    "lyric2": "Won't you take me to Funkytown? Won't you take me to Funkytown?",
+    "lyric3": "Talk about it, talk about it, talk about it, talk about it"
+  },
+  {
+    "title": "Whip It",
+    "artist": "Devo",
+    "genre": "rock",
+    "year": 1980,
+    "lyric1": "Crack that whip, give the past the slip, step on a crack, break your momma's back",
+    "lyric2": "When a problem comes along, you must whip it, whip it good",
+    "lyric3": "Now whip it, into shape, shape it up, get straight, go forward, move ahead, try to detect it, it's not too late"
+  },
+  {
+    "title": "Once in a Lifetime",
+    "artist": "Talking Heads",
+    "genre": "rock",
+    "year": 1980,
+    "lyric1": "And you may find yourself living in a shotgun shack, and you may find yourself in another part of the world",
+    "lyric2": "And you may find yourself behind the wheel of a large automobile",
+    "lyric3": "Letting the days go by, let the water hold me down, letting the days go by, water flowing underground"
+  },
+  {
+    "title": "Keep On Loving You",
+    "artist": "REO Speedwagon",
+    "genre": "rock",
+    "year": 1980,
+    "lyric1": "You should've seen by the look in my eyes, baby, there was somethin' missin'",
+    "lyric2": "You should've known by the tone of my voice, maybe, but you didn't listen",
+    "lyric3": "And I'm gonna keep on loving you, 'cause it's the only thing I wanna do"
+  },
+  {
+    "title": "All Out of Love",
+    "artist": "Air Supply",
+    "genre": "pop",
+    "year": 1980,
+    "lyric1": "I'm all out of love, I'm so lost without you, I know you were right, believing for so long",
+    "lyric2": "I'm all out of love, what am I without you, I can't be too late to say that I was wrong",
+    "lyric3": "I want you to come back and carry me home, away from these long lonely nights"
+  },
+  {
+    "title": "Turning Japanese",
+    "artist": "The Vapors",
+    "genre": "rock",
+    "year": 1980,
+    "lyric1": "I've got your picture, I've got your picture, I'd like a million of them all over my wall",
+    "lyric2": "I want the doctor to take your picture, so I can look at you from the inside as well",
+    "lyric3": "You're turning Japanese, I think I'm turning Japanese, I really think so"
+  },
+  {
+    "title": "It's Still Rock and Roll to Me",
+    "artist": "Billy Joel",
+    "genre": "pop",
+    "year": 1980,
+    "lyric1": "What's the matter with the clothes I'm wearing? 'Can't you tell that your tie's too wide?'",
+    "lyric2": "Maybe I should buy some old tab collars? 'Welcome back to the age of jive'",
+    "lyric3": "It's still rock and roll to me"
+  },
+  {
+    "title": "Ashes to Ashes",
+    "artist": "David Bowie",
+    "genre": "rock",
+    "year": 1980,
+    "lyric1": "Ashes to ashes, funk to funky, we know Major Tom's a junkie",
+    "lyric2": "Strung out in heaven's high, hitting an all-time low",
+    "lyric3": "Time and again I tell myself, I'll stay clean tonight"
+  },
+  {
+    "title": "Hungry Heart",
+    "artist": "Bruce Springsteen",
+    "genre": "rock",
+    "year": 1980,
+    "lyric1": "Got a wife and kids in Baltimore, Jack, I went out for a ride and I never went back",
+    "lyric2": "Like a river that don't know where it's flowing, I took a wrong turn and I just kept going",
+    "lyric3": "Everybody's got a hungry heart, everybody's got a hungry heart"
+  }
+
+
+  {
+    "title": "Call Me",
+    "artist": "Blondie",
+    "genre": "rock",
+    "year": 1980,
+    "lyric1": "Color me your color, baby, color me your car",
+    "lyric2": "Call me on the line, call me, call me any, any time",
+    "lyric3": "Call me (call me) my love, call me, call me any day or night"
+  },
+  {
+    "title": "You Shook Me All Night Long",
+    "artist": "AC/DC",
+    "genre": "rock",
+    "year": 1980,
+    "lyric1": "She was a fast machine, she kept her motor clean",
+    "lyric2": "She was the best damn woman that I ever seen",
+    "lyric3": "You shook me all night long, yeah, you shook me all night long"
+  },
+  {
+    "title": "Any Way You Want It",
+    "artist": "Journey",
+    "genre": "rock",
+    "year": 1980,
+    "lyric1": "Any way you want it, that's the way you need it, any way you want it",
+    "lyric2": "She loves to move, she loves to groove, she loves the lovin' things",
+    "lyric3": "All night, all night, oh, every night"
+  },
+  {
+    "title": "Refugee",
+    "artist": "Tom Petty and the Heartbreakers",
+    "genre": "rock",
+    "year": 1980,
+    "lyric1": "Somewhere, somehow, somebody must have kicked you around some",
+    "lyric2": "It don't really matter to me, baby, everybody's had to fight to be free",
+    "lyric3": "You don't have to live like a refugee, don't have to live like a refugee"
+  },
+  {
+    "title": "Brass in Pocket",
+    "artist": "The Pretenders",
+    "genre": "rock",
+    "year": 1980,
+    "lyric1": "Got brass in pocket, got bottle I'm gonna use it, intention I'm gonna make you, make you, make you notice",
+    "lyric2": "Got motion, restrained emotion, been driving, Detroit leaning",
+    "lyric3": "I'm gonna make you see, there's nobody else here, no one like me, I'm special"
+  },
+  {
+    "title": "You May Be Right",
+    "artist": "Billy Joel",
+    "genre": "rock",
+    "year": 1980,
+    "lyric1": "Friday night I crashed your party, Saturday I said I'm sorry",
+    "lyric2": "You may be right, I may be crazy, but it just may be a lunatic you're looking for",
+    "lyric3": "Turn out the light, don't try to save me, you may be right"
+  }
+[
+  {
+    "title": "Don't Stop Believin'",
+    "artist": "Journey",
+    "genre": "rock",
+    "year": 1981,
+    "lyric1": "Just a small-town girl, living in a lonely world, she took the midnight train going anywhere",
+    "lyric2": "Just a city boy, born and raised in South Detroit, he took the midnight train going anywhere",
+    "lyric3": "Don't stop believin', hold on to that feelin', streetlights, people"
+  },
+  {
+    "title": "Under Pressure",
+    "artist": ["Queen", "David Bowie"],
+    "genre": "rock",
+    "year": 1981,
+    "lyric1": "Pressure pushing down on me, pressing down on you, no man ask for",
+    "lyric2": "Under pressure that burns a building down, splits a family in two, puts people on streets",
+    "lyric3": "It's the terror of knowing what this world is about, watching some good friends screaming, 'Let me out!'"
+  },
+  {
+    "title": "In the Air Tonight",
+    "artist": "Phil Collins",
+    "genre": "rock",
+    "year": 1981,
+    "lyric1": "I can feel it coming in the air tonight, oh lord",
+    "lyric2": "And I've been waiting for this moment for all my life, oh lord",
+    "lyric3": "Well if you told me you were drowning, I would not lend a hand"
+  },
+  {
+    "title": "Bette Davis Eyes",
+    "artist": "Kim Carnes",
+    "genre": "pop",
+    "year": 1981,
+    "lyric1": "Her hair is Harlow gold, her lips sweet surprise, her hands are never cold, she's got Bette Davis eyes",
+    "lyric2": "She'll turn her buttons on you, you won't have to think twice, she's pure as New York snow, she got Bette Davis eyes",
+    "lyric3": "And she'll tease you, she'll unease you, all the better just to please you"
+  },
+  {
+    "title": "Start Me Up",
+    "artist": "The Rolling Stones",
+    "genre": "rock",
+    "year": 1981,
+    "lyric1": "If you start me up, if you start me up I'll never stop",
+    "lyric2": "You make a grown man cry, you make a grown man cry",
+    "lyric3": "Start me up and never stop, never stop, never stop"
+  },
+  {
+    "title": "Jessie's Girl",
+    "artist": "Rick Springfield",
+    "genre": "rock",
+    "year": 1981,
+    "lyric1": "Jessie is a friend, yeah, I know he's been a good friend of mine",
+    "lyric2": "But lately something's changed that ain't hard to define, Jessie's got himself a girl and I want to make her mine",
+    "lyric3": "where can I find a woman like that?"
+  },
+  {
+    "title": "Super Freak",
+    "artist": "Rick James",
+    "genre": "r_and_b_soul",
+    "year": 1981,
+    "lyric1": "That girl's a super freak, super freak, she's super-freaky, yow",
+    "lyric2": "She will never let your spirits down, once you get her off the street, ow",
+    "lyric3": "The kind you don't bring home to mother"
+  },
+  {
+    "title": "Centerfold",
+    "artist": "The J. Geils Band",
+    "genre": "rock",
+    "year": 1981,
+    "lyric1": "Does she walk? Does she talk? Does she come complete?",
+    "lyric2": "Years go by I'm lookin' at a magazine, there's my hometown homecoming queen",
+    "lyric3": "My blood runs cold, my memory has just been sold, my angel is the centerfold"
+  },
+  {
+    "title": "Our Lips Are Sealed",
+    "artist": "The Go-Go's",
+    "genre": "pop",
+    "year": 1981,
+    "lyric1": "Can you hear them? Talk about us, telling lies, well, that's no surprise",
+    "lyric2": "Can you see them? See right through them, they have no shield, no secrets to reveal",
+    "lyric3": "Doesn't matter what they say, in the jealous games people play, our lips are sealed"
+  },
+  {
+    "title": "Physical",
+    "artist": "Olivia Newton-John",
+    "genre": "pop",
+    "year": 1981,
+    "lyric1": "I'm saying all the things that I know you'll like, making good conversation",
+    "lyric2": "I took you to an intimate restaurant, then to a suggestive movie",
+    "lyric3": "Let's get physical, physical, I wanna get physical, let's hear your body talk"
+  },
+  {
+    "title": "Every Little Thing She Does Is Magic",
+    "artist": "The Police",
+    "genre": "rock",
+    "year": 1981,
+    "lyric1": "Though I've tried before to tell her of the feelings I have for her in my heart",
+    "lyric2": "Every little thing she does is magic, everything she do just turns me blue",
+    "lyric3": "Even though my life before was tragic, now I know my love for her goes on"
+  },
+  {
+    "title": "Edge of Seventeen",
+    "artist": "Stevie Nicks",
+    "genre": "rock",
+    "year": 1981,
+    "lyric1": "Just like the white winged dove, sings a song, sounds like she's singing, ooh, baby, ooh, said ooh",
+    "lyric2": "And the days go by like a strand in the wind, in the web that is my own, I begin again",
+    "lyric3": "I went back to the room, well, I went back to the room, to the bedroom, and I sat down to write"
+  },
+  {
+    "title": "Tainted Love",
+    "artist": "Soft Cell",
+    "genre": "pop",
+    "year": 1981,
+    "lyric1": "Sometimes I feel I've got to run away, I've got to get away from the pain you drive into the heart of me",
+    "lyric2": "The love we share seems to go nowhere, and I've lost my light, I toss and turn, I can't sleep at night",
+    "lyric3": "Once I ran to you, now I run from you, this tainted love you've given"
+  },
+  {
+    "title": "Don't You Want Me",
+    "artist": "The Human League",
+    "genre": "pop",
+    "year": 1981,
+    "lyric1": "Don't, don't you want me? You know I can't believe it when I hear that you won't see me", 
+    "lyric2": "You were working as a waitress in a cocktail bar, when I met you", 
+    "lyric3": "I picked you out, I shook you up, and turned you around, turned you into someone new"
+  },
+  {
+    "title": "Tom Sawyer",
+    "artist": "Rush",
+    "genre": "rock",
+    "year": 1981,
+    "lyric1": "A modern-day warrior, mean, mean stride, today's Tom Sawyer, mean, mean pride",
+    "lyric2": "No, his mind is not for rent, to any god or government",
+    "lyric3": "Catch the witness, catch the wit, catch the spirit, catch the spit"
+  },
+  {
+    "title": "Working for the Weekend",
+    "artist": "Loverboy",
+    "genre": "rock",
+    "year": 1981,
+    "lyric1": "Everybody's working for the weekend, everybody wants a little romance",
+    "lyric2": "Everyone's wondering will you come out tonight, everyone's trying to get it right",
+    "lyric3": "Everyone's watching, to see what you will do, everyone's looking at you"
+  },
+  {
+    "title": "You Make My Dreams",
+    "artist": ["Hall & Oates"],
+    "genre": "pop",
+    "year": 1981,
+    "lyric1": "What I want, you've got, and it might be hard to handle",
+    "lyric2": "But like the flame that burns the candle, the candle feeds the flame, yeah, yeah",
+    "lyric3": "You make my dreams come true, you, you, you, you, ooh, yeah"
+  },
+  {
+    "title": "Take It on the Run",
+    "artist": "REO Speedwagon",
+    "genre": "rock",
+    "year": 1981,
+    "lyric1": "Heard it from a friend who heard it from a friend who heard it from another you been messin' around",
+    "lyric2": "And the talk of the town is that you're turning me down, but it's okay 'cause I know that you love me",
+    "lyric3": "If that's the way you want it, baby, then I don't want you around"
+  },
+  {
+    "title": "Waiting for a Girl Like You",
+    "artist": "Foreigner",
+    "genre": "rock",
+    "year": 1981,
+    "lyric1": "So long, I've been looking too hard, I've been waiting too long",
+    "lyric2": "Sometimes I don't know what I will find, I only know I haven't made up my mind",
+    "lyric3": "I've been waiting for a girl like you to come into my life"
+  },
+  {
+    "title": "Shake It Up",
+    "artist": "The Cars",
+    "genre": "rock",
+    "year": 1981,
+    "lyric1": "Uh, dance all night, play all day, don't let nothing get in your way",
+    "lyric2": "Shake it up, shake it up, oo-oo, shake it up",
+    "lyric3": "Dance all night, get the feeling right, shake it up"
+  }
+]
+
+
+[
+  {
+    "title": "Billie Jean",
+    "artist": "Michael Jackson",
+    "genre": "pop",
+    "year": 1982,
+    "lyric1": "Billie Jean is not my lover, she's just a girl who claims that I am the one",
+    "lyric2": "People always told me, 'Be careful of what you do, and don't go around breaking young girls' hearts'",
+    "lyric3": "She was more like a beauty queen from a movie scene, I said don't mind, but what do you mean, I am the one?"
+  },
+  {
+    "title": "Eye of the Tiger",
+    "artist": "Survivor",
+    "genre": "rock",
+    "year": 1982,
+    "lyric1": "It's the eye of the tiger, it's the thrill of the fight, rising up to the challenge of our rival",
+    "lyric2": "Risin' up, back on the street, did my time, took my chances",
+    "lyric3": "Went the distance, now I'm back on my feet, just a man and his will to survive"
+  },
+  {
+    "title": "Don't You Want Me",
+    "artist": "The Human League",
+    "genre": "pop",
+    "year": 1982,
+    "lyric1": "Don't, don't you want me? You know I can't believe it when I hear that you won't see me",
+    "lyric2": "You were working as a waitress in a cocktail bar, when I met you",
+    "lyric3": "I picked you out, I shook you up, and turned you around, turned you into someone new"
+  },
+  {
+    "title": "Jack & Diane",
+    "artist": "John Mellencamp",
+    "genre": "rock",
+    "year": 1982,
+    "lyric1": "Oh yeah, life goes on, long after the thrill of living is gone",
+    "lyric2": "A little ditty 'bout Jack and Diane, two American kids growing up in the heartland",
+    "lyric3": "Jack scratches his head, scratches his crotch, sit on the porch, watch the evening close in"
+  },
+  {
+    "title": "Hungry Like the Wolf",
+    "artist": "Duran Duran",
+    "genre": "pop",
+    "year": 1982,
+    "lyric1": "In touch with the ground, I'm on the hunt, I'm after you, smell like I sound, I'm lost in a crowd",
+    "lyric2": "Strut on a line, it's discord and rhyme, I'm on the hunt, I'm after you",
+    "lyric3": "Dark in the city, night is a wire, steam in the subway, earth is afire"
+  },
+  {
+    "title": "Vacation",
+    "artist": "The Go-Go's",
+    "genre": "pop",
+    "year": 1982,
+    "lyric1": "Vacation, all I ever wanted, vacation, had to get away",
+    "lyric2": "Can't seem to get you off my mind, relations to card and letter line",
+    "lyric3": "Now I'm standing by the ocean, next to me the lonely sea"
+  },
+  {
+    "title": "Heat of the Moment",
+    "artist": "Asia",
+    "genre": "rock",
+    "year": 1982,
+    "lyric1": "It was the heat of the moment, telling me what your heart meant",
+    "lyric2": "I never meant to be so bad to you, one thing I said that I would never do",
+    "lyric3": "And now you find yourself in '82, the disco hotspots hold no charm for you"
+  },
+  {
+    "title": "I Love Rock 'N Roll",
+    "artist": "Joan Jett & the Blackhearts",
+    "genre": "rock",
+    "year": 1981,
+    "lyric1": "I love rock 'n roll, so put another dime in the jukebox, baby",
+    "lyric2": "I saw him dancing there by the record machine, I knew he must have been about seventeen",
+    "lyric3": "He was moving to the beat, boy, moving to the beat and that cruise's part of me"
+  },
+  {
+    "title": "Should I Stay or Should I Go",
+    "artist": "The Clash",
+    "genre": "rock",
+    "year": 1982,
+    "lyric1": "Should I stay or should I go now? If I go there will be trouble, and if I stay it will be double",
+    "lyric2": "Darling, you got to let me know, should I stay or should I go?",
+    "lyric3": "This indecision's bugging me, if you don't want me, set me free"
+  },
+  {
+    "title": "Maneater",
+    "artist": "Hall & Oates",
+    "genre": "pop",
+    "year": 1982,
+    "lyric1": "Oh, here she comes, watch out boy, she'll chew you up, oh, here she comes, she's a maneater",
+    "lyric2": "She'll only come out at night, the lean and hungry type",
+    "lyric3": "Nothing is new, I've seen her before, she's good for the money, always looking for more"
+  },
+  {
+    "title": "White Wedding",
+    "artist": "Billy Idol",
+    "genre": "rock",
+    "year": 1982,
+    "lyric1": "It's a nice day for a white wedding, it's a nice day to start again",
+    "lyric2": "Hey little sister, what have you done? Hey little sister, who's the only one?",
+    "lyric3": "There is nothing pure in this world, there is nothing safe in this world"
+  },
+  {
+    "title": "Sexual Healing",
+    "artist": "Marvin Gaye",
+    "genre": "r_and_b_soul",
+    "year": 1982,
+    "lyric1": "Get up, get up, get up, get up, let's make love tonight, wake up, wake up, wake up, wake up, 'cause you do it right",
+    "lyric2": "And it's good for me, sexual healing is something that's good for me",
+    "lyric3": "Whenever blue teardrops are falling, and my emotional stability is leaving me"
+  },
+  {
+    "title": "Rock the Casbah",
+    "artist": "The Clash",
+    "genre": "rock",
+    "year": 1982,
+    "lyric1": "The shareef don't like it, rock the casbah, rock the casbah",
+    "lyric2": "Now the king told the boogieman, you better get that crazy sound, defend that crazy sound",
+    "lyric3": "By order of the prophet, we ban that boogie sound, ejaculated the masses"
+  },
+  {
+    "title": "Rosanna",
+    "artist": "Toto",
+    "genre": "rock",
+    "year": 1982,
+    "lyric1": "Meet you all the way, Rosanna, yeah, meet you all the way, Rosanna, yeah",
+    "lyric2": "All I wanna do when I wake up in the morning is see your eyes, Rosanna, Rosanna",
+    "lyric3": "I can see your face still shining through the window on the other side where you used to stand"
+  },
+  {
+    "title": "Always on My Mind",
+    "artist": "Willie Nelson",
+    "genre": "country",
+    "year": 1982,
+    "lyric1": "Maybe I didn't love you quite as often as I could have",
+    "lyric2": "You were always on my mind, you were always on my mind",
+    "lyric3": "Maybe I didn't treat you quite as good as I should have"
+  },
+  {
+    "title": "Down Under",
+    "artist": "Men at Work",
+    "genre": "rock",
+    "year": 1981,
+    "lyric1": "Do you come from a land down under? Where women glow and men plunder?",
+    "lyric2": "Traveling in a fried-out Kombi, on a hippie trail, head full of zombie",
+    "lyric3": "I met a man in Brussels, he was six-foot-four and full of muscles"
+  },
+  {
+    "title": "Abracadabra",
+    "artist": "Steve Miller Band",
+    "genre": "rock",
+    "year": 1982,
+    "lyric1": "Abra-abracadabra, I wanna reach out and grab ya",
+    "lyric2": "I feel the magic in your caress, I feel magic when I touch your dress",
+    "lyric3": "I heat up, I can't cool down You got me spinnin' 'round and 'round"
+  },
+  {
+    "title": "Come On Eileen",
+    "artist": "Dexys Midnight Runners",
+    "genre": "pop",
+    "year": 1982,
+    "lyric1": "Come on, Eileen, oh I swear (what he means), at this moment, you mean everything",
+    "lyric2": "Poor old Johnny Ray sounded sad upon the radio, moved a million hearts in mono",
+    "lyric3": "Our hands are dirty, our clothes are tight, but we're looking alright, born to croon"
+  },
+  {
+    "title": "Up Where We Belong",
+    "artist": ["Joe Cocker", "Jennifer Warnes"],
+    "genre": "pop",
+    "year": 1982,
+    "lyric1": "Love lifts us up where we belong, where the eagles cry, on a mountain high",
+    "lyric2": "Some hang on to 'used to be', live their lives looking in the rearview mirror",
+    "lyric3": "The road is long, there are mountains in our way, but we climb them every day"
+  },
+  {
+    "title": "Steppin' Out",
+    "artist": "Joe Jackson",
+    "genre": "pop",
+    "year": 1982,
+    "lyric1": "We are steppin' out, into the night, into the light",
+    "lyric2": "Now the mist across the window hides the lines, but nothing hides the color of the lights",
+    "lyric3": "You look so fine, dressed in black and white, we're gonna go into the city, we got no time to lose"
+  }
+]
+
+[
+  {
+    "title": "Every Breath You Take",
+    "artist": "The Police",
+    "genre": "rock",
+    "year": 1983,
+    "lyric1": "Every breath you take and every move you make, every bond you break, every step you take, I'll be watching you",
+    "lyric2": "Oh, can't you see you belong to me? How my poor heart aches with every step you take",
+    "lyric3": "Since you've gone I've been lost without a trace, I dream at night I can only see your face"
+  },
+  {
+    "title": "Sweet Dreams (Are Made of This)",
+    "artist": "Eurythmics",
+    "genre": "pop",
+    "year": 1983,
+    "lyric1": "Sweet dreams are made of this, who am I to disagree? I travel the world and the seven seas",
+    "lyric2": "Some of them want to use you, some of them want to get used by you",
+    "lyric3": "Hold your head up, keep your head up, movin' on"
+  },
+  {
+    "title": "Beat It",
+    "artist": "Michael Jackson",
+    "genre": "pop",
+    "year": 1983,
+    "lyric1": "Just beat it, beat it, beat it, beat it, no one wants to be defeated",
+    "lyric2": "You have to show them that you're really not scared, you're playing with your life, this ain't no truth or dare",
+    "lyric3": "They told him, 'Don't you ever come around here', 'Don't wanna see your face, you better disappear'"
+  },
+  {
+    "title": "All Night Long (All Night)",
+    "artist": "Lionel Richie",
+    "genre": "pop",
+    "year": 1983,
+    "lyric1": "All night long (all night), all night long (all night), all night long",
+    "lyric2": "Well, my friends, the time has come to raise the roof and have some fun",
+    "lyric3": "People dancing all in the street, see the rhythm in their feet"
+  },
+  {
+    "title": "Total Eclipse of the Heart",
+    "artist": "Bonnie Tyler",
+    "genre": "pop",
+    "year": 1983,
+    "lyric1": "Turn around, bright eyes, every now and then I fall apart",
+    "lyric2": "And I need you now tonight, and I need you more than ever",
+    "lyric3": "Once upon a time I was falling in love, now I'm only falling apart"
+  },
+  {
+    "title": "Girls Just Want to Have Fun",
+    "artist": "Cyndi Lauper",
+    "genre": "pop",
+    "year": 1983,
+    "lyric1": "That's all they really want, some fun, when the working day is done, oh girls, girls just want to have fun",
+    "lyric2": "I come home in the morning light, my mother says, 'When you gonna live your life right?'",
+    "lyric3": "Some boys take a beautiful girl and hide them away from the rest of the world"
+  },
+  {
+    "title": "Karma Chameleon",
+    "artist": "Culture Club",
+    "genre": "pop",
+    "year": 1983,
+    "lyric1": "Karma, karma, karma, karma, karma chameleon, you come and go, you come and go",
+    "lyric2": "Loving would be easy if your colors were like my dreams, red, gold and green, red, gold and green",
+    "lyric3": "There's a loving in your eyes all the way, if I listen to your lies, would you say"
+  },
+  {
+    "title": "Owner of a Lonely Heart",
+    "artist": "Yes",
+    "genre": "rock",
+    "year": 1983,
+    "lyric1": "Owner of a lonely heart, much better than a owner of a broken heart",
+    "lyric2": "Move yourself, you always live your life, never drink the water from the pool, find yourself",
+    "lyric3": "Say, you don't want to chance it, you've been hurt so before"
+  },
+  {
+    "title": "Let's Dance",
+    "artist": "David Bowie",
+    "genre": "rock",
+    "year": 1983,
+    "lyric1": "Let's dance, put on your red shoes and dance the blues",
+    "lyric2": "Let's sway, while color lights up your face, let's sway through the crowd to an empty space",
+    "lyric3": "If you say run, I'll run with you, and if you say hide, we'll hide"
+  },
+  {
+    "title": "Flashdance... What a Feeling",
+    "artist": "Irene Cara",
+    "genre": "pop",
+    "year": 1983,
+    "lyric1": "What a feeling, bein's believing, I can have it all, now I'm dancing for my life",
+    "lyric2": "First, when there's nothing but a slow glowing dream that your fear seems to hide deep inside your mind",
+    "lyric3": "Take your passion and make it happen, pictures come alive, you can dance right through your life"
+  },
+  {
+    "title": "Sharp Dressed Man",
+    "artist": "ZZ Top",
+    "genre": "rock",
+    "year": 1983,
+    "lyric1": "Clean shirt, new shoes and I don't know where I am goin' to",
+    "lyric2": "Silk suit, black tie, I don't need a reason why",
+    "lyric3": "'Cause every girl crazy 'bout a sharp dressed man"
+  },
+  {
+    "title": "Talking in Your Sleep",
+    "artist": "The Romantics",
+    "genre": "rock",
+    "year": 1983,
+    "lyric1": "I hear the secrets that you keep when you're talking in your sleep",
+    "lyric2": "I can hear the thoughts that you're keeping inside, when you're dreaming deep and the night is long",
+    "lyric3": "You tell me that you love me, you tell me that you care"
+  },
+  {
+    "title": "Africa",
+    "artist": "Toto",
+    "genre": "rock",
+    "year": 1982,
+    "lyric1": "It's gonna take a lot to drag me away from you, there's nothing that a hundred men or more could ever do",
+    "lyric2": "I bless the rains down in Africa, gonna take some time to do the things we never had",
+    "lyric3": "I hear the drums echoing tonight, but she hears only whispers of some quiet conversation"
+  },
+  {
+    "title": "Separate Ways (Worlds Apart)",
+    "artist": "Journey",
+    "genre": "rock",
+    "year": 1983,
+    "lyric1": "Someday love will find you, break those chains that bind you, one night will remind you",
+    "lyric2": "Here we stand, worlds apart, hearts broken in two",
+    "lyric3": "Sleepless nights, losing ground, I reach for you, you're nowhere to be found"
+  },
+  {
+    "title": "Electric Avenue",
+    "artist": "Eddy Grant",
+    "genre": "pop",
+    "year": 1982,
+    "lyric1": "We gonna rock down to Electric Avenue, and then we'll take it higher",
+    "lyric2": "Now in the street there is violence, and a lots of work to be done",
+    "lyric3": "Out in the street there is hunger, and the children they are crying"
+  },
+  {
+    "title": "She Blinded Me with Science",
+    "artist": "Thomas Dolby",
+    "genre": "pop",
+    "year": 1982,
+    "lyric1": "She blinded me with science, and hit me with technology",
+    "lyric2": "It's poetry in motion, she turned her tender eyes to me",
+    "lyric3": "When I'm dancing close to her, I can smell the chemicals"
+  },
+  {
+    "title": "Maniac",
+    "artist": "Michael Sembello",
+    "genre": "pop",
+    "year": 1983,
+    "lyric1": "She's a maniac, maniac on the floor, and she's dancing like she's never danced before",
+    "lyric2": "Just a steel town girl on a Saturday night, looking for the fight of her life",
+    "lyric3": "It can cut you like a knife, if the gift becomes the fire, on a wire between will and what will be"
+  },
+  {
+    "title": "Come On Feel the Noise",
+    "artist": "Quiet Riot",
+    "genre": "rock",
+    "year": 1983,
+    "lyric1": "Come on feel the noise, girls rock your boys, we'll get wild, wild, wild",
+    "lyric2": "So you think I got an evil mind, well I'll tell you honey, I don't know why",
+    "lyric3": "So you say I got a funny face? I got no worries And I don't know why"
+  },
+  {
+    "title": "Jeopardy",
+    "artist": "The Greg Kihn Band",
+    "genre": "rock",
+    "year": 1983,
+    "lyric1": "Our love's in jeopardy, baby, ooh, our love's in jeopardy, baby, ooh",
+    "lyric2": "I don't know for sure what the problem is, something's wrong and it's built like this",
+    "lyric3": "It's the lightning, not the thunder You never know when it's going to strike"
+  },
+  {
+    "title": "You Can't Hurry Love",
+    "artist": "Phil Collins",
+    "genre": "pop",
+    "year": 1982,
+    "lyric1": "You can't hurry love, no, you just have to wait, she said love don't come easy, it's a game of give and take",
+    "lyric2": "I need soft arms to hold me, to keep me warm when my nights are lonely",
+    "lyric3": "But how many heartaches must I stand, before I find a love to let me live again"
+  }
+]
+
+[
+  {
+    "title": "When Doves Cry",
+    "artist": "Prince",
+    "genre": "pop",
+    "year": 1984,
+    "lyric1": "This is what it sounds like when doves cry",
+    "lyric2": "How can you just leave me standing? Alone in a world that's so cold",
+    "lyric3": "Dig if you will the picture, of you and I engaged in a kiss"
+  },
+  {
+    "title": "Jump",
+    "artist": "Van Halen",
+    "genre": "rock",
+    "year": 1984,
+    "lyric1": "Might as well jump (jump!), go ahead and jump",
+    "lyric2": "I get up, and nothing gets me down, you got it tough, I've seen the toughest around",
+    "lyric3": "And I know, baby, just how you feel, you got to roll with the punches to get to what's real"
+  },
+  {
+    "title": "What's Love Got to Do with It",
+    "artist": "Tina Turner",
+    "genre": "pop",
+    "year": 1984,
+    "lyric1": "What's love got to do, got to do with it? What's love but a second hand emotion?",
+    "lyric2": "You must understand though the touch of your hand makes my pulse react",
+    "lyric3": "It may seem to you that I'm over my head, you've been good to me but I should've known better"
+  },
+  {
+    "title": "Footloose",
+    "artist": "Kenny Loggins",
+    "genre": "pop",
+    "year": 1984,
+    "lyric1": "Lose your blues, everybody cut footloose",
+    "lyric2": "Been working so hard, I'm punching my card, eight hours, for what?",
+    "lyric3": "You're playing so cool, obeying every rule, dig deep in your shoes"
+  },
+  {
+    "title": "Hello",
+    "artist": "Lionel Richie",
+    "genre": "pop",
+    "year": 1984,
+    "lyric1": "Hello, is it me you're looking for? 'Cause I can see it in your eyes",
+    "lyric2": "I long to see the sunlight in your hair, and tell you time and time again how much I care",
+    "lyric3": "You've just begun to tell me all the things you want to say, and I'm softly whispering 'I love you'"
+  },
+  {
+    "title": "Ghostbusters",
+    "artist": "Ray Parker Jr.",
+    "genre": "pop",
+    "year": 1984,
+    "lyric1": "If there's something strange in your neighborhood, who you gonna call? Ghostbusters!",
+    "lyric2": "If there's something weird and it don't look good, who you gonna call? Ghostbusters!",
+    "lyric3": "An invisible man sleeping in your bed, oh, who you gonna call?"
+  },
+  {
+    "title": "Dancing in the Dark",
+    "artist": "Bruce Springsteen",
+    "genre": "rock",
+    "year": 1984,
+    "lyric1": "You can't start a fire without a spark, this gun's for hire even if we're just dancing in the dark",
+    "lyric2": "I get up in the evening and I ain't got nothing to say, I come home in the morning, I go to bed feeling the same way",
+    "lyric3": "You sit around getting older, there's a joke here somewhere and it's on me"
+  },
+  {
+    "title": "Borderline",
+    "artist": "Madonna",
+    "genre": "pop",
+    "year": 1984,
+    "lyric1": "Borderline, feels like I'm going to lose my mind, you just keep on pushing my love over the border",
+    "lyric2": "Something in the way you love me won't let me be, I don't want to be your prisoner so baby set me free",
+    "lyric3": "Look at what your love has done to me, our love on the line, let me go"
+  },
+  {
+    "title": "Time After Time",
+    "artist": "Cyndi Lauper",
+    "genre": "pop",
+    "year": 1983,
+    "lyric1": "If you're lost you can look and you will find me, time after time",
+    "lyric2": "Lying in my bed, I hear the clock tick and think of you",
+    "lyric3": "After my picture fades and darkness has turned to gray, watching through windows"
+  },
+  {
+    "title": "The Reflex",
+    "artist": "Duran Duran",
+    "genre": "pop",
+    "year": 1983,
+    "lyric1": "The reflex is a lonely child, who's waiting by the park",
+    "lyric2": "I'm on a ride and I want to get off, but they won't let me leave",
+    "lyric3": "You gone too far this time, don't sell the storyline"
+  },
+  {
+    "title": "Wake Me Up Before You Go-Go",
+    "artist": "Wham!",
+    "genre": "pop",
+    "year": 1984,
+    "lyric1": "Wake me up before you go-go, don't leave me hanging on like a yo-yo",
+    "lyric2": "You take the boom-boom into my heart, you send my soul sky high when your loving starts",
+    "lyric3": "Jitterbug"
+  },
+  {
+    "title": "Let's Hear It for the Boy",
+    "artist": "Deniece Williams",
+    "genre": "pop",
+    "year": 1984,
+    "lyric1": "Let's hear it for the boy, oh, let's give the boy a hand",
+    "lyric2": "My baby he don't talk sweet, he ain't got much to say",
+    "lyric3": "He may not be a big movie star, he may not have the fanciest car"
+  },
+  {
+    "title": "Oh Sherrie",
+    "artist": "Steve Perry",
+    "genre": "rock",
+    "year": 1984,
+    "lyric1": "Oh Sherrie, our love holds on, holds on",
+    "lyric2": "You should've been gone, knowing how I made you feel",
+    "lyric3": "Hard to hold on to a cold heart, when it's breaking in two"
+  },
+  {
+    "title": "I Want to Know What Love Is",
+    "artist": "Foreigner",
+    "genre": "rock",
+    "year": 1984,
+    "lyric1": "I want to know what love is, I want you to show me",
+    "lyric2": "I gotta take a little time, a little time to think things over",
+    "lyric3": "In my life there's been heartache and pain, I don't know if I can face it again"
+  },
+  {
+    "title": "Missing You",
+    "artist": "John Waite",
+    "genre": "rock",
+    "year": 1984,
+    "lyric1": "I ain't missing you at all, since you've been gone away",
+    "lyric2": "I hear the name, I look the other way, but the heartbeats loud",
+    "lyric3": "There's a message in the wire, and I'm sending you the signal tonight"
+  },
+  {
+    "title": "Sister Christian",
+    "artist": "Night Ranger",
+    "genre": "rock",
+    "year": 1983,
+    "lyric1": "Sister Christian, oh, your time has come, and you know that you're the only one",
+    "lyric2": "Motorin', what's your price for flight? In finding mister right",
+    "lyric3": "You're motoring, what's your price for flight? You've got him in your sight"
+  },
+  {
+    "title": "Sunglasses at Night",
+    "artist": "Corey Hart",
+    "genre": "pop",
+    "year": 1983,
+    "lyric1": "I wear my sunglasses at night, so I can, so I can watch you weave then breathe your story lines",
+    "lyric2": "Don't switch the blade on the guy in shades, oh no",
+    "lyric3": "While she's deceiving me, she cuts my security, has she got control of me?"
+  },
+  {
+    "title": "Rebel Yell",
+    "artist": "Billy Idol",
+    "genre": "rock",
+    "year": 1983,
+    "lyric1": "In the midnight hour, she cried, 'More, more, more', with a rebel yell, she cried, 'More, more, more'",
+    "lyric2": "Last night a little dancer came dancin' to my door",
+    "lyric3": "She don't like to slave, she wants to rant and shake, out on the floor"
+  },
+  {
+    "title": "Rock You Like a Hurricane",
+    "artist": "Scorpions",
+    "genre": "rock",
+    "year": 1984,
+    "lyric1": "Here I am, rock you like a hurricane",
+    "lyric2": "It's early morning, the sun comes out, Last night was shaking and pretty loud",
+    "lyric3": "The bitch is hungry, she needs to tell, so give her inches and feed her well"
+  },
+  {
+    "title": "Drive",
+    "artist": "The Cars",
+    "genre": "rock",
+    "year": 1984,
+    "lyric1": "Who's gonna drive you home tonight?",
+    "lyric2": "Who's gonna tell you when the course is run? Who's gonna hold you down when you shake?",
+    "lyric3": "Who's gonna pick you up when you fall? Who's gonna hang it up when you call?"
+  }
+][
+  {
+    "title": "Careless Whisper",
+    "artist": "George Michael",
+    "genre": "pop",
+    "year": 1984,
+    "lyric1": "I'm never gonna dance again, guilty feet have got no rhythm",
+    "lyric2": "Time can never mend the careless whispers of a good friend",
+    "lyric3": "Tonight the music seems so loud, I wish that we could lose this crowd"
+  },
+  {
+    "title": "Like a Virgin",
+    "artist": "Madonna",
+    "genre": "pop",
+    "year": 1984,
+    "lyric1": "Like a virgin, touched for the very first time",
+    "lyric2": "Made it through the wilderness, somehow I made it through",
+    "lyric3": "I was beat, incomplete, I'd been had, I was sad and blue"
+  },
+  {
+    "title": "Take On Me",
+    "artist": "a-ha",
+    "genre": "pop",
+    "year": 1984,
+    "lyric1": "Take on me (take on me), take me on (take on me), I'll be gone in a day or two",
+    "lyric2": "We're talking away, I don't know what I'm to say, I'll say it anyway",
+    "lyric3": "Needless to say I'm odds and ends, but I'll be stumbling away"
+  },
+  {
+    "title": "Money for Nothing",
+    "artist": "Dire Straits",
+    "genre": "rock",
+    "year": 1985,
+    "lyric1": "Money for nothing and your chicks for free",
+    "lyric2": "We gotta install microwave ovens, custom kitchen deliveries",
+    "lyric3": "See the little faggot with the earring and the makeup? Yeah buddy, that's his own hair"
+  },
+  {
+    "title": "Shout",
+    "artist": "Tears for Fears",
+    "genre": "pop",
+    "year": 1984,
+    "lyric1": "Shout, shout, let it all out, these are the things I can do without, come on",
+    "lyric2": "In violent times, you shouldn't have to sell your soul",
+    "lyric3": "And when you've taken down your guard, if I could change your mind"
+  },
+  {
+    "title": "The Power of Love",
+    "artist": "Huey Lewis & the News",
+    "genre": "rock",
+    "year": 1985,
+    "lyric1": "That's the power of love, can you feel it, too? It's the power of love",
+    "lyric2": "You don't need money, don't take fame, don't need no credit card to ride this train",
+    "lyric3": "Tougher than diamonds, bricks or steel, they say the heart of the king can feel"
+  },
+  {
+    "title": "We Are the World",
+    "artist": "USA for Africa",
+    "genre": "pop",
+    "year": 1985,
+    "lyric1": "We are the world, we are the children, we are the ones who make a brighter day, so let's start giving",
+    "lyric2": "There comes a time when we heed a certain call, when the world must come together as one",
+    "lyric3": "Send them your heart so they'll know that someone cares, and their lives will be stronger and free"
+  },
+  {
+    "title": "Everybody Wants to Rule the World",
+    "artist": "Tears for Fears",
+    "genre": "pop",
+    "year": 1985,
+    "lyric1": "Everybody wants to rule the world",
+    "lyric2": "Welcome to your life, there's no turning back, even while we sleep, we will find you",
+    "lyric3": "All for freedom and for pleasure, nothing ever lasts forever"
+  },
+  {
+    "title": "Summer of '69",
+    "artist": "Bryan Adams",
+    "genre": "rock",
+    "year": 1984,
+    "lyric1": "Those were the best days of my life, oh yeah, back in the summer of '69",
+    "lyric2": "I got my first real six-string, bought it at the five-and-dime",
+    "lyric3": "Man when we were killing time, we were young and restless, we needed to unwind"
+  },
+  {
+    "title": "Heaven",
+    "artist": "Bryan Adams",
+    "genre": "rock",
+    "year": 1983,
+    "lyric1": "Baby, you're all that I want, when you're lying here in my arms, I'm finding it hard to believe we're in heaven",
+    "lyric2": "Oh, thinking about all our younger years, there was only you and me",
+    "lyric3": "I've been waiting for so long, for something to arrive, for love to come along"
+  },
+  {
+    "title": "You Give Good Love",
+    "artist": "Whitney Houston",
+    "genre": "r_and_b_soul",
+    "year": 1985,
+    "lyric1": "You give good love to me, baby, so good, so good",
+    "lyric2": "I found out what I've been missing, always on the run, I've been looking for someone",
+    "lyric3": "Take this heart of mine into your hands, share my life with me"
+  },
+  {
+    "title": "Can't Fight This Feeling",
+    "artist": "REO Speedwagon",
+    "genre": "rock",
+    "year": 1984,
+    "lyric1": "I can't fight this feeling anymore, I've forgotten what I started fighting for",
+    "lyric2": "And I'm getting closer than I ever thought I might",
+    "lyric3": "It's time to bring this ship into the shore And throw away the oars, forever"
+  },
+  {
+    "title": "Easy Lover",
+    "artist": "Philip Bailey and Phil Collins",
+    "genre": "pop",
+    "year": 1984,
+    "lyric1": "She's an easy lover, she'll get a hold on you believe it, like no other",
+    "lyric2": "She's the kind of girl you dream of, the kind of girl you don't leave",
+    "lyric3": "You're playing her game, you're gonna lose, you better take it from me"
+  },
+  {
+    "title": "Don't You (Forget About Me)",
+    "artist": "Simple Minds",
+    "genre": "rock",
+    "year": 1985,
+    "lyric1": "Don't you forget about me, don't, don't, don't, don't, don't you forget about me",
+    "lyric2": "Will you recognize me? Call my name or walk on by Rain keeps falling, rain keeps falling down, down, down, down",
+    "lyric3": "Slow change may pull us apart, when the light gets into your heart, baby"
+  },
+  {
+    "title": "Cherish",
+    "artist": "Kool & the Gang",
+    "genre": "r_and_b_soul",
+    "year": 1984,
+    "lyric1": "Cherish the love we have, cherish the life we live",
+    "lyric2": "Let's take a walk together near the ocean shore, hand in hand",
+    "lyric3": "The world is always changing, nothing stays the same, but love will stand the test of time"
+  },
+  {
+    "title": "Alive and Kicking",
+    "artist": "Simple Minds",
+    "genre": "rock",
+    "year": 1985,
+    "lyric1": "Alive and kicking, stay alive and kicking",
+    "lyric2": "You turn me on, you lift me up, like the sun on the horizon",
+    "lyric3": "What's the destination you are dreaming of? Open up your door"
+  },
+  {
+    "title": "Head over Heels",
+    "artist": "Tears for Fears",
+    "genre": "pop",
+    "year": 1985,
+    "lyric1": "Something happens and I'm head over heels",
+    "lyric2": "I wanted to be with you alone, and talk about the weather",
+    "lyric3": "Ah, don't take my heart, don't break my heart Don't, don't, don't throw it away"
+  },
+  {
+    "title": "Part-Time Lover",
+    "artist": "Stevie Wonder",
+    "genre": "r_and_b_soul",
+    "year": 1985,
+    "lyric1": "You are my part-time lover, and I'm gonna be your part-time lover",
+    "lyric2": "Call up, dial the number, someone's on the line, listening close",
+    "lyric3": "We are undercover passion on the run Chasing love up against the sun"
+  },
+  {
+    "title": "We Built This City",
+    "artist": "Starship",
+    "genre": "rock",
+    "year": 1985,
+    "lyric1": "We built this city, we built this city on rock and roll",
+    "lyric2": "Marconi plays the mambo, listen to the radio, don't you remember?",
+    "lyric3": "Someone's always playing corporation games, who cares, they're always changing corporation names"
+  },
+  {
+    "title": "Broken Wings",
+    "artist": "Mr. Mister",
+    "genre": "rock",
+    "year": 1985,
+    "lyric1": "Take these broken wings and learn to fly again, learn to live so free",
+    "lyric2": "Baby, I don't understand, why we can't just hold on to each other's hands",
+    "lyric3": "And when we hear the voices sing, the book of love will open up and let us in"
+  }
+]
+
+[
+  {
+    "title": "Livin' on a Prayer",
+    "artist": "Bon Jovi",
+    "genre": "rock",
+    "year": 1986,
+    "lyric1": "Woah, we're half way there, woah, livin' on a prayer",
+    "lyric2": "Tommy used to work on the docks, union's been on strike, he's down on his luck",
+    "lyric3": "We've got to hold on to what we've got, it doesn't make a difference if we make it or not"
+  },
+  {
+    "title": "You Give Love a Bad Name",
+    "artist": "Bon Jovi",
+    "genre": "rock",
+    "year": 1986,
+    "lyric1": "Shot through the heart, and you're to blame, you give love a bad name",
+    "lyric2": "An angel's smile is what you sell, you promise me heaven, then put me through hell",
+    "lyric3": "Paint your smile on your lips, blood red nails on your fingertips"
+  },
+  {
+    "title": "Addicted to Love",
+    "artist": "Robert Palmer",
+    "genre": "rock",
+    "year": 1986,
+    "lyric1": "Might as well face it, you're addicted to love",
+    "lyric2": "Your lights are on, but you're not home, your mind is not your own",
+    "lyric3": "You see the signs, but you can't read, you're running at a different speed"
+  },
+  {
+    "title": "Sweet Child O' Mine",
+    "artist": "Guns N' Roses",
+    "genre": "rock",
+    "year": 1987,
+    "lyric1": "Woah, oh, oh, sweet child o' mine, woah, oh, oh, oh, sweet love of mine",
+    "lyric2": "She's got a smile that it seems to me, reminds me of childhood memories",
+    "lyric3": "Where do we go? Where do we go now? Where do we go?"
+  },
+  {
+    "title": "These Dreams",
+    "artist": "Heart",
+    "genre": "rock",
+    "year": 1985,
+    "lyric1": "These dreams go on when I close my eyes, every second of the night I live another life",
+    "lyric2": "Spare card castle in a storm, chords of string to keep me warm",
+    "lyric3": "Is it completely real? Is it just standard? No, it's a fantasy"
+  }
+]
+
+[
+  {
+    "title": "On My Own",
+    "artist": "Patti LaBelle and Michael McDonald",
+    "genre": "pop",
+    "year": 1986,
+    "lyric1": "On my own, pretending he's beside me",
+    "lyric2": "And I know it's because of you, that I'm standing on my own",
+    "lyric3": "I wonder if you ever feel the pain and the hurt inside us"
+  },
+  {
+    "title": "There Is a Light That Never Goes Out",
+    "artist": "The Smiths",
+    "genre": "rock",
+    "year": 1986,
+    "lyric1": "And if a ten-ton truck kills the both of us, to die by your side is such a heavenly way to die",
+    "lyric2": "Take me out tonight, where there's music and there's people and they're young and alive",
+    "lyric3": "Driving in your car, I never never want to go home, because I haven't got one"
+  },
+  {
+    "title": "Papa Don't Preach",
+    "artist": "Madonna",
+    "genre": "pop",
+    "year": 1986,
+    "lyric1": "Papa don't preach, I'm in trouble deep, papa don't preach, I've been losing sleep",
+    "lyric2": "But I made up my mind, I'm keeping my baby, oh, I'm gonna keep my baby",
+    "lyric3": "He says that he's going to marry me And we can raise a little family"
+  },
+  {
+    "title": "Holding Back the Years",
+    "artist": "Simply Red",
+    "genre": "pop",
+    "year": 1985,
+    "lyric1": "Holding back the years, thinking of the fear I've had so long",
+    "lyric2": "I'll keep holding on, I'll keep holding on, holding on",
+    "lyric3": "Strangled by the wishes of father, hoping for the arms of mother"
+  },
+  {
+    "title": "Sledgehammer",
+    "artist": "Peter Gabriel",
+    "genre": "rock",
+    "year": 1986,
+    "lyric1": "I want to be your sledgehammer, why don't you call my name?",
+    "lyric2": "You could have a steam train, if you'd just lay down your tracks",
+    "lyric3": "Show me round your fruitcage, 'cause I will be your honeybee"
+  }
+]
+
+[
+  {
+    "title": "With or Without You",
+    "artist": "U2",
+    "genre": "rock",
+    "year": 1987,
+    "lyric1": "I can't live with or without you",
+    "lyric2": "See the stone set in your eyes, see the thorn twist in your side",
+    "lyric3": "Through the storm we reach the shore, you give it all but I want more"
+  },
+  {
+    "title": "I Wanna Dance with Somebody (Who Loves Me)",
+    "artist": "Whitney Houston",
+    "genre": "pop",
+    "year": 1987,
+    "lyric1": "Oh, I wanna dance with somebody, I wanna feel the heat with somebody",
+    "lyric2": "Clock strikes upon the hour and the sun begins to fade",
+    "lyric3": "I've been in love and lost my senses, spinning checkers in the night"
+  },
+  {
+    "title": "Livin' on a Prayer",
+    "artist": "Bon Jovi",
+    "genre": "rock",
+    "year": 1986,
+    "lyric1": "Woah, we're half way there, woah, livin' on a prayer",
+    "lyric2": "Tommy used to work on the docks, union's been on strike",
+    "lyric3": "We've got to hold on to what we've got, it doesn't make a difference if we make it or not"
+  },
+  {
+    "title": "Never Gonna Give You Up",
+    "artist": "Rick Astley",
+    "genre": "pop",
+    "year": 1987,
+    "lyric1": "Never gonna give you up, never gonna let you down",
+    "lyric2": "We've known each other for so long, your heart's been aching but you're too shy to say it",
+    "lyric3": "Inside we both know what's been going on, we know the game and we're gonna play it"
+  },
+  {
+    "title": "Sweet Child O' Mine",
+    "artist": "Guns N' Roses",
+    "genre": "rock",
+    "year": 1987,
+    "lyric1": "Woah, oh, oh, sweet child o' mine, woah, oh, oh, oh, sweet love of mine",
+    "lyric2": "She's got a smile that it seems to me, reminds me of childhood memories",
+    "lyric3": "Where do we go? Where do we go now? Where do we go?"
+  },
+  {
+    "title": "Alone",
+    "artist": "Heart",
+    "genre": "rock",
+    "year": 1987,
+    "lyric1": "How do I get you alone? How do I get you alone?",
+    "lyric2": "I hear the ticking of the clock, I'm lying here the room's pitch dark",
+    "lyric3": "You don't know how long I have wanted to touch your lips and hold you tight"
+  },
+  {
+    "title": "Faith",
+    "artist": "George Michael",
+    "genre": "pop",
+    "year": 1987,
+    "lyric1": "Because I gotta have faith, I gotta have faith, I gotta have faith, faith, faith",
+    "lyric2": "Well I guess it would be nice if I could touch your body",
+    "lyric3": "Before this river becomes an ocean, before you throw my love away"
+  },
+  {
+    "title": "Walk Like an Egyptian",
+    "artist": "The Bangles",
+    "genre": "pop",
+    "year": 1986,
+    "lyric1": "All the old paintings on the tombs, they do the sand dance don't you know",
+    "lyric2": "Foreign types with the hookah pipes say ay oh whey oh, ay oh whey oh",
+    "lyric3": "If you want to find all the cops, they're hanging out in the donut shop"
+  },
+  {
+    "title": "Shakedown",
+    "artist": "Bob Seger",
+    "genre": "rock",
+    "year": 1987,
+    "lyric1": "Shakedown, breakdown, takin' it to the streets",
+    "lyric2": "No matter where you go, you can't escape the law",
+    "lyric3": "You're on a roller coaster ride, inside the danger zone"
+  },
+  {
+    "title": "La Bamba",
+    "artist": "Los Lobos",
+    "genre": "pop",
+    "year": 1987,
+    "lyric1": "Bamba, bamba, bamba, bamba, bamba, bamba, bam",
+    "lyric2": "Para bailar la bamba, para bailar la bamba se necesita una poca de gracia",
+    "lyric3": "Yo no soy marinero, yo no soy marinero, soy capitan, soy capitan"
+  },
+  {
+    "title": "I Still Haven't Found What I'm Looking For",
+    "artist": "U2",
+    "genre": "rock",
+    "year": 1987,
+    "lyric1": "But I still haven't found what I'm looking for",
+    "lyric2": "I have run, I have crawled, I have scaled these city walls",
+    "lyric3": "I believe in the kingdom come, then all the colors will bleed into one"
+  },
+  {
+    "title": "Here I Go Again",
+    "artist": "Whitesnake",
+    "genre": "rock",
+    "year": 1987,
+    "lyric1": "I don't know where I'm goin', but I sure know where I've been",
+    "lyric2": "Here I go again on my own, goin' down the only road I've ever known",
+    "lyric3": "Thru the shadow of the valley of darkness, I ain't wasting no more time"
+  },
+  {
+    "title": "Nothing's Gonna Stop Us Now",
+    "artist": "Starship",
+    "genre": "pop",
+    "year": 1987,
+    "lyric1": "And we can build this dream together, standing strong forever",
+    "lyric2": "Look into my eyes, baby, you've got to understand",
+    "lyric3": "Let the world around us just fall apart, baby, we can make it"
+  },
+  {
+    "title": "The Way It Is",
+    "artist": "Bruce Hornsby and the Range",
+    "genre": "rock",
+    "year": 1986,
+    "lyric1": "That's just the way it is, some things will never change",
+    "lyric2": "Standing in line, marking time, waiting for the welfare check",
+    "lyric3": "Said hey little boy you can't go where the others go, 'cause you don't look like they do"
+  },
+  {
+    "title": "Pour Some Sugar on Me",
+    "artist": "Def Leppard",
+    "genre": "rock",
+    "year": 1987,
+    "lyric1": "Pour some sugar on me",
+    "lyric2": "Step inside, walk this way, you and me babe, hey, hey",
+    "lyric3": "Saturated, look right through me, love is like a bomb, baby, c'mon get it"
+  },
+  {
+    "title": "Don't Dream It's Over",
+    "artist": "Crowded House",
+    "genre": "rock",
+    "year": 1986,
+    "lyric1": "Hey now, hey now, don't dream it's over",
+    "lyric2": "There is freedom within, there is freedom without, try to catch the deluge in a paper cup",
+    "lyric3": "Now I'm walking to the beat of a drum, and I'm papering over the cracks"
+  },
+  {
+    "title": "Didn't We Almost Have It All",
+    "artist": "Whitney Houston",
+    "genre": "pop",
+    "year": 1987,
+    "lyric1": "Didn't we almost have it all, when love was all we had worth giving?",
+    "lyric2": "Remember when we held on in the rain The nights we almost lost it",
+    "lyric3": "The way you used to touch me felt so fine\nWe kept our hearts together down the line"
+  },
+  {
+    "title": "Head to Toe",
+    "artist": "Lisa Lisa and Cult Jam",
+    "genre": "pop",
+    "year": 1987,
+    "lyric1": "I think I love you from head to toe",
+    "lyric2": "Today started with a crazy kiss On our way home\nWe were in for a surprise\nWho would have known?",
+    "lyric3": "Who would have thought that we would become lovers?\nAs friends we were so, so tight"
+  },
+  {
+    "title": "Welcome to the Jungle",
+    "artist": "Guns N' Roses",
+    "genre": "rock",
+    "year": 1987,
+    "lyric1": "Welcome to the jungle, we've got fun and games",
+    "lyric2": "We got everything you want, honey, we know the names",
+    "lyric3": "When you're high you never ever want to come down, so down, so down, so down, yeah"
+  },
+  {
+    "title": "Heaven Is a Place on Earth",
+    "artist": "Belinda Carlisle",
+    "genre": "pop",
+    "year": 1987,
+    "lyric1": "Ooh, baby do you know what that's worth?",
+    "lyric2": "When the night falls down, I wait for you, and you come around",
+    "lyric3": "In this world we're just beginning, to understand the miracle of living"
+  }
+]
+
+[
+  {
+    "title": "Bad",
+    "artist": "Michael Jackson",
+    "genre": "pop",
+    "year": 1987,
+    "lyric1": "Because I'm bad, I'm bad, come on, you know it",
+    "lyric2": "Your butt is mine, gonna tell you right, just show your face in broad daylight",
+    "lyric3": "Well, they say the sky's the limit and to me that's really true, but my friend you have seen nothing"
+  },
+  {
+    "title": "Need You Tonight",
+    "artist": "INXS",
+    "genre": "rock",
+    "year": 1987,
+    "lyric1": "I need you tonight, 'cause I'm not sleeping, there's something about you girl that makes me sweat",
+    "lyric2": "So slide over here and give me a moment",
+    "lyric3": "So how do you feel? I'm lonely, what do you think? Can't think at all"
+  },
+  {
+    "title": "I Think We're Alone Now",
+    "artist": "Tiffany",
+    "genre": "pop",
+    "year": 1987,
+    "lyric1": "I think we're alone now, there doesn't seem to be anyone around",
+    "lyric2": "Children behave, that's what they say when we're together",
+    "lyric3": "Look at the way we gotta hide what we're doin', 'cause what would they say if they ever knew"
+  },
+  {
+    "title": "Got My Mind Set on You",
+    "artist": "George Harrison",
+    "genre": "rock",
+    "year": 1987,
+    "lyric1": "I've got my mind set on you, I've got my mind set on you",
+    "lyric2": "But it's gonna take money, a whole lotta spending money",
+    "lyric3": "It's gonna take time, a whole lot of precious time, it's gonna take patience and time"
+  },
+  {
+    "title": "Mony Mony",
+    "artist": "Billy Idol",
+    "genre": "rock",
+    "year": 1987,
+    "lyric1": "Here she come now sayin', Mony, Mony",
+    "lyric2": "Hey, she give me love, and I feel all right now",
+    "lyric3": "Ooo, I love you Mony, mo-mo-mony, said I do"
+  },
+  {
+    "title": "The Loco-Motion",
+    "artist": "Kylie Minogue",
+    "genre": "pop",
+    "year": 1987,
+    "lyric1": "Everybody's doin' a brand new dance now, come on baby, do the loco-motion",
+    "lyric2": "I know you'll get to like it if you give it a chance now",
+    "lyric3": "You gotta swing your hips now, come on baby, jump up, jump back"
+  },
+  {
+    "title": "The Time of My Life",
+    "artist": "Bill Medley and Jennifer Warnes",
+    "genre": "pop",
+    "year": 1987,
+    "lyric1": "I've had the time of my life, and I've never felt this way before",
+    "lyric2": "Now I've finally found someone to stand by me",
+    "lyric3": "With my body and soul, I want you more than you'll ever know"
+  },
+  {
+    "title": "Is This Love",
+    "artist": "Whitesnake",
+    "genre": "rock",
+    "year": 1987,
+    "lyric1": "Is this love that I'm feeling? Is this the love that I've been searching for?",
+    "lyric2": "I need you by my side to tell me it's alright, 'cause I don't think I can take anymore",
+    "lyric3": "I can hear the clock ticking on the wall, and I'm wishing you were here"
+  },
+  {
+    "title": "Looking for a New Love",
+    "artist": "Jody Watley",
+    "genre": "pop",
+    "year": 1987,
+    "lyric1": "I'm looking for a new love, baby, a new love, yeah, yeah, yeah",
+    "lyric2": "Gave you love, you did me wrong, didn't know what to do",
+    "lyric3": "But now you're like the rest, unworthy of my best, hasta la vista, baby"
+  },
+  {
+    "title": "Dude (Looks Like a Lady)",
+    "artist": "Aerosmith",
+    "genre": "rock",
+    "year": 1987,
+    "lyric1": "Dude, dude, dude, dude looks like a lady",
+    "lyric2": "Cruise into a bar on the shore, her picture graced the grime on the door",
+    "lyric3": "Never judge a book by its cover or who you gonna love by your lover"
+  }
+
+  {
+    "title": "Sweet Child O' Mine",
+    "artist": "Guns N' Roses",
+    "genre": "rock",
+    "year": 1987,
+    "lyric1": "Sweet child o' mine",
+    "lyric2": "She's got a smile that it seems to me, reminds me of childhood memories",
+    "lyric3": "Where do we go? Where do we go now? Where do we go?"
+  },
+  {
+    "title": "Pour Some Sugar on Me",
+    "artist": "Def Leppard",
+    "genre": "rock",
+    "year": 1987,
+    "lyric1": "Pour some sugar on me",
+    "lyric2": "Step inside, walk this way, you and me babe, hey, hey",
+    "lyric3": "Love is like a bomb, baby, c'mon get it on"
+  },
+  {
+    "title": "Every Rose Has Its Thorn",
+    "artist": "Poison",
+    "genre": "rock",
+    "year": 1988,
+    "lyric1": "Every rose has its thorn",
+    "lyric2": "We both lie silent in the dead of the night",
+    "lyric3": "I know our love was in decline, but the cuts were not as deep as mine"
+  },
+  {
+    "title": "Fast Car",
+    "artist": "Tracy Chapman",
+    "genre": "pop",
+    "year": 1988,
+    "lyric1": "You got a fast car, I want a ticket to anywhere",
+    "lyric2": "You see, my old man's got a problem, he live with the bottle, that's the way it is",
+    "lyric3": "Is it fast enough so we can fly away? We gotta make a decision"
+  },
+  {
+    "title": "Never Gonna Give You Up",
+    "artist": "Rick Astley",
+    "genre": "pop",
+    "year": 1987,
+    "lyric1": "Never gonna give you up, never gonna let you down",
+    "lyric2": "We've known each other for so long, your heart's been aching, but you're too shy to say it",
+    "lyric3": "Inside, we both know what's been going on, we know the game and we're gonna play it"
+  },
+  {
+    "title": "Man in the Mirror",
+    "artist": "Michael Jackson",
+    "genre": "pop",
+    "year": 1987,
+    "lyric1": "I'm starting with the man in the mirror",
+    "lyric2": "I'm gonna make a change, for once in my life, it's gonna feel real good",
+    "lyric3": "A willow deeply scarred, somebody's broken heart and a washed-out dream"
+  }
+  {
+    "title": "Man in the Mirror",
+    "artist": "Michael Jackson",
+    "genre": "pop",
+    "year": 1987,
+    "lyric1": "I'm starting with the man in the mirror, I'm asking him to change his ways",
+    "lyric2": "I'm gonna make a change, for once in my life, it's gonna feel real good",
+    "lyric3": "A willow deeply scarred, somebody's broken heart and a washed-out dream"
+  },
+  {
+    "title": "Simply Irresistible",
+    "artist": "Robert Palmer",
+    "genre": "rock",
+    "year": 1988,
+    "lyric1": "She used to look good to me, but now I find her simply irresistible",
+    "lyric2": "How can it be permissible? She compromise my principle, yeah, yeah She's anything but typical",
+    "lyric3": "She's so fine, there's no telling where the money went, she's all mine, there's no other way to go"
+  },
+  {
+    "title": "What's on Your Mind (Pure Energy)",
+    "artist": "Information Society",
+    "genre": "pop",
+    "year": 1988,
+    "lyric1": "What's on your mind? What's on your mind? Pure energy",
+    "lyric2": "I wanna know what you're thinking, there are some things you can't hide",
+    "lyric3": "Here I am in silence, looking round without a clue, I find myself alone again"
+  },
+  {
+    "title": "Roll with It",
+    "artist": "Steve Winwood",
+    "genre": "pop",
+    "year": 1988,
+    "lyric1": "Roll with it, baby, come on and roll with it, baby",
+    "lyric2": "When life is too much, roll with it, baby, don't stop and lose your touch, oh no, baby",
+    "lyric3": "Then you'll see life will be so nice, it's just a step-up to paradise"
+  },
+  {
+    "title": "Giving You the Best That I Got",
+    "artist": "Anita Baker",
+    "genre": "r_and_b_soul",
+    "year": 1988,
+    "lyric1": "I'm giving you the best that I got, baby",
+    "lyric2": "Ain't there something I can give you, in exchange for everything you give to me?",
+    "lyric3": "Somebody understands me, somebody gave his heart to me, I stumbled my whole life long"
+  }
+]
+
+[
+  {
+    "title": "Sweet Child O' Mine",
+    "artist": "Guns N' Roses",
+    "genre": "rock",
+    "year": 1987,
+    "lyric1": "Sweet child o' mine",
+    "lyric2": "She's got a smile that it seems to me, reminds me of childhood memories",
+    "lyric3": "Where do we go? Where do we go now? Where do we go?"
+  },
+  {
+    "title": "Pour Some Sugar on Me",
+    "artist": "Def Leppard",
+    "genre": "rock",
+    "year": 1987,
+    "lyric1": "Pour some sugar on me",
+    "lyric2": "Step inside, walk this way, you and me babe, hey, hey",
+    "lyric3": "Love is like a bomb, baby, c'mon get it on"
+  },
+  {
+    "title": "Every Rose Has Its Thorn",
+    "artist": "Poison",
+    "genre": "rock",
+    "year": 1988,
+    "lyric1": "Every rose has its thorn",
+    "lyric2": "We both lie silent in the dead of the night",
+    "lyric3": "I know our love was in decline, but the cuts were not as deep as mine"
+  },
+  {
+    "title": "Fast Car",
+    "artist": "Tracy Chapman",
+    "genre": "pop",
+    "year": 1988,
+    "lyric1": "You got a fast car, I want a ticket to anywhere",
+    "lyric2": "You see, my old man's got a problem, he live with the bottle, that's the way it is",
+    "lyric3": "Is it fast enough so we can fly away? We gotta make a decision"
+  },
+  {
+    "title": "Never Gonna Give You Up",
+    "artist": "Rick Astley",
+    "genre": "pop",
+    "year": 1987,
+    "lyric1": "Never gonna give you up, never gonna let you down",
+    "lyric2": "We've known each other for so long, your heart's been aching, but you're too shy to say it",
+    "lyric3": "Inside, we both know what's been going on, we know the game and we're gonna play it"
+  },
+  {
+    "title": "Man in the Mirror",
+    "artist": "Michael Jackson",
+    "genre": "pop",
+    "year": 1987,
+    "lyric1": "I'm starting with the man in the mirror",
+    "lyric2": "I'm gonna make a change, for once in my life, it's gonna feel real good",
+    "lyric3": "They follow the pattern of the wind, ya see, 'cause they got no place to be"
+  },
+  {
+    "title": "Simply Irresistible",
+    "artist": "Robert Palmer",
+    "genre": "rock",
+    "year": 1988,
+    "lyric1": "She's simply irresistible",
+    "lyric2": "She's so fine, there's no telling where the money went",
+    "lyric3": "She's a natural law, she leaves me in awe, she's got a power over me"
+  },
+  {
+    "title": "What's on Your Mind (Pure Energy)",
+    "artist": "Information Society",
+    "genre": "pop",
+    "year": 1988,
+    "lyric1": "What's on your mind? Pure energy",
+    "lyric2": "I wanna know what you're thinking, there are some things you can't hide",
+    "lyric3": "Here I am in silence, looking 'round without a clue, I find myself alone again, all alone with you"
+  },
+  {
+    "title": "Roll with It",
+    "artist": "Steve Winwood",
+    "genre": "pop",
+    "year": 1988,
+    "lyric1": "Roll with it, baby",
+    "lyric2": "Your doubts will fade, if you just roll with it",
+    "lyric3": "Now there's a thing that you can say, but it's hard to make it play"
+  },
+  {
+    "title": "Giving You the Best That I Got",
+    "artist": "Anita Baker",
+    "genre": "r_and_b_soul",
+    "year": 1988,
+    "lyric1": "I'm giving you the best that I got, baby",
+    "lyric2": "Ain't there something I can give you, in exchange for everything you give to me?",
+    "lyric3": "Somebody understands me, somebody gave his heart to me, I stumbled my whole life long, always on my own, now I'm home"
+  },
+  {
+    "title": "Like a Prayer",
+    "artist": "Madonna",
+    "genre": "pop",
+    "year": 1989,
+    "lyric1": "When you call my name it's like a little prayer",
+    "lyric2": "Life is a mystery, everyone must stand alone, I hear you call my name and it feels like home",
+    "lyric3": "In the midnight hour I can feel your power, just like a prayer you know I'll take you there"
+  },
+  {
+    "title": "Love Shack",
+    "artist": "The B-52's",
+    "genre": "pop",
+    "year": 1989,
+    "lyric1": "Love shack, baby, love shack",
+    "lyric2": "I got me a car, it's as big as a whale and we're headin' on down to the love shack",
+    "lyric3": "Bang bang bang on the door baby, knock a little louder sugar"
+  },
+  {
+    "title": "Free Fallin'",
+    "artist": "Tom Petty",
+    "genre": "rock",
+    "year": 1989,
+    "lyric1": "And I'm free, free fallin'",
+    "lyric2": "She's a good girl, loves her mama, loves Jesus and America too",
+    "lyric3": "And it's a long day, livin' in Reseda, there's a freeway, runnin' through the yard"
+  },
+  {
+    "title": "Blame It on the Rain",
+    "artist": "Milli Vanilli",
+    "genre": "pop",
+    "year": 1989,
+    "lyric1": "Blame it on the rain that was falling, falling, blame it on the rain yeah, yeah",
+    "lyric2": "Gotta blame it on something, blame it on the rain 'cause the rain don't mind and the rain don't care",
+    "lyric3": "Whatever you do, don't put the blame on you, blame it on the rain, yeah, yeah"
+  },
+  {
+    "title": "Poison",
+    "artist": "Alice Cooper",
+    "genre": "rock",
+    "year": 1989,
+    "lyric1": "You're poison running through my veins, you're poison",
+    "lyric2": "Your cruel device, your blood, like ice, one look, could kill, my pain, your thrill",
+    "lyric3": "I wanna hurt you just to hear you screaming my name"
+  },
+  {
+    "title": "The Way You Love Me",
+    "artist": "Karyn White",
+    "genre": "r_and_b_soul",
+    "year": 1988,
+    "lyric1": "It's the way you love me, it's the way you love me",
+    "lyric2": "I can't sleep at night, I can't eat a bite, 'cause I want you here with me",
+    "lyric3": "I'm not a girl who needs a lot of things, I don't care about diamond rings"
+  },
+  {
+    "title": "Eternal Flame",
+    "artist": "The Bangles",
+    "genre": "pop",
+    "year": 1988,
+    "lyric1": "Close your eyes, give me your hand, darling, do you feel my heart beating? Do you understand?",
+    "lyric2": "Am I only dreaming? Or is this the eternal flame?",
+    "lyric3": "Say my name, sun shines through the rain, a whole life so lonely and then you come and ease the pain"
+  },
+  {
+    "title": "We Didn't Start the Fire",
+    "artist": "Billy Joel",
+    "genre": "rock",
+    "year": 1989,
+    "lyric1": "We didn't start the fire, it was always burning, since the world's been turning",
+    "lyric2": "Harry Truman, Doris Day, Red China, Johnnie Ray, South Pacific, Walter Winchell, Joe DiMaggio",
+    "lyric3": "JFK, blown away, what else do I have to say?"
+  },
+  {
+    "title": "Straight Up",
+    "artist": "Paula Abdul",
+    "genre": "pop",
+    "year": 1988,
+    "lyric1": "Straight up, now tell me, is it gonna be you and me forever?",
+    "lyric2": "I hear you talking but your words don't mean a thing",
+    "lyric3": "Is it hit and run, or is it the real deal?"
+  },
+  {
+    "title": "Roam",
+    "artist": "The B-52's",
+    "genre": "pop",
+    "year": 1989,
+    "lyric1": "Roam if you want to, roam around the world",
+    "lyric2": "Fly the wild sky, complain to outer space",
+    "lyric3": "Without wings, without wheels, you can go wherever you feel"
+  }
+]
+
+[
+  {
+    "title": "Because I Love You (The Postman Song)",
+    "artist": "Stevie B",
+    "genre": "pop",
+    "year": 1990,
+    "lyric1": "Because I love you, and I'll do anything, I'll give you my heart, my everything",
+    "lyric2": "I got your letter from the postman just the other day, so I decided to write you this song",
+    "lyric3": "If you should feel that I don't really care, and that you're starting to lose ground"
+  }
+]
+
+[
+  {
+    "title": "Love Takes Time",
+    "artist": "Mariah Carey",
+    "genre": "pop",
+    "year": 1990,
+    "lyric1": "Love takes time to heal when you're hurting so much",
+    "lyric2": "I had it all but I let it slip away, couldn't see I treated you wrong",
+    "lyric3": "You might say that it's over, you might say that you don't care, you might say you don't miss me"
+  }
+]
+
+[
+  {
+    "title": "Nothing Compares 2 U",
+    "artist": "Sinéad O'Connor",
+    "genre": "pop",
+    "year": 1990,
+    "lyric1": "Nothing compares, nothing compares to you",
+    "lyric2": "It's been seven hours and fifteen days, since you took your love away",
+    "lyric3": "I can eat my dinner in a fancy restaurant, but nothing, I said nothing can take away these blues"
+  }
+]
+
+[
+  {
+    "title": "Vision of Love",
+    "artist": "Mariah Carey",
+    "genre": "pop",
+    "year": 1990,
+    "lyric1": "And it was all that you offered me, a vision of love that seems to be true",
+    "lyric2": "Prayed through the nights Felt so alone\nSuffered from alienation\nCarried the weight on my own",
+    "lyric3": "Treated me kind Sweet destiny Carried me through desperation To the one that was waiting for me"
+  }
+]
+
+[
+  {
+    "title": "It Must Have Been Love",
+    "artist": "Roxette",
+    "genre": "pop",
+    "year": 1990,
+    "lyric1": "It must have been love, but it's over now",
+    "lyric2": "Lay a whisper on my pillow, leave the winter on the ground",
+    "lyric3": "Make-believe we're together, that I'm sheltered by your heart"
+  }
+]
+
+[
+  {
+    "title": "Vogue",
+    "artist": "Madonna",
+    "genre": "pop",
+    "year": 1990,
+    "lyric1": "Strike a pose, vogue",
+    "lyric2": "Look around, everywhere you turn is heartache, it's everywhere that you go",
+    "lyric3": "Greta Garbo and Monroe, Deitrich and DiMaggio, Marlon Brando, Jimmy Dean, on the cover of a magazine"
+  }
+]
+
+[
+  {
+    "title": "Hold On",
+    "artist": "Wilson Phillips",
+    "genre": "pop",
+    "year": 1990,
+    "lyric1": "Hold on for one more day",
+    "lyric2": "I know there's pain, why do you lock it up inside?",
+    "lyric3": "You've got no one to blame for your unhappiness (No, baby)\nYou got yourself into your own mess (Ooh)"
+  }
+]
+
+
+[
+  {
+    "title": "Pump Up the Jam",
+    "artist": "Technotronic",
+    "genre": "pop",
+    "year": 1989,
+    "lyric1": "Pump up the jam, pump it up, while your feet are stompin' and the jam is pumpin'",
+    "lyric2": "Get the party goin' on the dance floor, see 'cause that's where the party's at",
+    "lyric3": "I want a place to stay, get your booty on the floor tonight, make my day"
+  }
+]
+
+[
+  {
+    "title": "Opposites Attract",
+    "artist": "Paula Abdul",
+    "genre": "pop",
+    "year": 1989,
+    "lyric1": "I take two steps forward, I take two steps back, we come together 'cause opposites attract",
+    "lyric2": "You like the movies and I like TV, I take things serious and you take 'em light",
+    "lyric3": "And you know it ain't fiction, just a natural fact"
+  }
+]
+
+[
+  {
+    "title": "Escapade",
+    "artist": "Janet Jackson",
+    "genre": "pop",
+    "year": 1989,
+    "lyric1": "Come on, baby, let's get away, let's save our troubles for another day",
+    "lyric2": "As I was walkin' by, saw you standin' there with a smile",
+    "lyric3": "We'll make the rules up as we go along, and break them all if we're not havin' fun"
+  }
+]
+
+[
+  {
+    "title": "Black Velvet",
+    "artist": "Alannah Myles",
+    "genre": "rock",
+    "year": 1989,
+    "lyric1": "Black velvet and that little boy's smile, black velvet with that slow southern style",
+    "lyric2": "Mississippi in the middle of a dry spell, Jimmie Rodgers on the Victrola up high",
+    "lyric3": "Up in Memphis the music's like a heatwave, white lightning bound to drive you wild"
+  }
+]
+
+[
+  {
+    "title": "Step by Step",
+    "artist": "New Kids on the Block",
+    "genre": "pop",
+    "year": 1990,
+    "lyric1": "Step by step, ooh baby, gonna get to you girl",
+    "lyric2": "Hey girl, in your eyes, I see a picture of me all the time",
+    "lyric3": "Step 1: We can have lots of fun, Step 2: There's so much we can do, Step 3: It's just you and me, Step 4: I can give you more"
+  }
+]
+
+[
+  {
+    "title": "Ice Ice Baby",
+    "artist": "Vanilla Ice",
+    "genre": "pop",
+    "year": 1990,
+    "lyric1": "All right stop, collaborate and listen, Ice is back with my brand new invention",
+    "lyric2": "Will it ever stop? Yo, I don't know, turn off the lights and I'll glow",
+    "lyric3": "To the extreme I rock a mic like a vandal, light up a stage and wax a chump like a candle"
+  }
+]
+
+[
+  {
+    "title": "U Can't Touch This",
+    "artist": "MC Hammer",
+    "genre": "pop",
+    "year": 1990,
+    "lyric1": "My, my, my, my music hits me so hard, makes me say, \"Oh my Lord, thank you for blessing me with a mind to rhyme and two hype feet\"",
+    "lyric2": "Fresh new kicks and pants, you got it like that, now you know you wanna dance",
+    "lyric3": "Every time you see me, the Hammer's just so hyped, I'm dope on the floor and I'm magic on the mic"
+  }
+]
+
+[
+  {
+    "title": "The Humpty Dance",
+    "artist": "Digital Underground",
+    "genre": "pop",
+    "year": 1990,
+    "lyric1": "The Humpty Dance is your chance to do the hump",
+    "lyric2": "Alright stop whatcha doin' 'cause I'm about to ruin the image and the style that ya used to",
+    "lyric3": "First I limp to the side like my leg was broken, shakin' and twitchin' kinda like I was smokin'"
+  }
+]
+
+[
+  {
+    "title": "Enjoy the Silence",
+    "artist": "Depeche Mode",
+    "genre": "pop",
+    "year": 1990,
+    "lyric1": "All I ever wanted, all I ever needed is here in my arms. Words are very unnecessary, they can only do harm",
+    "lyric2": "Words like violence break the silence, come crashing in into my little world",
+    "lyric3": "Vows are spoken to be broken, feelings are intense, words are trivial"
+  }
+]
+
+[
+  {
+    "title": "Free Fallin'",
+    "artist": "Tom Petty",
+    "genre": "rock",
+    "year": 1989,
+    "lyric1": "And I'm free, free fallin'",
+    "lyric2": "She's a good girl, loves her mama, loves Jesus and America too",
+    "lyric3": "All the vampires walkin' through the valley move west down Ventura Boulevard"
+  }
+]
+
+[
+  {
+    "title": "Love Song",
+    "artist": "Tesla",
+    "genre": "rock",
+    "year": 1989,
+    "lyric1": "Love is all around you, love is knockin' at your door",
+    "lyric2": "So you got your problems, and you find it hard to cope, I can see you down there, at the bottom of your rope",
+    "lyric3": "Love will find a way, just give it time, love will find a way, so clear your mind"
+  }
+]
+
+[
+  {
+    "title": "King of Wishful Thinking",
+    "artist": "Go West",
+    "genre": "pop",
+    "year": 1990,
+    "lyric1": "I'll get over you, I know I will, I'll pretend my ship's not sinking and I'll tell myself I'm over you 'cause I'm the king of wishful thinking",
+    "lyric2": "I don't need to fall at your feet just 'cause you've cut me to the bone",
+    "lyric3": "And I won't miss the way that you kiss me, we were never carved in stone"
+  }
+]
+
+[
+  {
+    "title": "Love Shack",
+    "artist": "The B-52's",
+    "genre": "pop",
+    "year": 1989,
+    "lyric1": "The love shack is a little old place where we can get together",
+    "lyric2": "I got me a Chrysler, it seats about twenty, so hurry up and bring your jukebox money",
+    "lyric3": "Bang, bang, bang, on the door, baby! Knock a little louder, sugar! I can't hear you"
+  }
+]
+
+[
+  {
+    "title": "I've Been Thinking About You",
+    "artist": "Londonbeat",
+    "genre": "pop",
+    "year": 1990,
+    "lyric1": "I've been thinking about you, good god, I've been thinking about you",
+    "lyric2": "We must have been stone crazy when we thought we were just friends",
+    "lyric3": "Suddenly my world turned upside down, and I knew that it was over when you weren't around"
+  }
+]
+
+[
+  {
+    "title": "Walking in Memphis",
+    "artist": "Marc Cohn",
+    "genre": "rock",
+    "year": 1991,
+    "lyric1": "Put on my blue suede shoes and I boarded the plane, touched down in the land of the Delta blues in the middle of the pouring rain",
+    "lyric2": "Then I'm walking in Memphis, I was walking with my feet ten feet off of Beale",
+    "lyric3": "She said, \"Tell me, are you a Christian child?\" And I said, \"Ma'am, I am tonight!\""
+  }
+]
+
+[
+  {
+    "title": "Life Is a Highway",
+    "artist": "Tom Cochrane",
+    "genre": "rock",
+    "year": 1991,
+    "lyric1": "Life is a highway, I want to ride it all night long, if you're going my way, I want to drive it all night long",
+    "lyric2": "From Mozambique to those Memphis nights, the Khyber Pass to Vancouver's lights",
+    "lyric3": "Life's like a road that you travel on, when there's one day here and the next day gone"
+  }
+]
+
+
+[
+  {
+    "title": "I'm Too Sexy",
+    "artist": "Right Said Fred",
+    "genre": "pop",
+    "year": 1991,
+    "lyric1": "I'm too sexy for my shirt Too sexy for my shirt",
+    "lyric2": "I'm a model, you know what I mean, and I do my little turn on the catwalk",
+    "lyric3": "So sexy it hurts"
+  }
+]
+
+[
+  {
+    "title": "(Everything I Do) I Do It for You",
+    "artist": "Bryan Adams",
+    "genre": "rock",
+    "year": 1991,
+    "lyric1": "Look into my eyes, you will see what you mean to me",
+    "lyric2": "Search your heart, search your soul, and when you find me there you'll search no more",
+    "lyric3": "There's no love like your love, and no other could give more love"
+  }
+]
+
+[
+  {
+    "title": "Unbelievable",
+    "artist": "EMF",
+    "genre": "rock",
+    "year": 1990,
+    "lyric1": "You burden me with your questions, you'd have me tell no lies",
+    "lyric2": "The things you say, your purple prose, just give you away, the world's eye knows",
+    "lyric3": "You're unbelievable, oh! It's internal dynamic"
+  }
+]
+
+[
+  {
+    "title": "Baby Baby",
+    "artist": "Amy Grant",
+    "genre": "pop",
+    "year": 1991,
+    "lyric1": "Baby, baby, I'm taken with the notion to give you every little bit of my love",
+    "lyric2": "Stop for a minute, baby, I'm so glad you're mine, yeah",
+    "lyric3": "When lookin' at my life I can see that I've been blessed, or maybe I'm just lucky to be findin' the best"
+  }
+]
+
+
+[
+  {
+    "title": "Motownphilly",
+    "artist": "Boyz II Men",
+    "genre": "pop",
+    "year": 1991,
+    "lyric1": "Motownphilly's back again, doin' a little east coast swing",
+    "lyric2": "Back in school we used to dream about this every day Could it really happen? Or do dreams fade away?",
+    "lyric3": "ABC, BBD, the East Coast Family"
+  }
+]
+
+[
+  {
+    "title": "Losing My Religion",
+    "artist": "R.E.M.",
+    "genre": "rock",
+    "year": 1991,
+    "lyric1": "That's me in the corner, that's me in the spotlight, losing my religion",
+    "lyric2": "Every whisper, of every waking hour, I'm choosing my confessions",
+    "lyric3": "And I don't know if I can do it, oh no, I've said too much, I haven't said enough"
+  }
+]
+
+[
+  {
+    "title": "I'm Your Baby Tonight",
+    "artist": "Whitney Houston",
+    "genre": "pop",
+    "year": 1990,
+    "lyric1": "Whatever you want from me, I'm giving you everything, I'm your baby tonight",
+    "lyric2": "From the moment I saw you I went outta my mind, though I never believed in love at first sight",
+    "lyric3": "Looks like I'm fatal, it's all on the table "
+  }
+]
+
+[
+  {
+    "title": "Power of Love/Love Power",
+    "artist": "Luther Vandross",
+    "genre": "R&B",
+    "year": 1991,
+    "lyric1": "When I say goodbye it is never for long 'cause I know our love still lives on",
+    "lyric2": "Did you know that your feelings show, you thought your love was locked up inside",
+    "lyric3": "You've got to believe in love, it's a feeling that's next to none"
+  }
+]
+
+[
+  {
+    "title": "Something to Talk About",
+    "artist": "Bonnie Raitt",
+    "genre": "rock",
+    "year": 1991,
+    "lyric1": "Let's give 'em something to talk about, a little mystery to figure out",
+    "lyric2": "I feel so foolish (Uh-huh), I never noticed You act so nervous (Uh-huh), could you be fallin' for me?",
+    "lyric3": "People are talkin', talkin' 'bout people I hear them whisper (Uh-huh), you won't believe it"
+  }
+]
+
+[
+  {
+    "title": "Wicked Game",
+    "artist": "Chris Isaak",
+    "genre": "rock",
+    "year": 1989,
+    "lyric1": "What a wicked thing to do, to make me dream of you",
+    "lyric2": "The world was on fire and no one could save me but you",
+    "lyric3": "No, I don't wanna fall in love (this world is only gonna break your heart)"
+  }
+]
+
+[
+  {
+    "title": "Shiny Happy People",
+    "artist": "R.E.M.",
+    "genre": "rock",
+    "year": 1991,
+    "lyric1": "Shiny happy people holding hands, shiny happy people laughing",
+    "lyric2": "Meet me in the crowd, people people, throw your love around",
+    "lyric3": "Put it in the ground where the flowers grow, gold and silver shine"
+  }
+]
+
+[
+  {
+    "title": "Baby Got Back",
+    "artist": "Sir Mix-a-Lot",
+    "genre": "hip hop",
+    "year": 1992,
+    "lyric1": "Oh my God, Becky, look at her butt, it is so big",
+    "lyric2": "I like big butts and I cannot lie, you other brothers can't deny",
+    "lyric3": "So your girlfriend rolls a Honda, playing workout tapes by Fonda"
+  }
+]
+
+[
+  {
+    "title": "Tears in Heaven",
+    "artist": "Eric Clapton",
+    "genre": "soft rock",
+    "year": 1992,
+    "lyric1": "Would you know my name if I saw you in heaven? Would it be the same if I saw you in heaven?",
+    "lyric2": "I must be strong and carry on, 'Cause I know I don't belong here in heaven",
+    "lyric3": "Would you hold my hand if I saw you in heaven? Would you help me stand if I saw you in heaven?"
+  }
+]
+
+[
+  {
+    "title": "My Lovin' (You're Never Gonna Get It)",
+    "artist": "En Vogue",
+    "genre": "R&B",
+    "year": 1992,
+    "lyric1": "No, you're never gonna get it. Never ever gonna get it (No, not this time)",
+    "lyric2": "I remember how it used to be, You never was this nice, you can't fool me",
+    "lyric3": "Now you're talkin' like you made a change, The more you talk, the more things sound the same"
+  }
+]
+
+[
+  {
+    "title": "Under the Bridge",
+    "artist": "Red Hot Chili Peppers",
+    "genre": "rock",
+    "year": 1991,
+    "lyric1": "Sometimes I feel like I don't have a partner, Sometimes I feel like my only friend",
+    "lyric2": "Under the bridge downtown, Is where I drew some blood",
+    "lyric3": "Take me to the place I love, Take me all the way"
+  }
+]
+
+[
+  {
+    "title": "Achy Breaky Heart",
+    "artist": "Billy Ray Cyrus",
+    "genre": "country",
+    "year": 1992,
+    "lyric1": "Don't tell my heart, my achy breaky heart, I just don't think he'd understand",
+    "lyric2": "You can tell the world you never was my girl, You can burn my clothes when I'm gone",
+    "lyric3": "You can tell my arms to go back to the farm, You can tell my feet to hit the floor"
+  }
+]
+
+[
+  {
+    "title": "November Rain",
+    "artist": "Guns N' Roses",
+    "genre": "rock",
+    "year": 1991,
+    "lyric1": "Nothin' lasts forever and we both know hearts can change, and it's hard to hold a candle in the cold November rain",
+    "lyric2": "I know it's hard to keep an open heart, when even friends seem out to harm you",
+    "lyric3": "But if you could heal a broken heart, wouldn't time be out to charm you"
+  }
+]
+
+[
+  {
+    "title": "Smells Like Teen Spirit",
+    "artist": "Nirvana",
+    "genre": "grunge",
+    "year": 1991,
+    "lyric1": "With the lights out, it's less dangerous, Here we are now, entertain us",
+    "lyric2": "Load up on guns and bring your friends, It's fun to lose and to pretend",
+    "lyric3": "A mulatto, an albino, a mosquito, my libido, yeah"
+  }
+]
+
+[
+  {
+    "title": "All I Want",
+    "artist": "Toad the Wet Sprocket",
+    "genre": "rock",
+    "year": 1992,
+    "lyric1": "All I want is to feel this way, To be this close, to feel the same",
+    "lyric2": "Nothing's so loud as hearing when we lie, The truth is not kind",
+    "lyric3": "Nothing's so cold as closing the heart when all we need is to free the soul"
+  }
+]
+
+[
+  {
+    "title": "Mysterious Ways",
+    "artist": "U2",
+    "genre": "rock",
+    "year": 1991,
+    "lyric1": "It's alright, it's alright, it's alright, she moves in mysterious ways",
+    "lyric2": "Johnny take a dive with your sister in the rain, let her talk about the things you can't explain",
+    "lyric3": "If you want to kiss the sky, better learn how to kneel, on your knees, boy"
+  }
+]
+
+[
+  {
+    "title": "Friday I'm in Love",
+    "artist": "The Cure",
+    "genre": "alternative rock",
+    "year": 1992,
+    "lyric1": "Friday I'm in love",
+    "lyric2": "I don't care if Monday's blue, Tuesday's grey and Wednesday too",
+    "lyric3": "Thursday I don't care about you, It's Friday I'm in love"
+  }
+].
