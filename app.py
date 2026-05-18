@@ -373,11 +373,11 @@ def finalize_results_for_room(room_code):
     }
     room_state['last_results'] = payload
 
-    emit('game_state', {'state': 'results'}, room=get_player_room(room_code))
-    emit('game_state', {'state': 'results'}, room=get_host_room(room_code))
-    
-    emit('round_results', payload, room=get_player_room(room_code))
-    emit('round_results', payload, room=get_host_room(room_code))
+    socketio.emit('game_state', {'state': 'results'}, room=get_player_room(room_code))
+    socketio.emit('game_state', {'state': 'results'}, room=get_host_room(room_code))
+
+    socketio.emit('round_results', payload, room=get_player_room(room_code))
+    socketio.emit('round_results', payload, room=get_host_room(room_code))
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     socketio.run(app, host='0.0.0.0', port=port)

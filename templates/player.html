@@ -335,6 +335,8 @@ socket.on('round_results', (data) => {
     const feedbackDiv = document.getElementById('personal-feedback');
     feedbackDiv.innerHTML = '';
 
+    changeView('results-view');
+
     const answerHeader = document.createElement('p');
     answerHeader.className = 'status-message';
     answerHeader.innerHTML = `<strong>Answer:</strong> ${data.answer} by ${data.artist} (${data.year}, ${data.genre_label || data.genre})`;
