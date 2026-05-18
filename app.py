@@ -43,25 +43,34 @@ with open('data/songs.json', 'r', encoding='utf-8') as f:
 
 # Helper function to map year to decade
 def get_decade(year):
-    if not isinstance(year, (int, float)):
+    try:
+        year_value = int(year)
+    except (TypeError, ValueError):
         return None
-    decade = int(year / 10) * 10
+
+    decade = (year_value // 10) * 10
     return f"{decade}s"
 
 # Helper function to filter songs by decades and genres
 def filter_songs_by_settings(song_list, decades_filter, genres_filter):
-    if not decades_filter or not genres_filter:
+    decades_filter = {str(decade) for decade in (decades_filter or []) if str(decade).strip()}
+    genres_filter = {str(genre).strip().lower() for genre in (genres_filter or []) if str(genre).strip()}
+
+    if not decades_filter and not genres_filter:
         return song_list
     
     filtered = []
     for song in song_list:
         song_decade = get_decade(song.get('year'))
         song_genre = song.get('genre', '').lower()
-        
-        if song_decade in decades_filter and song_genre in genres_filter:
+
+        decade_matches = not decades_filter or song_decade in decades_filter
+        genre_matches = not genres_filter or song_genre in genres_filter
+
+        if decade_matches and genre_matches:
             filtered.append(song)
     
-    return filtered if filtered else song_list  # Fallback to all songs if filter results in empty
+    return filtered
 
 # =========================
 # ROUTES
@@ -216,6 +225,14 @@ def start_round_for_room(room_code):
         room_state.get('decades_filter', set()),
         room_state.get('genres_filter', set())
     )
+
+    if not filtered_songs:
+        emit(
+            'host_error',
+            {'message': 'No songs match the selected decade and genre filters.'},
+            to=request.sid
+        )
+        return
     
     room_state['current_song'] = random.choice(filtered_songs)
     room_state['phase'] = 'guessing'

@@ -225,7 +225,7 @@ let activeRoomCode = "";
 let hostCountdownInterval = null;
 let hostRevealTimeouts = [];
 
-const DECADES = ['1960s', '1970s', '1980s', '1990s'];
+const DECADES = ['1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s'];
 const GENRES = ['rock', 'pop', 'country', 'r&b', 'motown', 'hip hop', 'hip-hop', 'hip_hop_r_and_b', 'r_and_b_soul', 'reggae', 'grunge', 'alternative rock', 'soft rock', 'folk rock'];
 
 let hostSettings = {
@@ -530,15 +530,9 @@ socket.on('round_results', (data) => {
         audio.style.marginBottom = '16px';
         resultsDiv.appendChild(audio);
 
-        const playButton = document.createElement('button');
-        playButton.innerText = 'Play iTunes Preview';
-        playButton.style.marginBottom = '16px';
-        playButton.onclick = () => {
-            audio.play().catch(() => {
-                alert('Browser blocked autoplay. Tap play in the audio controls.');
-            });
-        };
-        resultsDiv.appendChild(playButton);
+        audio.play().catch(() => {
+            console.log('Autoplay blocked; using native controls for preview playback');
+        });
 
         if (data.preview.candidates && data.preview.candidates.length > 1) {
             const altWrap = document.createElement('div');

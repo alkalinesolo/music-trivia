@@ -385,23 +385,12 @@ socket.on('round_results', (data) => {
             audio.src = data.preview.preview_url;
             audio.style.marginTop = '8px';
             feedbackDiv.appendChild(audio);
-            previewAudio = audio;
             
-            let autoPlayTimer = setTimeout(() => {
-                previewAudio.play().catch(() => {
+            setTimeout(() => {
+                audio.play().catch(() => {
                     console.log('Autoplay blocked or preview already playing');
                 });
             }, 15000);
-
-            const playButton = document.createElement('button');
-            playButton.innerText = 'Play iTunes Preview';
-            playButton.style.marginTop = '10px';
-            playButton.onclick = () => {
-                audio.play().catch(() => {
-                    alert('Browser blocked autoplay. Tap play in the audio controls.');
-                });
-            };
-            feedbackDiv.appendChild(playButton);
         }
     }
 
