@@ -5542,15 +5542,7 @@
     "lyric2": "Don't act like you ain't helped me pull that bottle off the shelf, been deep in every weekend if you couldn't tell",
     "lyric3": "They say, 'Teamwork makes the dream work,'"
   },
-{
-    "title": "Pink Pony Club",
-    "artist": "Chappell Roan",
-    "genre": "pop",
-    "year": 2020,
-    "lyric1": "I'm gonna keep on dancing at the Pink Pony Club",
-    "lyric2": "I know you wanted me to stay, But I can't ignore the crazy visions of me in L.A.",
-    "lyric3": "God, what have you done? You're a pink pony girl, and you dance at the club"
-  },
+
   {
     "title": "Love Somebody",
     "artist": "Morgan Wallen",
@@ -5812,9 +5804,801 @@
     "lyric1": "Last night we let the liquor talk",
     "lyric2": "I know you said we shouldn't talk about it, But I can't help but think about it",
     "lyric3": "Found you at a bar just havin' a last one, Turn around and the whole thing started"
+  }, 
+  {
+    "title": "AA",
+    "artist": "Walker Hayes",
+    "genre": "country",
+    "year": 2021,
+    "lyric1": "Coffee cup, cold and black, wish it had a little shot of Jack, besides that, can't complain, just tryin' to do the dang thing",
+    "lyric2": "And I'm just tryna keep my daughters off the pole and my sons out of jail, tryna get to church so I don't go to Hell",
+    "lyric3": "I'm just tryna keep my wife from figuring out that I married up and she married way, way down"
+  }, 
+{
+    "title": "Fancy Like",
+    "artist": "Walker Hayes",
+    "genre": "country",
+    "year": 2021,
+    "lyric1": "Yeah, we fancy like Applebee's on a date night, got that Bourbon Street steak with the Oreo shake",
+    "lyric2": "Get some whipped cream on the top too, two straws, one check, girl, I got you",
+    "lyric3": "Boujee like Nattyty in the Styrofoam, squeak-squeakin' in the truck bed all the way home"
+  }, 
+  {
+    "title": "abcdefu",
+    "artist": "GAYLE",
+    "genre": "pop",
+    "year": 2021,
+    "lyric1": "A-B-C-D-E-F-U and your mom and your sister and your job and your broke-ass car and that shit you call art",
+    "lyric2": "Fuck you and your friends that I'll never see again, everybody but your dog, you can all fuck off",
+    "lyric3": "You said you just needed space and so I gave it, when I had nothin' to say you couldn't take it"
+  }, 
+{
+    "title": "Bad Habits",
+    "artist": "Ed Sheeran",
+    "genre": "pop",
+    "year": 2021,
+    "lyric1": "Every time you come around, you know I can't say no, every time the sun goes down, I let you take control",
+    "lyric2": "My bad habits lead to late nights, endin' alone, conversations with a stranger I barely know",
+    "lyric3": "I only took a prescription to make me feel small, and now I'm lookin' at the map, tryin' to find my way home"
+  }, 
+{
+    "title": "Shivers",
+    "artist": "Ed Sheeran",
+    "genre": "pop",
+    "year": 2021,
+    "lyric1": "I took an arrow to the heart, I never kissed a mouth that tastes like yours, strawberries and somethin' more",
+    "lyric2": "Ooh, I love it when you do it like that, and when you're close up, give me the shivers",
+    "lyric3": "I wanna kiss your eyes and want to drink that smile, I wanna feel like like like this for a while"
+  }, 
+{
+    "title": "Heat Waves",
+    "artist": "Glass Animals",
+    "genre": "indie pop",
+    "year": 2020,
+    "lyric1": "Sometimes, all I think about is you, late nights in the middle of June",
+    "lyric2": "Heat waves been faking me out, can't make you happier now",
+    "lyric3": "I just wonder what you're dreaming of, when you sleep and smile so comfortable"
+  }, 
+  {
+    "title": "Made You Look",
+    "artist": "Meghan Trainor",
+    "genre": "pop",
+    "year": 2022,
+    "lyric1": "I could have my Gucci on, I could wear my Louis Vuitton, but even with nothin' on, bet I made you look",
+    "lyric2": "Yeah, I look good in my Versace dress, but I'm hotter when my hair is a mess",
+    "lyric3": "When I do my walk, walk, I can guarantee your jaw will drop, drop"
+  }, 
+
+{
+    "title": "Lavender Haze",
+    "artist": "Taylor Swift",
+    "genre": "pop",
+    "year": 2022,
+    "lyric1": "Staring at the ceiling with you, oh, you don't ever say too much, and you don't really read into my melancholia",
+    "lyric2": "I feel the lavender haze creeping up on me, surreal, I'm damned if I do give a damn what people say, no deal",
+    "lyric3": "All they keep asking me is if I'm gonna be your bride, the only kinda girl they see is a one-night or a wife"
+  }, 
+
+{
+    "title": "As It Was",
+    "artist": "Harry Styles",
+    "genre": "pop",
+    "year": 2022,
+    "lyric1": "Holdin' me back, gravity's holdin' me back, I want you to hold out the palm of your hand",
+    "lyric2": "In this world, it's just us, you know it's not the same as it was",
+    "lyric3": "Answer the phone, 'Harry, you're no good alone, why are you sitting at home on the floor? What kind of pills are you on?'"
+  }, 
+  {
+    "title": "Something in the Orange",
+    "artist": "Zach Bryan",
+    "genre": "country",
+    "year": 2022,
+    "lyric1": "To you, I'm just a man, to me, you're all I am, where the hell am I supposed to go?",
+    "lyric2": "I poisoned myself again, somethin' in the orange tells me you're never comin' home",
+    "lyric3": "But I miss you in the mornings when I see the sun, somethin' in the orange tells me we're not done"
+  },
+  {
+    "title": "Unholy",
+    "artist": "Sam Smith feat. Kim Petras",
+    "genre": "pop",
+    "year": 2022,
+    "lyric1": "Mummy don't know daddy's getting hot at the body shop, doing something unholy",
+    "lyric2": "Dirty, dirty boy, you know everyone is talkin' on the scene, I hear them whisperin' 'bout the places that you've been",
+    "lyric3": "Give me love, give me Fendi, my Balenciaga daddy, you gon' need to bag it up 'cause I'm spendin' on Rodeo"
+  }, 
+{
+    "title": "Pink Pony Club",
+    "artist": "Chappell Roan",
+    "genre": "pop",
+    "year": 2020,
+    "lyric1": "I know you wanted me to stay, but I can't ignore the crazy visions of me in LA",
+    "lyric2": "I'm gonna keep on dancing at the Pink Pony Club, I'm gonna keep on dancing down in West Hollywood",
+    "lyric3": "And mama, every Saturday I can hear your southern drawl a thousand miles away, saying 'God, what have you done? You're a pink pony girl and you dance at the club'"
+  },
+  {
+    "title": "Chemical",
+    "artist": "Post Malone",
+    "genre": "pop",
+    "year": 2023,
+    "lyric1": "Oxytocin makin' it all okay, when I come back down, it doesn't feel the same",
+    "lyric2": "You break me, then I break my rules, last time was the last time too",
+    "lyric3": "Outside of the party, smokin' in the car with you, Seven Nation Army, fightin' at the bar with you"
+  }, 
+  {
+    "title": "Sure Thing",
+    "artist": "Miguel",
+    "genre": "R&B",
+    "year": 2010,
+    "lyric1": "If you be the cash, I'll be the rubber band, you be the match, I'll be the fuse, boom",
+    "lyric2": "Even when the sky comes falling, even when the sun don't shine, I got faith in you and I",
+    "lyric3": "You can bet that, never gotta sweat that, 'cause you're my medicine and you're my lover"
+  }, 
+  {
+    "title": "About Damn Time",
+    "artist": "Lizzo",
+    "genre": "pop",
+    "year": 2022,
+    "lyric1": "It's bad bitch o'clock, yeah, it's thick-thirty, I've been through a lot but I'm still flirty",
+    "lyric2": "Turn up the music, turn down the lights, I got a feeling I'm gonna be alright",
+    "lyric3": "I'm not the girl I was or used to be, bitch, I might be better"
+  }, 
+  {
+    "title": "Late Night Talking",
+    "artist": "Harry Styles",
+    "genre": "pop",
+    "year": 2022,
+    "lyric1": "Things haven't been quite the same, there's a haze on the horizon, babe, it's only been a couple of days and I miss you",
+    "lyric2": "If you're feeling down, I just wanna make you happier, baby, wish I was around, I just wanna make you happier, baby",
+    "lyric3": "We've been doing all this late night talking, 'bout anything you want until the morning, now you're in my life, I can't get you off my mind"
+  }, 
+  {
+    "title": "good 4 u",
+    "artist": "Olivia Rodrigo",
+    "genre": "pop",
+    "year": 2021,
+    "lyric1": "Well, good for you, I guess you moved on really easily, you bought a new car and your career's takin' off",
+    "lyric2": "Well, good for you, you look happy and healthy, not me, if you ever cared to ask",
+    "lyric3": "Remember when you said that you wanted to give me the world?"
+  },
+  {
+    "title": "Levitating",
+    "artist": "Dua Lipa",
+    "genre": "pop",
+    "year": 2020,
+    "lyric1": "I got you, moonlight, you're my starlight, I need you all night, come on, dance with me",
+    "lyric2": "If you wanna run away with me, I know a galaxy, and I can take you for a ride",
+    "lyric3": "You, want me, I want you, baby, my sugarboo, I'm levitating"
+  }, 
+  {
+    "title": "Save Your Tears (Remix)",
+    "artist": "The Weeknd & Ariana Grande",
+    "genre": "pop",
+    "year": 2021,
+    "lyric1": "I don't know why I run away, I'll make you cry when I run away, take me back 'cause I wanna stay",
+    "lyric2": "Save your tears for another day, save your tears for another day",
+    "lyric3": "Met you once before, unsaid it now, I'm sorry that I broke your heart, your heart"
+  }, 
+  {
+    "title": "Blinding Lights",
+    "artist": "The Weeknd",
+    "genre": "pop",
+    "year": 2019,
+    "lyric1": "I said, ooh, I'm blinded by the lights, no, I can't sleep until I feel your touch",
+    "lyric2": "I'm running out of time, 'cause I can see the sun light up the sky, so I hit the road in overdrive, baby, oh",
+    "lyric3": "I've been on my own for long enough, maybe you can show me how to love, maybe"
+  },
+  {
+    "title": "drivers license",
+    "artist": "Olivia Rodrigo",
+    "genre": "pop",
+    "year": 2021,
+    "lyric1": "Cause you said forever, now I drive alone past your street",
+    "lyric2": "And you're probably with that blonde girl, who always made me doubt, she's so much older than me, she's everything I'm insecure about",
+    "lyric3": "I just can't imagine how you could be so okay now that I'm gone, guess you didn't mean what you wrote in that song about me"
+  }, 
+{
+    "title": "positions",
+    "artist": "Ariana Grande",
+    "genre": "pop",
+    "year": 2020,
+    "lyric1": "Switchin' the positions for you, cookin' in the kitchen and I'm in the bedroom, I'm in the Olympics, way I'm jumpin' through hoops",
+    "lyric2": "Heaven sent you to me, I'm just hopin' I don't repeat history",
+    "lyric3": "Said, boy, I'm tryna meet your mama on a Sunday Then make a lotta love on a Monday (Ah, ah)"
+  },
+  {
+    "title": "Astronaut in the Ocean",
+    "artist": "Masked Wolf",
+    "genre": "pop",
+    "year": 2019,
+    "lyric1": "I feel like an astronaut in the ocean",
+    "lyric2": "What you know about rollin' down in the deep? When your brain goes numb, you can call that mental freeze",
+    "lyric3": "When these people talk too much, put that shit in slow motion"
+  },
+  {
+    "title": "Bang!",
+    "artist": "AJR",
+    "genre": "pop",
+    "year": 2021,
+    "lyric1": "Bang! Bang! Bang!",
+    "lyric2": "I get up, I get down and I'm jumping around",
+    "lyric3": "So put your best face on everybody, pretend you know this song everybody"
+  }, 
+  {
+    "title": "All I Want for Christmas Is You",
+    "artist": "Mariah Carey",
+    "genre": "christmas",
+    "year": 1994,
+    "lyric1": "All I want for Christmas is you",
+    "lyric2": "I don't want a lot for Christmas, there is just one thing I need",
+    "lyric3": "I just want you for my own, more than you could ever know"
+  }, 
+  {
+    "title": "Circles",
+    "artist": "Post Malone",
+    "genre": "pop",
+    "year": 2019,
+    "lyric1": "Seasons change and our love went cold, feed the flame 'cause we can't let go, run away, but we're running in circles",
+    "lyric2": "We couldn't turn it around 'til we were upside down, I'll be the bad guy now, but know I ain't too proud",
+    "lyric3": "I dare you to do something, I'm waiting on you again, so I don't take the blame"
+  }, 
+
+{
+    "title": "The Bones",
+    "artist": "Maren Morris",
+    "genre": "country",
+    "year": 2019,
+    "lyric1": "When the bones are good, the rest don't matter",
+    "lyric2": "We're in the homestretch of the hard times, We took a hard left, but we're alright",
+    "lyric3": "Yeah, the paint could peel, the glass could shatter, Let it rain 'cause you and I remain the same"
+  }, 
+
+{
+    "title": "Say So",
+    "artist": "Doja Cat",
+    "genre": "pop",
+    "year": 2019,
+    "lyric1": "Day to night to morning, keep with me in the moment, I'd let you had I known it, why don't you say so?",
+    "lyric2": "It's been a long time since you fell in love, you ain't coming out your shell, you ain't really been yourself",
+    "lyric3": "Let me check my chest, my breath right quick, he ain't ever seen it in a dress like this"
+  }, 
+  {
+    "title": "Dance Monkey",
+    "artist": "Tones and I",
+    "genre": "pop",
+    "year": 2019,
+    "lyric1": "Dance for me, dance for me, dance for me, oh-oh-oh, I've never seen anybody do the things you do before",
+    "lyric2": "They say, 'Oh my God, I see the way you shine, take your hand, my dear, and place them both in mine'",
+    "lyric3": "Ooh, I see you, see you, see you every time, and oh my, I, I, I like your style"
+  }, 
+  {
+    "title": "Watermelon Sugar",
+    "artist": "Harry Styles",
+    "genre": "pop",
+    "year": 2019,
+    "lyric1": "Watermelon sugar high, watermelon sugar high, watermelon sugar high, watermelon sugar high",
+    "lyric2": "Tastes like strawberries on a summer evening, and it sounds just like a song",
+    "lyric3": "Breathe me in, breathe me out, I don't know if I could ever go without"
+  }, 
+
+{
+    "title": "10,000 Hours",
+    "artist": "Dan + Shay & Justin Bieber",
+    "genre": "pop",
+    "year": 2019,
+    "lyric1": "I'd spend ten thousand hours and ten thousand more, oh, if that's what it takes to learn that sweet heart of yours",
+    "lyric2": "Do you love the rain, does it make you dance when you're drunk with your friends at a party?",
+    "lyric3": "Do you miss the road that you grew up on? Did you get your middle name from your grandma?"
+  },
+  {
+    "title": "Intentions",
+    "artist": "Justin Bieber featuring Quavo",
+    "genre": "pop",
+    "year": 2020,
+    "lyric1": "Picture-perfect, you don't need no filter, gorgeous, make 'em drop dead, you a killer, shower you with all my attention, yeah, these are my only intentions",
+    "lyric2": "Shout-out to your mom and dad for makin' you, standin' ovation, they did a great job raisin' you",
+    "lyric3": "Already passed, you don't need no approval, good everywhere, don't worry 'bout no refusal, second to none, you got the upper hand now"
+  },
+{
+    "title": "Good as Hell",
+    "artist": "Lizzo",
+    "genre": "pop",
+    "year": 2016,
+    "lyric1": "I do my hair toss, check my nails, baby, how you feelin'? Feelin' good as hell",
+    "lyric2": "Woo, girl, need to kick off your shoes, got to take a deep breath, time to focus on you",
+    "lyric3": "If he don't love you anymore, then walk your fine ass out the door"
+  }, 
+  {
+    "title": "Rain on Me",
+    "artist": "Lady Gaga & Ariana Grande",
+    "genre": "pop",
+    "year": 2020,
+    "lyric1": "I'd rather be dry, but at least I'm alive, rain on me, rain, rain, rain on me",
+    "lyric2": "I didn't ask for a free ride, I only asked you to show me a real good time",
+    "lyric3": "Gotta live my truth, not keep it bottled up, so I don't lose my mind"
+  }, 
+  {
+    "title": "Old Town Road (Remix)",
+    "artist": "Lil Nas X featuring Billy Ray Cyrus",
+    "genre": "rap",
+    "year": 2019,
+    "lyric1": "Yeah, I'm gonna take my horse to the old town road, I'm gonna ride 'til I can't no more",
+    "lyric2": "I got the horses in the back, horse tack is attached, hat is matte black, got the boots that's black to match",
+    "lyric3": "Hat down, cross town, livin' like a rockstar, spent a lot of money on my brand new guitar"
+  }, 
+  {
+    "title": "Sunflower",
+    "artist": "Post Malone & Swae Lee",
+    "genre": "rap",
+    "year": 2018,
+    "lyric1": "Needless to say, I keep her in check, she was a bad-bad, nevertheless, callin' it quits now, baby, I'm a wreck, crash at my place, baby, you're a wreck",
+    "lyric2": "Then you're left in the dust, unless I stuck by ya, you're a sunflower, I think your love would be too much",
+    "lyric3": "Every time I'm leavin' on you, you don't make it easy, no, no, wish I could be there for you, give me a reason to go"
+  },
+  {
+    "title": "Without Me",
+    "artist": "Halsey",
+    "genre": "pop",
+    "year": 2018,
+    "lyric1": "Found you when your heart was broke, I filled your cup until it overflowed, took it so far to keep you close",
+    "lyric2": "Tell me, how's it feel sittin' up there? Feelin' so high, but too far away to hold me",
+    "lyric3": "You know I'm the one who put you up there, name in the sky, does it ever get lonely?"
+  }, 
+  {
+    "title": "High Hopes",
+    "artist": "Panic! at the Disco",
+    "genre": "rock",
+    "year": 2018,
+    "lyric1": "Had to have high, high hopes for a living, shooting for the stars when I couldn't make a killing, didn't have a dime but I always had a vision",
+    "lyric2": "Mama said, fulfill the prophecy, be something greater, go make a legacy",
+    "lyric3": "Mama said don't give up, it's a little complicated, all history left it to us to find it"
+  },
+  {
+    "title": "Shallow",
+    "artist": "Lady Gaga & Bradley Cooper",
+    "genre": "pop",
+    "year": 2018,
+    "lyric1": "Tell me somethin', girl, are you happy in this modern world? Or do you need more? Is there somethin' else you're searchin' for?",
+    "lyric2": "I'm off the deep end, watch as I dive in, I'll never meet the ground",
+    "lyric3": "Crash through the surface where they can't hurt us, we're far from the shallow now"
+  }, 
+  {
+    "title": "Sweet but Psycho",
+    "artist": "Ava Max",
+    "genre": "pop",
+    "year": 2018,
+    "lyric1": "Oh, she's sweet but a psycho, a little bit psycho, at night she's screamin', 'I'm-ma-ma-ma out my mind'",
+    "lyric2": "She'll make you curse, but she's a blessing, she'll rip your shirt within a second",
+    "lyric3": "she's poison but tasty, yeah, people say, 'Run, don't walk away'"
+  }, 
+  {
+    "title": "The Git Up",
+    "artist": "Blanco Brown",
+    "genre": "rap",
+    "year": 2019,
+    "lyric1": "Gon' and do the 2 step, then cowboy boogie, grab your sweetheart and spin out with 'em, do the hoedown and get into it",
+    "lyric2": "To the left, to the left now, to the right, to the right, now take your left hand and put it on your side",
+    "lyric3": "Right now I just need you to get real lose, get comfortable, grab your loved ones or grab your love, partner"
+  },
+  {
+    "title": "Hey Look Ma, I Made It",
+    "artist": "Panic! at the Disco",
+    "genre": "rock",
+    "year": 2018,
+    "lyric1": "Hey look ma, I made it, hey look ma, I made it, everything's comin' up aces, aces, if it's a dream, don't wake me",
+    "lyric2": "All my life, been hustlin' and tonight is my appraisal 'cause I'm a hooker sellin' songs and my pimp's a record label",
+    "lyric3": "In the garden of evil, I'm gonna be the greatest, in a golden cathedral, I'll be praying for the faithless"
+  },
+  {
+    "title": "God's Plan",
+    "artist": "Drake",
+    "genre": "rap",
+    "year": 2018,
+    "lyric1": "I been movin' calm, don't start no trouble with me, tryna keep it peaceful is a struggle for me",
+    "lyric2": "God's plan, God's plan, I hold back, sometimes I won't, yuh, I feel good, sometimes I don't, ayy, don't",
+    "lyric3": "She say, 'Do you love me?' I tell her, 'Only partly', I only love my bed and my mama, I'm sorry"
+  },
+  {
+    "title": "Perfect",
+    "artist": "Ed Sheeran",
+    "genre": "pop",
+    "year": 2017,
+    "lyric1": "I found a love for me, oh darling, just dive right in and follow my lead, well, I found a girl, beautiful and sweet",
+    "lyric2": "Baby, I'm dancing in the dark with you between my arms, barefoot on the grass, listening to our favorite song",
+    "lyric3": "When you said you looked a mess, I whispered underneath my breath, but you heard it, darling, you look perfect tonight"
+  },
+  {
+    "title": "Havana",
+    "artist": "Camila Cabello featuring Young Thug",
+    "genre": "pop",
+    "year": 2017,
+    "lyric1": "Havana, ooh-na-na, half of my heart is in Havana, ooh-na-na, he took me back to East Atlanta, oh-na-na-na, oh, but my heart is in Havana, there's somethin' 'bout his manners",
+    "lyric2": "He didn't walk up with that 'How you doin'?', he said there's a lot of girls I can do with, but I can't without you, I knew him forever in a minute",
+    "lyric3": "I knew it when I met him, I loved him when I left him, got me feelin' like, ooh, and then I had to tell him I had to go, oh na na na na na"
+  },
+  {
+    "title": "The Middle",
+    "artist": "Zedd, Maren Morris & Grey",
+    "genre": "pop",
+    "year": 2018,
+    "lyric1": "Take a seat right over there, sat on the stairs, stay or leave, the cabinets are bare and I'm unaware of just how we got into this mess, got so aggressive",
+    "lyric2": "So pull me closer, why don't you pull me close? Why don't you come on over? I can't just let you go",
+    "lyric3": "Oh baby, why don't you just meet me in the middle? I'm losing my mind just a little, so why don't you just meet me in the middle? In the middle"
+  },
+  {
+    "title": "In My Feelings",
+    "artist": "Drake",
+    "genre": "rap",
+    "year": 2018,
+    "lyric1": "Trap, TrapMoneyBenny, this shit got me in my feelings, gotta be real with it, yup",
+    "lyric2": "Kiki, do you love me? Are you riding? Say you'll never ever leave from beside me, 'cause I want ya, and I need ya, and I'm down for you always",
+    "lyric3": "Look, the new me is really still the real me, I swear you gotta feel me before they try and kill me, they gotta make some choices, they runnin' out of options"
+  }, 
+  {
+    "title": "Girls Like You",
+    "artist": "Maroon 5 featuring Cardi B",
+    "genre": "pop",
+    "year": 2018,
+    "lyric1": "Spent twenty-four hours, I need more hours with you, you spent the weekend getting even, ooh, we spent the late nights making things right between us",
+    "lyric2": "'Cause girls like you run 'round with guys like me 'til sundown when I come through, I need a girl like you, yeah yeah",
+    "lyric3": "Not too long ago, I was dancing for dollars, know it's really real if I let you meet my mama, you don't want a girl like me, I'm too crazy"
+  },
+{
+    "title": "Thunder",
+    "artist": "Imagine Dragons",
+    "genre": "rock",
+    "year": 2017,
+    "lyric1": "Thunder, feel the thunder, lightning and the thunder, thunder, feel the thunder, lightning and the thunder, thunder",
+    "lyric2": "Kids were laughing in my classes, while I was scheming for the masses, who do you think you are? Dreaming 'bout being a big star",
+    "lyric3": "Just a young gun with a quick fuse, I was ticking, but I'm no footloose, lightning before the thunder"
+  },
+{
+    "title": "Delicate",
+    "artist": "Taylor Swift",
+    "genre": "pop",
+    "year": 2017,
+    "lyric1": "This ain't for the best, my reputation's never been worse, so you must like me for me",
+    "lyric2": "Is it cool that I said all that? Is it chill that you're in my head? 'Cause I know that it's delicate",
+    "lyric3": "Third floor on the West Side, me and you, handsome, you're a mansion with a view, do the girls back home touch you like I do?"
+  },
+  {
+    "title": "Bad at Love",
+    "artist": "Halsey",
+    "genre": "pop",
+    "year": 2017,
+    "lyric1": "Got a boy back home in Michigan and he tastes like Jack when I'm kissing him, so I told him that I never really liked his friends, now he's gone and he's calling me a bitch again",
+    "lyric2": "I'm bad at love, but you can't blame me for tryin', you know I'd be lyin' sayin' you were the one that could finally fix me, lookin' at my history, I'm bad at love",
+    "lyric3": "Got a girl with California eyes and I thought that she could really be the one this time, but I never got the chance to make her mine because she fell in love with little thin white lines"
+  }, 
+  {
+    "title": "Whatever It Takes",
+    "artist": "Imagine Dragons",
+    "genre": "pop rock",
+    "year": 2017,
+    "lyric1": "Falling too fast to prepare for this, tripping in the world could be dangerous, everybody circling, it's vulturous, negative, nepotist",
+    "lyric2": "Whatever it takes, 'cause I love the adrenaline in my veins, I do whatever it takes, 'cause I love how it feels when I break the chains",
+    "lyric3": "Hypocritical, egotistical, don't wanna be the parenthetical, hypothetical, working onto something that I'm proud of, out of the box"
+  }, 
+  {
+    "title": "Sorry Not Sorry",
+    "artist": "Demi Lovato",
+    "genre": "pop",
+    "year": 2017,
+    "lyric1": "Now payback is a bad bitch and baby, I'm the baddest, you fuckin' with a savage, can't have this, can't have this",
+    "lyric2": "And it'd be nice of me to take it easy on ya, but I won't, yeah, it'd be nice of me to take it easy on ya, but I won't",
+    "lyric3": "Now I'm out here looking like revenge, feelin' like a ten, best I ever been, yeah, I know how to make bad things look good, baby, I'm sorry, not sorry"
+  }, 
+  {
+    "title": "Shape of You",
+    "artist": "Ed Sheeran",
+    "genre": "pop",
+    "year": 2017,
+    "lyric1": "I'm in love with the shape of you, we push and pull like a magnet do, although my heart is falling too, I'm in love with your body",
+    "lyric2": "The club isn't the best place to find a lover, so the bar is where I go, me and my friends at the table doing shots, drinking fast and then we talk slow",
+    "lyric3": "Girl, you know I want your love, your love was handmade for somebody like me, come on now, follow my lead, I may be crazy, don't mind me"
+  },
+  {
+    "title": "Happier",
+    "artist": "Marshmello & Bastille",
+    "genre": "dance-pop",
+    "year": 2018,
+    "lyric1": "Lately, I've been, lately, I've been thinking, I want you to be happier, I want you to be happier, even though I might not like this, I think that you'll be happier, I want you to be happier",
+    "lyric2": "When the morning comes, when we see what we've become, in the cold light of day we're a flame in the wind, not the fire that we've begun",
+    "lyric3": "Every argument, every word we can't take back, 'cause with the all that has happened, I think that we both know the way that the story ends"
+  },
+  {
+    "title": "What Lovers Do",
+    "artist": "Maroon 5 featuring SZA",
+    "genre": "pop",
+    "year": 2017,
+    "lyric1": "Say, say, say, hey, hey, now, baby, oh mama, don't play now, baby, say, say, say, hey, hey, now, baby, said let's do what lovers do",
+    "lyric2": "I bet the house on you, am I gonna win or lose? You say you want a professional, well, stick around then, oh",
+    "lyric3": "Are we too deep for introducing? Are we too high to keep from losing? Oh, user, yeah, you use me, but I'm okay with it, 'cause it's beautiful"
+  },
+  {
+    "title": "Rockstar",
+    "artist": "Post Malone featuring 21 Savage",
+    "genre": "pop",
+    "year": 2017,
+    "lyric1": "I feel just like a rockstar, all my brothers got that gas and they always be smokin' like a Rasta",
+    "lyric2": "feelin' like a pop star, drankin' Henny, bad bitches jumpin' in the pool naked, Glock with a drum on it, yard with a drum on it",
+    "lyric3": "Savage, why you got a twelve car garage and you only got six cars? 'Cause I sign a deal with back-end, kick it with your girl and she a fan"
+  },
+  {
+    "title": "Lucid Dreams",
+    "artist": "Juice WRLD",
+    "genre": "rap",
+    "year": 2018,
+    "lyric1": "I have these lucid dreams where I can't move a thing, thinking of you in my bed, you were my everything, thoughts of a wedding ring, now I'm just better off dead",
+    "lyric2": "I still see your shadows in my room, can't take back the love that I gave you, it's to the point where I love and I hate you, and I cannot change you, so I must replace you, oh",
+    "lyric3": "You left me falling and landing inside my grave, I know that you want me dead, I take prescriptions to make me feel a-okay, I know it's all in my head"
+  },
+  {
+    "title": "Nice for What",
+    "artist": "Drake",
+    "genre": "rap",
+    "year": 2018,
+    "lyric1": "You workin' late, man, it's workin' your patience, you need some credit, man, you're nice for what, right now? You clockin' in, you out here workin', you work a nine-to-five and then you...",
+    "lyric2": "I wanna know who shortied you, who made you feel like you was always difficult? Had a man last year, life goes on, haven't cried since, high school girl, you grown",
+    "lyric3": "With your phone out, gotta hit them angles, with your phone out, snappin' like you Fabo, and you showin' off, but it's alright, it's a short life"
+  },
+  {
+    "title": "Despacito (Remix)",
+    "artist": "Luis Fonsi & Daddy Yankee featuring Justin Bieber",
+    "genre": "pop",
+    "year": 2017,
+    "lyric1": "Despacito, quiero respirar tu cuello despacito, deja que te diga cosas al oído para que te acuerdes si no estás conmigo",
+    "lyric2": "Come on over in my direction, so thankful for that, it's such a blessin', yeah, turn every situation into Heaven, yeah, oh, you are my sunrise on the darkest day",
+    "lyric3": "Pasito a pasito, suave suavecito, nos vamos pegando, poquito a poquito, que le enseñes a mi boca tus lugares favoritos"
+  },
+{
+    "title": "That's What I Like",
+    "artist": "Bruno Mars",
+    "genre": "R&B",
+    "year": 2017,
+    "lyric1": "Gold jewelry shining so bright, strawberry champagne on ice, lucky for you, that's what I like, that's what I like, sex by the fire at night, silk sheets and diamonds all white, lucky for you, that's what I like, that's what I like",
+    "lyric2": "I got a condo in Manhattan, baby, girl, what's up? You and your ass invited, so pop it on in, Versace on the floor, take it off for me, girl, take it off for me, girl",
+    "lyric3": "If you say you want a good time, well, here I am, baby, here I am, baby, talk to me, talk to me, talk to me, tell me what's on your mind"
+  },
+  {
+    "title": "HUMBLE.",
+    "artist": "Kendrick Lamar",
+    "genre": "hip hop",
+    "year": 2017,
+    "lyric1": "Bitch, be humble (hol' up, bitch), sit down (hol' up, lil', hol' up, lil' bitch), be humble (hol' up, bitch), sit down (hol' up, sit down, lil', sit down, lil' bitch)",
+    "lyric2": "I remember syrup sandwiches and crime allowances, finesse a nigga with some counterfeits, but now I'm countin' this, Parmesan where my accountant lives; in fact, I'm downin' this",
+    "lyric3": "sick and tired of the Photoshop, show me somethin' natural like afro on Richard Pryor, show me somethin' natural like ass with some stretch marks, still will take you down right on your mama's couch in Polo socks"
+  },
+  {
+    "title": "Something Just Like This",
+    "artist": "The Chainsmokers & Coldplay",
+    "genre": "dance-pop",
+    "year": 2017,
+    "lyric1": "She said, where'd you wanna go? How much you wanna risk? I'm not looking for somebody with some superhuman gifts, some superhero, some fairytale bliss, just something I can turn to, somebody I can kiss, I want something just like this",
+    "lyric2": "I've been reading books of old, the legends and the myths, Achilles and his gold, Hercules and his gifts, Spiderman's control and Batman with his fists, and clearly I don't see myself upon that list",
+    "lyric3": "I've been reading books of old, the legends and the myths, the testaments they told, the moon and its eclipse, and Superman unrolls a suit before he lifts, but I'm not the kind of person that it fits"
+  },
+  {
+    "title": "Closer",
+    "artist": "The Chainsmokers featuring Halsey",
+    "genre": "pop",
+    "year": 2016,
+    "lyric1": "So baby pull me closer in the backseat of your Rover that I know you can't afford, bite that tattoo on your shoulder, pull the sheets right off the corner of the mattress that you stole from your roommate back in Boulder, we ain't ever getting older",
+    "lyric2": "Hey, I was doing just fine before I met you, I drink too much and that's an issue but I'm okay, hey, you tell your friends it was nice to meet them, but I hope I never see them again",
+    "lyric3": "You look as good as the day I met you, I forget just why I left you, I was insane, stay and play that Blink-182 song that we beat to death in Tucson, okay"
+  },
+{
+    "title": "Body Like a Back Road",
+    "artist": "Sam Hunt",
+    "genre": "country pop",
+    "year": 2017,
+    "lyric1": "Body like a back road, drivin' with my eyes closed, I know every curve like the back of my hand, doin' fifteen in a thirty, I ain't in no hurry, I'ma take it slow just as fast as I can",
+    "lyric2": "Got a girl from the Southside, got braids in her hair, first time I seen her walk by, man, I 'bout fell up out my chair, had to get her number, it took me like six weeks, now me and her go way back like Cadillac seats",
+    "lyric3": "The way she fit in them blue jeans, she don't need no belt, but I can turn 'em inside out, I don't need no help, got a hips like honey, so thick and so sweet, it ain't no curves like hers on them downtown streets"
+  },
+  {
+    "title": "24K Magic",
+    "artist": "Bruno Mars",
+    "genre": "funk",
+    "year": 2016,
+    "lyric1": "Players, put yo' pinky rings up to the moon, girls, what y'all tryin' to do? 24 karat magic in the air, head to toe so soul player, look out",
+    "lyric2": "Pop pop, it's show time (show time), show time (show time), guess who's back again? Oh they don't know? (Go 'head and tell 'em), oh they don't know? (Go 'head and tell 'em), I'm a dangerous man with some money in my pocket (keep up)",
+    "lyric3": "Spend your money, change your life, everyday your birthday, every night your premiere, second verse, for the hustlas (hustlas), gangsters (gangsters), bad bitches and your ugly friends"
+  },
+  {
+    "title": "Starboy",
+    "artist": "The Weeknd featuring Daft Punk",
+    "genre": "R&B",
+    "year": 2016,
+    "lyric1": "Look what you've done, I'm a motherfuckin' starboy",
+    "lyric2": "I'm tryna put you in the worst mood, ah, P1 cleaner than your church shoes, ah",
+    "lyric3": "We don't pray for love, we just pray for cars"
+  },
+  {
+    "title": "Feel It Still",
+    "artist": "Portugal. The Man",
+    "genre": "indie pop",
+    "year": 2017,
+    "lyric1": "Ooh ooh, I'm a rebel just for kicks, now, I been feeling it since 1966, now",
+    "lyric2": "Might be over now, but I feel it still",
+    "lyric3": "Got another mouth to feed, leave it with a baby sitter, mama"
+  },
+  {
+    "title": "Can't Stop the Feeling!",
+    "artist": "Justin Timberlake",
+    "genre": "dance-pop",
+    "year": 2016,
+    "lyric1": "I got this feeling inside my bones, it goes electric, wavy when I turn it on",
+    "lyric2": "Nothing I can see but you when you dance, dance, dance",
+    "lyric3": "Can't stop the feeling, so just dance, dance, dance"
+  },
+  {
+    "title": "Love Yourself",
+    "artist": "Justin Bieber",
+    "genre": "pop",
+    "year": 2015,
+    "lyric1": "My mama don't like you and she likes everyone",
+    "lyric2": "And I never like to admit that I was wrong",
+    "lyric3": "If you like the way you look that much, oh, baby, you should go and love yourself"
+  },
+
+{
+    "title": "Sorry",
+    "artist": "Justin Bieber",
+    "genre": "pop",
+    "year": 2015,
+    "lyric1": "Is it too late now to say sorry? 'Cause I'm missing more than just your body",
+    "lyric2": "You gotta go and get angry at all of my honesty",
+    "lyric3": "I'll take every single piece of the blame if you want me to"
+  }, 
+  {
+    "title": "Work",
+    "artist": "Rihanna featuring Drake",
+    "genre": "dancehall",
+    "year": 2016,
+    "lyric1": "Work, work, work, work, work, work, he said me haffi work, work, work, work, work, work",
+    "lyric2": "Join me, I deserved it, no meddling in these circles, little bit of care for me",
+    "lyric3": "If I get another chance to, I will never, no, never neglect you"
+  }, 
+  {
+    "title": "Stressed Out",
+    "artist": "Twenty One Pilots",
+    "genre": "alternative hip hop",
+    "year": 2015,
+    "lyric1": "Wish we could turn back time to the good old days, when our momma sang us to sleep but now we're stressed out",
+    "lyric2": "My name's Blurryface and I care what you think",
+    "lyric3": "We used to play pretend, give each other different names"
+  }, 
+  {
+    "title": "Hello",
+    "artist": "Adele",
+    "genre": "soul",
+    "year": 2015,
+    "lyric1": "Hello from the other side, I must've called a thousand times",
+    "lyric2": "Hello, it's me, I was wondering if after all these years you'd like to meet",
+    "lyric3": "It's no secret that the both of us are running out of time"
+  }, 
+
+{
+    "title": "Cheap Thrills",
+    "artist": "Sia featuring Sean Paul",
+    "genre": "dance-pop",
+    "year": 2016,
+    "lyric1": "Baby, I don't need dollar bills to have fun tonight (I love cheap thrills)",
+    "lyric2": "Come on, come on, turn the radio on, it's Friday night and I won't be long",
+    "lyric3": "I ain't got cash, I ain't got cash, but I got you, baby"
+  }, 
+  {
+    "title": "My House",
+    "artist": "Flo Rida",
+    "genre": "pop rap",
+    "year": 2015,
+    "lyric1": "Welcome to my house, baby, take control now, we can't even slow down",
+    "lyric2": "Open up the champagne, pop it, my house is your house if you wipin' your feet",
+    "lyric3": "Morning comes and you know that you wanna stay"
+  },
+  {
+    "title": "Cake by the Ocean",
+    "artist": "DNCE",
+    "genre": "dance-pop",
+    "year": 2015,
+    "lyric1": "Let's lose our minds and go crazy, I keep on hoping we'll eat cake by the ocean",
+    "lyric2": "Oh no, see you walking 'round like it's a funeral",
+    "lyric3": "Hot damn, see you licking frosting from your own hands"
+  },
+  {
+    "title": "Ride",
+    "artist": "Twenty One Pilots",
+    "genre": "alternative rock",
+    "year": 2015,
+    "lyric1": "Oh, oh, I'm falling, so I'm taking my time on my ride",
+    "lyric2": "I've been thinking too much, help me",
+    "lyric3": "I'd die for you, that's easy to say"
+  },
+  {
+    "title": "Pillowtalk",
+    "artist": "Zayn",
+    "genre": "alternative R&B",
+    "year": 2016,
+    "lyric1": "It's our paradise and it's our war zone",
+    "lyric2": "Be in bed with you, we'll go slow and high tempo",
+    "lyric3": "Pillow talk, my enemy, my ally"
+  },
+
+{
+    "title": "Stitches",
+    "artist": "Shawn Mendes",
+    "genre": "pop",
+    "year": 2015,
+    "lyric1": "You watch me bleed 'til I can't breathe, shaking, falling onto my knees, and now that I'm without your kisses, I'll be needing stitches",
+    "lyric2": "I thought that I've been hurt before, but no one's ever left me quite this sore",
+    "lyric3": "Your words cut deeper than a knife, now I need someone to breathe me back to life"
+  },
+  {
+    "title": "Hotline Bling",
+    "artist": "Drake",
+    "genre": "R&B",
+    "year": 2015,
+    "lyric1": "You used to call me on my cell phone, late night when you need my love",
+    "lyric2": "I know when that hotline bling, that can only mean one thing",
+    "lyric3": "Ever since I left the city, you got a reputation for yourself now"
+  },
+  {
+    "title": "Here",
+    "artist": "Alessia Cara",
+    "genre": "R&B",
+    "year": 2015,
+    "lyric1": "But honestly I'd rather be somewhere with my people, we can kick it and just listen to some music with a message",
+    "lyric2": "I'm sorry if I seem uninterested, or I'm not listening, or I'm indifferent",
+    "lyric3": "Hours later, congregatin next to the refridgerator"
+  },
+  {
+    "title": "H.O.L.Y.",
+    "artist": "Florida Georgia Line",
+    "genre": "country",
+    "year": 2016,
+    "lyric1": "You're holy, holy, holy, holy, I'm high on loving you, high on loving you",
+    "lyric2": "When the sun had left and the winter came, and the sky thought to only bring the rain",
+    "lyric3": "You're the healing hands where it used to hurt, you're my saving grace, you're my kind of church"
+  },
+{
+    "title": "Die a Happy Man",
+    "artist": "Thomas Rhett",
+    "genre": "country pop",
+    "year": 2015,
+    "lyric1": "If I never get to see the Northern lights, or if I never get to see the Eiffel Tower at night, oh, if all I got is your hand in my hand, baby, I could die a happy man",
+    "lyric2": "Baby, last night was hands down one of the best nights that I've had no doubt",
+    "lyric3": "Baby, that red dress brings me to my knees, oh, but that black dress makes it hard to breathe"
+  },
+  {
+    "title": "Ex's & Oh's",
+    "artist": "Elle King",
+    "genre": "alternative rock",
+    "year": 2014,
+    "lyric1": "One, two, three, they gonna run back to me, 'cause I'm the best baby that they never gonna keep",
+    "lyric2": "Ex's and the oh's they haunt me, like ghosts they want me, to make em oh oh oh",
+    "lyric3": "Now there's one in California who's been cursin my name 'cause I found me a better lover in the UK"
+  },
+{
+    "title": "Can't Feel My Face",
+    "artist": "The Weeknd",
+    "genre": "dance-pop",
+    "year": 2015,
+    "lyric1": "I can't feel my face when I'm with you, but I love it, but I love it, oh",
+    "lyric2": "And I know she'll be the death of me, at least we'll both be numb",
+    "lyric3": "She told me, 'Don't worry about it', she told me, 'Don't worry no more'"
+  },
+  {
+    "title": "Perfect",
+    "artist": "One Direction",
+    "genre": "pop rock",
+    "year": 2015,
+    "lyric1": "But if you like causing trouble up in hotel rooms, and if you like having secret little rendezvous",
+    "lyric2": "If you like to do the things you know that we shouldn't do, then baby, I'm perfect, baby, I'm perfect for you",
+    "lyric3": "And if you like midnight driving with the windows down, and if you like going places we can't even pronounce"
   }
 
 
+  
 
 
 ]
