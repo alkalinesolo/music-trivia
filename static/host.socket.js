@@ -108,16 +108,18 @@ socket.on('round_results', (data) => {
 
         const audio = document.createElement('audio');
         audio.controls = true;
-        audio.autoplay = true;
+        audio.autoplay = data.game_mode !== 'music_only';
         audio.preload = 'metadata';
         audio.src = data.preview.preview_url;
         audio.style.marginBottom = '16px';
         currentHostPreviewAudio = audio;
         resultsDiv.appendChild(audio);
 
-        audio.play().catch(() => {
-            console.log('Autoplay blocked; using native controls for preview playback');
-        });
+        if (data.game_mode !== 'music_only') {
+            audio.play().catch(() => {
+                console.log('Autoplay blocked; using native controls for preview playback');
+            });
+        }
 
         if (data.preview.candidates && data.preview.candidates.length > 1) {
             const altWrap = document.createElement('div');

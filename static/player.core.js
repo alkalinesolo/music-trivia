@@ -126,11 +126,14 @@ function syncAudioUi() {
     el.audioPlayBtn.innerText = activeAudio.paused ? 'Play' : 'Pause';
 }
 
-function loadRoundAudio(audioData, autoplay) {
+function loadRoundAudio(audioData, options = {}) {
     if (!audioData || !audioData.preview_url) {
         el.audioWrap.classList.add('hidden');
         return;
     }
+
+    const autoplay = !!options.autoplay;
+    const hideMetadata = !!options.hideMetadata;
 
     stopAudio();
     activeAudio = new Audio(audioData.preview_url);
@@ -139,7 +142,11 @@ function loadRoundAudio(audioData, autoplay) {
     activeAudio.addEventListener('loadedmetadata', syncAudioUi);
     activeAudio.addEventListener('ended', syncAudioUi);
 
-    el.audioTrack.innerText = `${audioData.track_name || 'Preview'} - ${audioData.artist_name || ''}`;
+    if (hideMetadata) {
+        el.audioTrack.innerText = 'Preview locked until results';
+    } else {
+        el.audioTrack.innerText = `${audioData.track_name || 'Preview'} - ${audioData.artist_name || ''}`;
+    }
     el.audioWrap.classList.remove('hidden');
     syncAudioUi();
 

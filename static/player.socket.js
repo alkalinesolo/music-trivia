@@ -44,7 +44,10 @@ socket.on('new_round', (data) => {
     renderPlayerClues(data.clues, data.timing, mode);
 
     if (mode === 'music_only') {
-        loadRoundAudio(data.round_audio, isRoomHost);
+        loadRoundAudio(data.round_audio, {
+            autoplay: isRoomHost,
+            hideMetadata: true
+        });
     }
 
     if (data.timing && data.timing.remaining_time !== undefined) {
@@ -93,11 +96,17 @@ socket.on('round_results', (data) => {
 
     const previewSource = data.preview && data.preview.preview_url ? data.preview : null;
     if (previewSource) {
-        loadRoundAudio(previewSource, isRoomHost);
+        const shouldAutoplayResultsPreview = isRoomHost && data.game_mode !== 'music_only';
+        loadRoundAudio(previewSource, {
+            autoplay: shouldAutoplayResultsPreview,
+            hideMetadata: false
+        });
         const audioHint = document.createElement('p');
         audioHint.className = 'muted';
         audioHint.style.margin = '10px 0 0 0';
-        audioHint.innerText = isRoomHost ? 'Preview autoplayed for host controls.' : 'Preview ready. Tap Play to listen.';
+        audioHint.innerText = shouldAutoplayResultsPreview
+            ? 'Preview autoplayed for host controls.'
+            : 'Preview ready. Tap Play to listen.';
         el.feedback.appendChild(audioHint);
     }
 
