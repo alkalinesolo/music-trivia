@@ -403,12 +403,6 @@ function startRound() {
         return;
     }
 
-    const playerCount = document.querySelectorAll('#players li').length;
-    if (playerCount === 0) {
-        alert('At least one player must join before starting.');
-        return;
-    }
-
     // Completely wipe out previous results DOM element tree and reset counters
     document.getElementById('results-view').innerHTML = '';
     document.getElementById('guessCount').innerText = 'Guesses: 0/0';
@@ -454,7 +448,7 @@ socket.on('host_room_joined', (data) => {
         list.appendChild(li);
     });
 
-    document.getElementById('btn-start').disabled = data.players.length === 0;
+    document.getElementById('btn-start').disabled = false;
     document.getElementById('btn-settings').disabled = false;
 });
 
@@ -472,7 +466,7 @@ socket.on('update_players', (data) => {
         list.appendChild(li);
     });
 
-    document.getElementById('btn-start').disabled = data.players.length === 0;
+    document.getElementById('btn-start').disabled = false;
 });
 
 socket.on('host_round_started', (data) => {
@@ -519,7 +513,7 @@ socket.on('round_results', (data) => {
     document.getElementById('btn-results').classList.add('hidden');
     const startBtn = document.getElementById('btn-start');
     startBtn.classList.remove('hidden');
-    startBtn.disabled = document.querySelectorAll('#players li').length === 0;
+    startBtn.disabled = false;
     startBtn.innerText = 'Start Round';
     
     // Force View Shift to Results Screen
