@@ -129,11 +129,12 @@
         <p class="status-message">Hang tight. The round will begin as soon as the host starts the game on the main screen.</p>
     </div>
 
-    <div id="host-controls" class="phase-view hidden" style="margin-top: 20px;">
+    <div id="host-controls" class="hidden" style="margin-top: 20px; background: #1c1c1c; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
         <h2>Host Controls</h2>
         <p class="status-message">You created this room, so you can control the round from this device.</p>
         <button id="btn-host-start" onclick="startRoundAsHost()">Start Round</button>
         <button id="btn-host-results" onclick="showResultsAsHost()" style="margin-top: 10px;">Show Results</button>
+        <button id="btn-host-settings" onclick="openHostSettings()" style="margin-top: 10px; background: #ff6b35;">Settings</button>
     </div>
 
     <!-- ========================= -->
@@ -164,6 +165,60 @@
         <h2>Round Ended</h2>
         <div id="personal-feedback"></div>
     </div>
+
+    <div id="player-settings-modal" class="hidden" style="
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        padding: 14px;
+        box-sizing: border-box;
+    ">
+        <div style="
+            background: #222;
+            border-radius: 12px;
+            border: 2px solid #1db954;
+            width: 100%;
+            max-width: 420px;
+            padding: 20px;
+            text-align: left;
+        ">
+            <h3 style="margin-top: 0; color: #1db954;">Host Settings</h3>
+
+            <label style="display: block; margin-bottom: 8px; font-weight: bold;">Rounds Per Game</label>
+            <input id="player-rounds-input" type="number" min="1" max="20" value="5" style="
+                width: 100%;
+                padding: 12px;
+                border-radius: 8px;
+                border: 2px solid #1db954;
+                background: #1b1b1b;
+                color: #fff;
+                box-sizing: border-box;
+                font-size: 16px;
+                margin-bottom: 18px;
+            ">
+
+            <div style="margin-bottom: 18px;">
+                <p style="margin: 0 0 10px 0; font-weight: bold;">Game Mode</p>
+                <label style="display: block; margin-bottom: 8px; cursor: pointer;">
+                    <input type="radio" name="player-game-mode" id="player-game-mode-full" value="full" checked style="margin-right: 8px;">
+                    Full Game (all lyric reveals, 60 seconds)
+                </label>
+                <label style="display: block; cursor: pointer;">
+                    <input type="radio" name="player-game-mode" id="player-game-mode-quick" value="quick" style="margin-right: 8px;">
+                    Quick Game (one lyric clue, 30 seconds)
+                </label>
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+                <button onclick="closeHostSettings()" style="background: #666;">Cancel</button>
+                <button onclick="saveHostSettings()">Save Settings</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -177,6 +232,12 @@ const playerRoomCode = "{{ room_code }}";
 let countdownInterval = null;
 let playerRevealTimeouts = [];
 let isRoomHost = false;
+let playerPreviewAudio = null;
+let playerPreviewAutoplayTimeout = null;
+let hostSettings = {
+    rounds: 5,
+    gameMode: 'full'
+};
 
 // Announce presence to the backend socket network
 socket.emit('player_join', { name: playerNameRaw, room_code: playerRoomCode });
@@ -189,6 +250,51 @@ function startRoundAsHost() {
 function showResultsAsHost() {
     if (!isRoomHost) return;
     socket.emit('show_results', { room_code: playerRoomCode });
+}
+
+function syncHostSettingsFromServer(settings) {
+    if (!settings) {
+        return;
+    }
+
+    if (typeof settings.rounds === 'number') {
+        hostSettings.rounds = settings.rounds;
+    }
+
+    hostSettings.gameMode = settings.game_mode === 'quick' ? 'quick' : 'full';
+}
+
+function openHostSettings() {
+    if (!isRoomHost) {
+        return;
+    }
+
+    document.getElementById('player-rounds-input').value = hostSettings.rounds;
+    document.getElementById('player-game-mode-full').checked = hostSettings.gameMode !== 'quick';
+    document.getElementById('player-game-mode-quick').checked = hostSettings.gameMode === 'quick';
+    document.getElementById('player-settings-modal').classList.remove('hidden');
+}
+
+function closeHostSettings() {
+    document.getElementById('player-settings-modal').classList.add('hidden');
+}
+
+function saveHostSettings() {
+    if (!isRoomHost) {
+        return;
+    }
+
+    const roundsValue = parseInt(document.getElementById('player-rounds-input').value, 10);
+    hostSettings.rounds = Number.isFinite(roundsValue) ? roundsValue : 5;
+    hostSettings.gameMode = document.querySelector('input[name="player-game-mode"]:checked')?.value || 'full';
+
+    socket.emit('update_game_settings', {
+        room_code: playerRoomCode,
+        rounds: hostSettings.rounds,
+        game_mode: hostSettings.gameMode
+    });
+
+    closeHostSettings();
 }
 
 function changeView(activeViewId) {
@@ -227,12 +333,38 @@ function clearPlayerRevealTimers() {
     playerRevealTimeouts = [];
 }
 
-function renderPlayerClues(clues, elapsedSeconds) {
-    const elapsed = Math.max(0, Number(elapsedSeconds) || 0);
-    const lyric2At = 15;
-    const lyric1At = 45;
+function stopPlayerPreviewAudio() {
+    if (playerPreviewAutoplayTimeout) {
+        clearTimeout(playerPreviewAutoplayTimeout);
+        playerPreviewAutoplayTimeout = null;
+    }
+
+    if (!playerPreviewAudio) {
+        return;
+    }
+
+    playerPreviewAudio.pause();
+    playerPreviewAudio.currentTime = 0;
+    playerPreviewAudio = null;
+}
+
+function renderPlayerClues(clues, timing) {
+    const totalTime = Number((timing || {}).total_time) || 60;
+    const remainingTime = Number((timing || {}).remaining_time) || totalTime;
+    const elapsed = Math.max(0, totalTime - remainingTime);
+    const lyric2At = Number((timing || {}).lyric2_reveal_at);
+    const lyric1At = Number((timing || {}).lyric1_reveal_at);
+    const quickLabel = clues.quick_label || 'Clue';
 
     document.getElementById('player-meta').innerText = `Genre: ${clues.genre} | Year: ${clues.year}`;
+
+    if (!Number.isFinite(lyric2At) && !Number.isFinite(lyric1At)) {
+        document.getElementById('player-lyric3').innerText = clues.lyric3 ? `${quickLabel}: "${clues.lyric3}"` : '';
+        document.getElementById('player-lyric2').innerText = '';
+        document.getElementById('player-lyric1').innerText = '';
+        return;
+    }
+
     document.getElementById('player-lyric3').innerText = clues.lyric3 ? `Lyric 3: "${clues.lyric3}"` : '';
 
     if (elapsed >= lyric2At) {
@@ -280,6 +412,8 @@ function submitGuess() {
 // Global engine state coordinator subscription
 socket.on('game_state', (data) => {
     if (data.state === 'guessing') {
+        stopPlayerPreviewAudio();
+
         // Fix 5: Clean old result text elements instantly to clear visual ghosting
         document.getElementById('personal-feedback').innerHTML = '';
         clearPlayerRevealTimers();
@@ -294,6 +428,8 @@ socket.on('game_state', (data) => {
         if (countdownInterval) clearInterval(countdownInterval);
         changeView('results-view');
     } else if (data.state === 'lobby') {
+        stopPlayerPreviewAudio();
+
         // Fix 2: Handle explicit session resets down to baseline lobby
         if (countdownInterval) clearInterval(countdownInterval);
         changeView('lobby-view');
@@ -302,6 +438,7 @@ socket.on('game_state', (data) => {
 
 socket.on('player_role', (data) => {
     isRoomHost = !!(data && data.is_host);
+    syncHostSettingsFromServer(data && data.settings);
     const hostControls = document.getElementById('host-controls');
     if (isRoomHost) {
         hostControls.classList.remove('hidden');
@@ -312,12 +449,11 @@ socket.on('player_role', (data) => {
 
 // Fix 3: Standardize text input wiping and state unlocking within the round creation hook
 socket.on('new_round', (data) => {
+    stopPlayerPreviewAudio();
     clearPlayerRevealTimers();
 
-    const totalTime = data.timing.total_time;
     const remainingTime = data.timing.remaining_time;
-    const elapsed = Math.max(0, totalTime - remainingTime);
-    renderPlayerClues(data.clues, elapsed);
+    renderPlayerClues(data.clues, data.timing);
     
     const titleInput = document.getElementById('player-title-guess');
     const artistInput = document.getElementById('player-artist-guess');
@@ -332,11 +468,12 @@ socket.on('new_round', (data) => {
 });
 
 socket.on('round_results', (data) => {
+    stopPlayerPreviewAudio();
+
     const feedbackDiv = document.getElementById('personal-feedback');
     feedbackDiv.innerHTML = '';
 
     changeView('results-view');
-    let previewAudio = null;
 
     const answerHeader = document.createElement('p');
     answerHeader.className = 'status-message';
@@ -384,9 +521,10 @@ socket.on('round_results', (data) => {
             audio.preload = 'auto';
             audio.src = data.preview.preview_url;
             audio.style.marginTop = '8px';
+            playerPreviewAudio = audio;
             feedbackDiv.appendChild(audio);
             
-            setTimeout(() => {
+            playerPreviewAutoplayTimeout = setTimeout(() => {
                 audio.play().catch(() => {
                     console.log('Autoplay blocked or preview already playing');
                 });
@@ -416,6 +554,14 @@ socket.on('round_results', (data) => {
         `;
         feedbackDiv.appendChild(card);
     });
+});
+
+socket.on('settings_updated', (data) => {
+    syncHostSettingsFromServer(data && data.settings);
+});
+
+window.addEventListener('beforeunload', () => {
+    stopPlayerPreviewAudio();
 });
 </script>
 

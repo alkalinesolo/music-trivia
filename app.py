@@ -13,7 +13,6 @@ from game_core import (
     EARLY_LOCK_BEFORE_LYRIC2_POINTS,
     ARTIST_POINTS,
     TITLE_POINTS,
-    TOTAL_ROUND_TIME,
     build_round_payload,
     calculate_artist_score,
     calculate_early_lock_bonus,
@@ -24,6 +23,7 @@ from game_core import (
     get_host_room,
     get_player_room,
     get_remaining_time,
+    get_round_total_time,
     get_room_state,
     get_song_artist,
     get_song_title,
@@ -71,6 +71,26 @@ def filter_songs_by_settings(song_list, decades_filter, genres_filter):
             filtered.append(song)
     
     return filtered
+
+
+def serialize_room_settings(room_state):
+    return {
+        'rounds': room_state.get('rounds_per_game', 5),
+        'decades': sorted(list(room_state.get('decades_filter', set()))),
+        'genres': sorted(list(room_state.get('genres_filter', set()))),
+        'game_mode': room_state.get('game_mode', 'full')
+    }
+
+
+def select_quick_clue_key(song):
+    options = []
+    if song.get('lyric1'):
+        options.append('lyric1')
+    if song.get('lyric2'):
+        options.append('lyric2')
+    if not options:
+        return 'lyric2'
+    return random.choice(options)
 
 # =========================
 # ROUTES
@@ -134,7 +154,8 @@ def handle_host_join(data):
     emit('host_room_joined', {
         'room_code': room_code,
         'players': room_state['players'],
-        'leaderboard': room_state['leaderboard']
+        'leaderboard': room_state['leaderboard'],
+        'settings': serialize_room_settings(room_state)
     }, to=request.sid)
 
     print(f"Host connected to room {room_code}")
@@ -142,7 +163,13 @@ def handle_host_join(data):
     if room_state["phase"] == "guessing" and room_state["current_song"]:
         remaining_time = get_remaining_time(room_state)
         emit('host_round_started', {
-            **build_round_payload(room_state['current_song'], remaining_time),
+            **build_round_payload(
+                room_state['current_song'],
+                remaining_time,
+                game_mode=room_state.get('game_mode', 'full'),
+                quick_clue_key=room_state.get('quick_clue_key'),
+                total_time=room_state.get('round_total_time')
+            ),
             'total_players': len(room_state['players'])
         }, to=request.sid)
         emit('guess_count', {
@@ -179,7 +206,8 @@ def handle_player_join(data):
         {
             'is_host': room_has_host_control(room_code, request.sid),
             'is_owner': room_state.get('owner_sid') == request.sid,
-            'owner_name': room_state.get('owner_name')
+            'owner_name': room_state.get('owner_name'),
+            'settings': serialize_room_settings(room_state)
         },
         to=request.sid
     )
@@ -197,7 +225,13 @@ def handle_player_join(data):
         emit('game_state', {'state': 'guessing'}, to=request.sid)
         emit(
             'new_round',
-            build_round_payload(room_state['current_song'], remaining_time),
+            build_round_payload(
+                room_state['current_song'],
+                remaining_time,
+                game_mode=room_state.get('game_mode', 'full'),
+                quick_clue_key=room_state.get('quick_clue_key'),
+                total_time=room_state.get('round_total_time')
+            ),
             to=request.sid
         )
     elif room_state["phase"] == "results":
@@ -235,6 +269,10 @@ def start_round_for_room(room_code):
         return
     
     room_state['current_song'] = random.choice(filtered_songs)
+    room_state['quick_clue_key'] = None
+    if room_state.get('game_mode') == 'quick':
+        room_state['quick_clue_key'] = select_quick_clue_key(room_state['current_song'])
+    room_state['round_total_time'] = get_round_total_time(room_state)
     room_state['phase'] = 'guessing'
     room_state['round_started_at'] = time.time()
     room_state['last_results'] = None
@@ -247,7 +285,12 @@ def start_round_for_room(room_code):
     # Send lyric to players
     emit(
         'new_round',
-        build_round_payload(room_state['current_song']),
+        build_round_payload(
+            room_state['current_song'],
+            game_mode=room_state.get('game_mode', 'full'),
+            quick_clue_key=room_state.get('quick_clue_key'),
+            total_time=room_state.get('round_total_time')
+        ),
         room=get_player_room(room_code)
     )
 
@@ -255,14 +298,19 @@ def start_round_for_room(room_code):
     emit(
         'host_round_started',
         {
-            **build_round_payload(room_state['current_song']),
+            **build_round_payload(
+                room_state['current_song'],
+                game_mode=room_state.get('game_mode', 'full'),
+                quick_clue_key=room_state.get('quick_clue_key'),
+                total_time=room_state.get('round_total_time')
+            ),
             'total_players': len(room_state['players'])
         },
         room=get_host_room(room_code)
     )
 
     # Start the automated round closing countdown thread
-    room_state['round_timer'] = threading.Timer(TOTAL_ROUND_TIME, auto_close_round, args=[room_code])
+    room_state['round_timer'] = threading.Timer(room_state['round_total_time'], auto_close_round, args=[room_code])
     room_state['round_timer'].start()
 
 
@@ -339,6 +387,7 @@ def handle_start_round(data):
 
 @socketio.on('update_game_settings')
 def handle_update_game_settings(data):
+    data = data or {}
     room_code = normalize_room_code((data or {}).get('room_code'))
     if not room_code:
         emit('host_error', {'message': 'Please choose a valid room code first.'}, to=request.sid)
@@ -356,8 +405,20 @@ def handle_update_game_settings(data):
         room_state['decades_filter'] = set(data.get('decades', []))
     if 'genres' in data:
         room_state['genres_filter'] = set(g.lower() for g in data.get('genres', []))
+    if 'game_mode' in data:
+        requested_mode = str(data.get('game_mode', 'full')).strip().lower()
+        room_state['game_mode'] = 'quick' if requested_mode == 'quick' else 'full'
+        if room_state.get('phase') != 'guessing':
+            room_state['round_total_time'] = get_round_total_time(room_state)
     
-    emit('settings_updated', {'message': 'Settings updated successfully'}, to=request.sid)
+    emit(
+        'settings_updated',
+        {
+            'message': 'Settings updated successfully',
+            'settings': serialize_room_settings(room_state)
+        },
+        to=request.sid
+    )
 
 
 @socketio.on('disconnect')
@@ -432,6 +493,7 @@ def finalize_results_for_room(room_code):
         'genre': room_state['current_song'].get('genre', 'unknown'),
         'genre_label': format_genre_label(room_state['current_song'].get('genre', 'unknown')),
         'year': get_song_year(room_state['current_song']),
+        'game_mode': room_state.get('game_mode', 'full'),
         'preview': fetch_itunes_preview(correct_title, correct_artist),
         'scoring': {
             'title_points': TITLE_POINTS,

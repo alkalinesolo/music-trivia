@@ -4,6 +4,7 @@ import json
 import time
 
 TOTAL_ROUND_TIME = 60
+QUICK_ROUND_TIME = 30
 LYRIC2_REVEAL_AT = 15
 LYRIC1_REVEAL_AT = 45
 DEFAULT_ROOM_CODE = "MAIN"
@@ -45,10 +46,19 @@ def get_room_state(room_code):
             "owner_sid": None,
             "owner_name": None,
             "rounds_per_game": 5,
+            "game_mode": "full",
+            "round_total_time": TOTAL_ROUND_TIME,
+            "quick_clue_key": None,
             "decades_filter": {"1960s", "1970s", "1980s", "1990s", "2000s", "2010s", "2020s"},
             "genres_filter": {"rock", "pop", "country", "r&b", "motown", "hip hop", "hip-hop", "hip_hop_r_and_b", "r_and_b_soul", "reggae", "grunge", "alternative rock", "soft rock", "folk rock"},
         }
     return rooms[room_code]
+
+
+def get_round_total_time(room_state):
+    if (room_state or {}).get("game_mode") == "quick":
+        return QUICK_ROUND_TIME
+    return TOTAL_ROUND_TIME
 
 
 def claim_room_owner(room_state, player_name, sid):
@@ -69,11 +79,12 @@ def room_has_host_control(room_code, sid):
 
 
 def get_remaining_time(room_state):
+    total_time = int((room_state or {}).get("round_total_time") or get_round_total_time(room_state))
     if not room_state["round_started_at"]:
-        return TOTAL_ROUND_TIME
+        return total_time
 
     elapsed = int(time.time() - room_state["round_started_at"])
-    return max(0, TOTAL_ROUND_TIME - elapsed)
+    return max(0, total_time - elapsed)
 
 
 def get_song_title(song):
@@ -108,7 +119,23 @@ def format_genre_label(genre):
     return str(genre).replace("_", " ").title()
 
 
-def build_clues(song):
+def build_clues(song, game_mode="full", quick_clue_key=None):
+    if game_mode == "quick":
+        preferred_key = quick_clue_key if quick_clue_key in {"lyric1", "lyric2"} else "lyric2"
+        fallback_key = "lyric1" if preferred_key == "lyric2" else "lyric2"
+        quick_clue = song.get(preferred_key) or song.get(fallback_key) or song.get("lyric3", "")
+        quick_label = "Lyric 1" if preferred_key == "lyric1" else "Lyric 2"
+
+        return {
+            "genre": song.get("genre", "unknown"),
+            "genre_label": format_genre_label(song.get("genre", "unknown")),
+            "year": get_song_year(song),
+            "lyric3": quick_clue,
+            "lyric2": "",
+            "lyric1": "",
+            "quick_label": quick_label,
+        }
+
     return {
         "genre": song.get("genre", "unknown"),
         "genre_label": format_genre_label(song.get("genre", "unknown")),
@@ -116,19 +143,25 @@ def build_clues(song):
         "lyric3": song.get("lyric3", ""),
         "lyric2": song.get("lyric2", ""),
         "lyric1": song.get("lyric1", ""),
+        "quick_label": None,
     }
 
 
-def build_round_payload(song, remaining_time=None):
+def build_round_payload(song, remaining_time=None, game_mode="full", quick_clue_key=None, total_time=None):
+    resolved_total_time = int(total_time or (QUICK_ROUND_TIME if game_mode == "quick" else TOTAL_ROUND_TIME))
     if remaining_time is None:
-        remaining_time = TOTAL_ROUND_TIME
+        remaining_time = resolved_total_time
+
+    lyric2_reveal_at = LYRIC2_REVEAL_AT if game_mode == "full" else None
+    lyric1_reveal_at = LYRIC1_REVEAL_AT if game_mode == "full" else None
 
     return {
-        "clues": build_clues(song),
+        "clues": build_clues(song, game_mode=game_mode, quick_clue_key=quick_clue_key),
+        "game_mode": game_mode,
         "timing": {
-            "total_time": TOTAL_ROUND_TIME,
-            "lyric2_reveal_at": LYRIC2_REVEAL_AT,
-            "lyric1_reveal_at": LYRIC1_REVEAL_AT,
+            "total_time": resolved_total_time,
+            "lyric2_reveal_at": lyric2_reveal_at,
+            "lyric1_reveal_at": lyric1_reveal_at,
             "remaining_time": remaining_time,
         },
     }
