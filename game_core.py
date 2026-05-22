@@ -5,6 +5,7 @@ import time
 
 TOTAL_ROUND_TIME = 60
 QUICK_ROUND_TIME = 30
+MUSIC_ONLY_ROUND_TIME = 30
 LYRIC2_REVEAL_AT = 15
 LYRIC1_REVEAL_AT = 45
 DEFAULT_ROOM_CODE = "MAIN"
@@ -49,15 +50,19 @@ def get_room_state(room_code):
             "game_mode": "full",
             "round_total_time": TOTAL_ROUND_TIME,
             "quick_clue_key": None,
+            "round_preview": None,
             "decades_filter": {"1960s", "1970s", "1980s", "1990s", "2000s", "2010s", "2020s"},
-            "genres_filter": {"rock", "pop", "country", "r&b", "motown", "hip hop", "hip-hop", "hip_hop_r_and_b", "r_and_b_soul", "reggae", "grunge", "alternative rock", "soft rock", "folk rock"},
+            "genres_filter": {"rock", "pop", "country", "hip-hop/r&b", "motown", "reggae", "grunge"},
         }
     return rooms[room_code]
 
 
 def get_round_total_time(room_state):
-    if (room_state or {}).get("game_mode") == "quick":
+    mode = (room_state or {}).get("game_mode")
+    if mode == "quick":
         return QUICK_ROUND_TIME
+    if mode == "music_only":
+        return MUSIC_ONLY_ROUND_TIME
     return TOTAL_ROUND_TIME
 
 
@@ -113,13 +118,24 @@ def format_genre_label(genre):
         return "Unknown"
 
     normalized = str(genre).strip().lower()
-    if normalized in {"r_and_b_soul", "hip_hop_r_and_b"}:
-        return "R&B"
+    if normalized in {"r_and_b_soul", "hip_hop_r_and_b", "hip-hop/r&b", "hip hop/r&b"}:
+        return "Hip-Hop/R&B"
 
     return str(genre).replace("_", " ").title()
 
 
 def build_clues(song, game_mode="full", quick_clue_key=None):
+    if game_mode == "music_only":
+        return {
+            "genre": song.get("genre", "unknown"),
+            "genre_label": format_genre_label(song.get("genre", "unknown")),
+            "year": get_song_year(song),
+            "lyric3": "",
+            "lyric2": "",
+            "lyric1": "",
+            "quick_label": None,
+        }
+
     if game_mode == "quick":
         preferred_key = quick_clue_key if quick_clue_key in {"lyric1", "lyric2"} else "lyric2"
         fallback_key = "lyric1" if preferred_key == "lyric2" else "lyric2"
@@ -146,8 +162,13 @@ def build_clues(song, game_mode="full", quick_clue_key=None):
     }
 
 
-def build_round_payload(song, remaining_time=None, game_mode="full", quick_clue_key=None, total_time=None):
-    resolved_total_time = int(total_time or (QUICK_ROUND_TIME if game_mode == "quick" else TOTAL_ROUND_TIME))
+def build_round_payload(song, remaining_time=None, game_mode="full", quick_clue_key=None, total_time=None, round_audio=None):
+    if game_mode in {"quick", "music_only"}:
+        default_total_time = QUICK_ROUND_TIME
+    else:
+        default_total_time = TOTAL_ROUND_TIME
+
+    resolved_total_time = int(total_time or default_total_time)
     if remaining_time is None:
         remaining_time = resolved_total_time
 
@@ -157,6 +178,7 @@ def build_round_payload(song, remaining_time=None, game_mode="full", quick_clue_
     return {
         "clues": build_clues(song, game_mode=game_mode, quick_clue_key=quick_clue_key),
         "game_mode": game_mode,
+        "round_audio": round_audio,
         "timing": {
             "total_time": resolved_total_time,
             "lyric2_reveal_at": lyric2_reveal_at,

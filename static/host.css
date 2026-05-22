@@ -1,0 +1,77 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin: 0;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 20px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: none;
+    background: #1db954;
+    color: white;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #1ed760;
+}
+
+#players li {
+    list-style: none;
+    margin: 8px;
+    font-size: 22px;
+    display: inline-block;
+    background: #222;
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+#qrcode {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    padding: 10px;
+    background: white;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.result {
+    background: #222;
+    padding: 15px;
+    margin: 15px auto;
+    width: 500px;
+    border-radius: 10px;
+    border-left: 5px solid #1db954;
+    text-align: left;
+}
+
+.result h3 {
+    margin: 0 0 5px 0;
+    color: #1db954;
+}
+
+.result p {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+#lyric {
+    font-size: 42px;
+    margin: 40px auto;
+    max-width: 80%;
+    color: #f5f5f5;
+    font-style: italic;
+}
+
+.hidden {
+    display: none !important;
+}

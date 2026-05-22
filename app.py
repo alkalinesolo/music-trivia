@@ -51,10 +51,42 @@ def get_decade(year):
     decade = (year_value // 10) * 10
     return f"{decade}s"
 
+
+def canonicalize_genre_key(raw_genre):
+    normalized = str(raw_genre or '').strip().lower().replace('_', ' ')
+    if not normalized:
+        return ''
+
+    if 'rock' in normalized:
+        return 'rock'
+
+    hiphop_rnb_aliases = {
+        'hip hop',
+        'hip-hop',
+        'hiphop',
+        'r&b',
+        'r and b',
+        'r&b soul',
+        'r and b soul',
+        'hip hop r and b',
+        'hip hop/r&b',
+        'hip-hop/r&b',
+        'hip hop r&b',
+        'hip-hop r&b'
+    }
+    if normalized in hiphop_rnb_aliases:
+        return 'hip-hop/r&b'
+
+    return normalized
+
 # Helper function to filter songs by decades and genres
 def filter_songs_by_settings(song_list, decades_filter, genres_filter):
     decades_filter = {str(decade) for decade in (decades_filter or []) if str(decade).strip()}
-    genres_filter = {str(genre).strip().lower() for genre in (genres_filter or []) if str(genre).strip()}
+    genres_filter = {
+        canonicalize_genre_key(genre)
+        for genre in (genres_filter or [])
+        if canonicalize_genre_key(genre)
+    }
 
     if not decades_filter and not genres_filter:
         return song_list
@@ -62,7 +94,7 @@ def filter_songs_by_settings(song_list, decades_filter, genres_filter):
     filtered = []
     for song in song_list:
         song_decade = get_decade(song.get('year'))
-        song_genre = song.get('genre', '').lower()
+        song_genre = canonicalize_genre_key(song.get('genre', ''))
 
         decade_matches = not decades_filter or song_decade in decades_filter
         genre_matches = not genres_filter or song_genre in genres_filter
@@ -77,7 +109,7 @@ def serialize_room_settings(room_state):
     return {
         'rounds': room_state.get('rounds_per_game', 5),
         'decades': sorted(list(room_state.get('decades_filter', set()))),
-        'genres': sorted(list(room_state.get('genres_filter', set()))),
+        'genres': sorted({canonicalize_genre_key(g) for g in room_state.get('genres_filter', set()) if canonicalize_genre_key(g)}),
         'game_mode': room_state.get('game_mode', 'full')
     }
 
@@ -91,6 +123,20 @@ def select_quick_clue_key(song):
     if not options:
         return 'lyric2'
     return random.choice(options)
+
+
+def select_round_song_and_preview(filtered_songs, game_mode):
+    if game_mode != 'music_only':
+        return random.choice(filtered_songs), None
+
+    shuffled = filtered_songs[:]
+    random.shuffle(shuffled)
+    for song in shuffled[:12]:
+        preview = fetch_itunes_preview(get_song_title(song), get_song_artist(song))
+        if preview and preview.get('preview_url'):
+            return song, preview
+
+    return None, None
 
 # =========================
 # ROUTES
@@ -168,7 +214,8 @@ def handle_host_join(data):
                 remaining_time,
                 game_mode=room_state.get('game_mode', 'full'),
                 quick_clue_key=room_state.get('quick_clue_key'),
-                total_time=room_state.get('round_total_time')
+                total_time=room_state.get('round_total_time'),
+                round_audio=room_state.get('round_preview')
             ),
             'total_players': len(room_state['players'])
         }, to=request.sid)
@@ -230,7 +277,8 @@ def handle_player_join(data):
                 remaining_time,
                 game_mode=room_state.get('game_mode', 'full'),
                 quick_clue_key=room_state.get('quick_clue_key'),
-                total_time=room_state.get('round_total_time')
+                total_time=room_state.get('round_total_time'),
+                round_audio=room_state.get('round_preview')
             ),
             to=request.sid
         )
@@ -268,10 +316,26 @@ def start_round_for_room(room_code):
         )
         return
     
-    room_state['current_song'] = random.choice(filtered_songs)
+    selected_song, selected_preview = select_round_song_and_preview(
+        filtered_songs,
+        room_state.get('game_mode', 'full')
+    )
+    if not selected_song:
+        emit(
+            'host_error',
+            {'message': 'Music Only mode could not find a playable iTunes preview. Please try again.'},
+            to=request.sid
+        )
+        return
+
+    room_state['current_song'] = selected_song
+    room_state['round_preview'] = selected_preview
     room_state['quick_clue_key'] = None
     if room_state.get('game_mode') == 'quick':
         room_state['quick_clue_key'] = select_quick_clue_key(room_state['current_song'])
+        room_state['round_preview'] = None
+    elif room_state.get('game_mode') != 'music_only':
+        room_state['round_preview'] = None
     room_state['round_total_time'] = get_round_total_time(room_state)
     room_state['phase'] = 'guessing'
     room_state['round_started_at'] = time.time()
@@ -289,7 +353,8 @@ def start_round_for_room(room_code):
             room_state['current_song'],
             game_mode=room_state.get('game_mode', 'full'),
             quick_clue_key=room_state.get('quick_clue_key'),
-            total_time=room_state.get('round_total_time')
+            total_time=room_state.get('round_total_time'),
+            round_audio=room_state.get('round_preview')
         ),
         room=get_player_room(room_code)
     )
@@ -302,7 +367,8 @@ def start_round_for_room(room_code):
                 room_state['current_song'],
                 game_mode=room_state.get('game_mode', 'full'),
                 quick_clue_key=room_state.get('quick_clue_key'),
-                total_time=room_state.get('round_total_time')
+                total_time=room_state.get('round_total_time'),
+                round_audio=room_state.get('round_preview')
             ),
             'total_players': len(room_state['players'])
         },
@@ -322,10 +388,12 @@ def auto_close_round(room_code):
 
 @socketio.on('submit_guess')
 def handle_submit_guess(data):
+    data = data or {}
     player_name = (data.get('name') or '').strip()
     room_code = normalize_room_code(data.get('room_code'))
     title_guess = (data.get('title_guess') or '').strip()
     artist_guess = (data.get('artist_guess') or '').strip()
+    auto_lock = bool(data.get('auto_lock'))
 
     if not player_name or not room_code:
         return
@@ -334,7 +402,7 @@ def handle_submit_guess(data):
     if not room_state or room_state['phase'] != 'guessing':
         return
 
-    if not title_guess and not artist_guess:
+    if not title_guess and not artist_guess and not auto_lock:
         return
 
     # Bug Fix: Enforce single-submission server-side to block client injection/spam
@@ -345,9 +413,10 @@ def handle_submit_guess(data):
     room_state['guesses'][player_name] = {
         'title_guess': title_guess,
         'artist_guess': artist_guess,
-        'submitted_at': time.time()
+        'submitted_at': time.time(),
+        'auto_locked': auto_lock
     }
-    print(f"{player_name} [{room_code}] title='{title_guess}' artist='{artist_guess}'")
+    print(f"{player_name} [{room_code}] title='{title_guess}' artist='{artist_guess}' auto_lock={auto_lock}")
 
     # Acknowledge the player's app that their guess is safely locked down
     emit('guess_locked', {'status': 'success'}, to=request.sid)
@@ -404,10 +473,17 @@ def handle_update_game_settings(data):
     if 'decades' in data:
         room_state['decades_filter'] = set(data.get('decades', []))
     if 'genres' in data:
-        room_state['genres_filter'] = set(g.lower() for g in data.get('genres', []))
+        room_state['genres_filter'] = {
+            canonicalize_genre_key(g)
+            for g in data.get('genres', [])
+            if canonicalize_genre_key(g)
+        }
     if 'game_mode' in data:
         requested_mode = str(data.get('game_mode', 'full')).strip().lower()
-        room_state['game_mode'] = 'quick' if requested_mode == 'quick' else 'full'
+        if requested_mode in {'quick', 'music_only'}:
+            room_state['game_mode'] = requested_mode
+        else:
+            room_state['game_mode'] = 'full'
         if room_state.get('phase') != 'guessing':
             room_state['round_total_time'] = get_round_total_time(room_state)
     
