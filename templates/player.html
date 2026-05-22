@@ -213,6 +213,16 @@
                 </label>
             </div>
 
+            <div style="margin-bottom: 18px;">
+                <p style="margin: 0 0 10px 0; font-weight: bold;">Decades</p>
+                <div id="player-decades-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;"></div>
+            </div>
+
+            <div style="margin-bottom: 18px;">
+                <p style="margin: 0 0 10px 0; font-weight: bold;">Genres</p>
+                <div id="player-genres-container" style="max-height: 180px; overflow-y: auto;"></div>
+            </div>
+
             <div style="display: flex; gap: 10px;">
                 <button onclick="closeHostSettings()" style="background: #666;">Cancel</button>
                 <button onclick="saveHostSettings()">Save Settings</button>
@@ -233,10 +243,13 @@ let countdownInterval = null;
 let playerRevealTimeouts = [];
 let isRoomHost = false;
 let playerPreviewAudio = null;
-let playerPreviewAutoplayTimeout = null;
+const DECADES = ['1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s'];
+const GENRES = ['rock', 'pop', 'country', 'r&b', 'motown', 'hip hop', 'hip-hop', 'hip_hop_r_and_b', 'r_and_b_soul', 'reggae', 'grunge', 'alternative rock', 'soft rock', 'folk rock'];
 let hostSettings = {
     rounds: 5,
-    gameMode: 'full'
+    gameMode: 'full',
+    decades: new Set(DECADES),
+    genres: new Set(GENRES)
 };
 
 // Announce presence to the backend socket network
@@ -262,6 +275,38 @@ function syncHostSettingsFromServer(settings) {
     }
 
     hostSettings.gameMode = settings.game_mode === 'quick' ? 'quick' : 'full';
+
+    if (Array.isArray(settings.decades)) {
+        hostSettings.decades = new Set(settings.decades);
+    }
+
+    if (Array.isArray(settings.genres)) {
+        hostSettings.genres = new Set(settings.genres);
+    }
+}
+
+function initializePlayerSettingsUI() {
+    const decadesContainer = document.getElementById('player-decades-container');
+    DECADES.forEach(decade => {
+        const label = document.createElement('label');
+        label.style.display = 'flex';
+        label.style.alignItems = 'center';
+        label.style.cursor = 'pointer';
+        label.style.marginBottom = '8px';
+        label.innerHTML = `<input type="checkbox" class="player-decade-checkbox" value="${decade}" checked style="margin-right: 8px;"> ${decade}`;
+        decadesContainer.appendChild(label);
+    });
+
+    const genresContainer = document.getElementById('player-genres-container');
+    GENRES.forEach(genre => {
+        const label = document.createElement('label');
+        label.style.display = 'flex';
+        label.style.alignItems = 'center';
+        label.style.cursor = 'pointer';
+        label.style.marginBottom = '8px';
+        label.innerHTML = `<input type="checkbox" class="player-genre-checkbox" value="${genre}" checked style="margin-right: 8px;"> ${genre}`;
+        genresContainer.appendChild(label);
+    });
 }
 
 function openHostSettings() {
@@ -272,6 +317,12 @@ function openHostSettings() {
     document.getElementById('player-rounds-input').value = hostSettings.rounds;
     document.getElementById('player-game-mode-full').checked = hostSettings.gameMode !== 'quick';
     document.getElementById('player-game-mode-quick').checked = hostSettings.gameMode === 'quick';
+    document.querySelectorAll('.player-decade-checkbox').forEach(cb => {
+        cb.checked = hostSettings.decades.has(cb.value);
+    });
+    document.querySelectorAll('.player-genre-checkbox').forEach(cb => {
+        cb.checked = hostSettings.genres.has(cb.value);
+    });
     document.getElementById('player-settings-modal').classList.remove('hidden');
 }
 
@@ -287,11 +338,21 @@ function saveHostSettings() {
     const roundsValue = parseInt(document.getElementById('player-rounds-input').value, 10);
     hostSettings.rounds = Number.isFinite(roundsValue) ? roundsValue : 5;
     hostSettings.gameMode = document.querySelector('input[name="player-game-mode"]:checked')?.value || 'full';
+    hostSettings.decades.clear();
+    hostSettings.genres.clear();
+    document.querySelectorAll('.player-decade-checkbox:checked').forEach(cb => {
+        hostSettings.decades.add(cb.value);
+    });
+    document.querySelectorAll('.player-genre-checkbox:checked').forEach(cb => {
+        hostSettings.genres.add(cb.value);
+    });
 
     socket.emit('update_game_settings', {
         room_code: playerRoomCode,
         rounds: hostSettings.rounds,
-        game_mode: hostSettings.gameMode
+        game_mode: hostSettings.gameMode,
+        decades: Array.from(hostSettings.decades),
+        genres: Array.from(hostSettings.genres)
     });
 
     closeHostSettings();
@@ -334,11 +395,6 @@ function clearPlayerRevealTimers() {
 }
 
 function stopPlayerPreviewAudio() {
-    if (playerPreviewAutoplayTimeout) {
-        clearTimeout(playerPreviewAutoplayTimeout);
-        playerPreviewAutoplayTimeout = null;
-    }
-
     if (!playerPreviewAudio) {
         return;
     }
@@ -354,7 +410,7 @@ function renderPlayerClues(clues, timing) {
     const elapsed = Math.max(0, totalTime - remainingTime);
     const lyric2At = Number((timing || {}).lyric2_reveal_at);
     const lyric1At = Number((timing || {}).lyric1_reveal_at);
-    const quickLabel = clues.quick_label || 'Clue';
+    const quickLabel = clues.quick_label || 'Lyric';
 
     document.getElementById('player-meta').innerText = `Genre: ${clues.genre} | Year: ${clues.year}`;
 
@@ -385,6 +441,8 @@ function renderPlayerClues(clues, timing) {
         }, (lyric1At - elapsed) * 1000));
     }
 }
+
+initializePlayerSettingsUI();
 
 function submitGuess() {
     const titleInput = document.getElementById('player-title-guess');
@@ -518,17 +576,16 @@ socket.on('round_results', (data) => {
 
             const audio = document.createElement('audio');
             audio.controls = true;
-            audio.preload = 'auto';
+            audio.autoplay = true;
+            audio.preload = 'metadata';
             audio.src = data.preview.preview_url;
             audio.style.marginTop = '8px';
             playerPreviewAudio = audio;
             feedbackDiv.appendChild(audio);
-            
-            playerPreviewAutoplayTimeout = setTimeout(() => {
-                audio.play().catch(() => {
-                    console.log('Autoplay blocked or preview already playing');
-                });
-            }, 15000);
+
+            audio.play().catch(() => {
+                console.log('Autoplay blocked or preview already playing');
+            });
         }
     }
 

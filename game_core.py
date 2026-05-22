@@ -123,8 +123,7 @@ def build_clues(song, game_mode="full", quick_clue_key=None):
     if game_mode == "quick":
         preferred_key = quick_clue_key if quick_clue_key in {"lyric1", "lyric2"} else "lyric2"
         fallback_key = "lyric1" if preferred_key == "lyric2" else "lyric2"
-        quick_clue = song.get(preferred_key) or song.get(fallback_key) or song.get("lyric3", "")
-        quick_label = "Lyric 1" if preferred_key == "lyric1" else "Lyric 2"
+        quick_clue = song.get(preferred_key) or song.get(fallback_key) or ""
 
         return {
             "genre": song.get("genre", "unknown"),
@@ -133,7 +132,7 @@ def build_clues(song, game_mode="full", quick_clue_key=None):
             "lyric3": quick_clue,
             "lyric2": "",
             "lyric1": "",
-            "quick_label": quick_label,
+            "quick_label": "Lyric",
         }
 
     return {

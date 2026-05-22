@@ -414,7 +414,7 @@ function renderHostClues(clues, timing) {
     const elapsed = Math.max(0, totalTime - remainingTime);
     const lyric2At = Number((timing || {}).lyric2_reveal_at);
     const lyric1At = Number((timing || {}).lyric1_reveal_at);
-    const quickLabel = clues.quick_label || 'Clue';
+    const quickLabel = clues.quick_label || 'Lyric';
 
     document.getElementById('host-meta').innerText = `Genre: ${clues.genre_label || clues.genre} | Year: ${clues.year}`;
 
@@ -600,7 +600,8 @@ socket.on('round_results', (data) => {
 
         const audio = document.createElement('audio');
         audio.controls = true;
-        audio.preload = 'auto';
+        audio.autoplay = true;
+        audio.preload = 'metadata';
         audio.src = data.preview.preview_url;
         audio.style.marginBottom = '16px';
         currentHostPreviewAudio = audio;
