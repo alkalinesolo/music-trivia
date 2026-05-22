@@ -476,6 +476,11 @@ socket.on('update_players', (data) => {
 });
 
 socket.on('host_round_started', (data) => {
+    // Ensure host controls are in active-round mode.
+    document.getElementById('btn-start').classList.add('hidden');
+    document.getElementById('btn-results').classList.remove('hidden');
+    document.getElementById('btn-results').disabled = false;
+
     clearHostRevealTimers();
     const totalTime = data.timing.total_time;
     const remainingTime = data.timing.remaining_time;
@@ -509,6 +514,13 @@ socket.on('round_results', (data) => {
 
     const resultsDiv = document.getElementById('results-view');
     resultsDiv.innerHTML = '';
+
+    // Round has ended, so return host controls to next-round mode.
+    document.getElementById('btn-results').classList.add('hidden');
+    const startBtn = document.getElementById('btn-start');
+    startBtn.classList.remove('hidden');
+    startBtn.disabled = document.querySelectorAll('#players li').length === 0;
+    startBtn.innerText = 'Start Round';
     
     // Force View Shift to Results Screen
     showView('results-view');
