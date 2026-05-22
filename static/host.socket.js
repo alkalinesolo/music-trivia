@@ -50,7 +50,10 @@ socket.on('host_round_started', (data) => {
     clearHostRevealTimers();
     const remainingTime = data.timing.remaining_time;
 
-    renderHostClues(data.clues, data.timing);
+    renderHostClues(data.clues, data.timing, {
+        roundNumber: data.round_number,
+        totalRounds: data.rounds_per_game
+    });
     if (data.game_mode === 'music_only') {
         playHostRoundAudio(data.round_audio);
     }
@@ -92,14 +95,22 @@ socket.on('round_results', (data) => {
     const startBtn = document.getElementById('btn-start');
     startBtn.classList.remove('hidden');
     startBtn.disabled = false;
-    startBtn.innerText = 'Start Round';
+    startBtn.innerText = data.game_over ? 'Start New Game' : 'Start Round';
 
     showView('results-view');
 
     const title = document.createElement('h2');
     title.style.color = '#1db954';
-    title.innerText = `Answer: ${data.answer} by ${data.artist} (${data.year}, ${data.genre_label || data.genre})`;
+    title.innerText = `Song ${data.round_number || 0}/${data.rounds_per_game || 0} - Answer: ${data.answer} by ${data.artist} (${data.year}, ${data.genre_label || data.genre})`;
     resultsDiv.appendChild(title);
+
+    if (data.game_over) {
+        const gameComplete = document.createElement('p');
+        gameComplete.style.color = '#ffcf66';
+        gameComplete.style.fontWeight = 'bold';
+        gameComplete.innerText = 'Game complete. Press Start New Game to play again.';
+        resultsDiv.appendChild(gameComplete);
+    }
 
     if (data.preview && data.preview.preview_url) {
         const audioTitle = document.createElement('p');
@@ -155,6 +166,60 @@ socket.on('round_results', (data) => {
         `;
         resultsDiv.appendChild(div);
     });
+
+    if (data.game_over && data.game_summary && Array.isArray(data.game_summary.players)) {
+        const board = document.createElement('section');
+        board.className = 'final-scoreboard';
+
+        const boardTitle = document.createElement('h2');
+        boardTitle.className = 'scoreboard-title';
+        boardTitle.innerText = 'Final Scoreboard';
+        board.appendChild(boardTitle);
+
+        const boardSub = document.createElement('p');
+        boardSub.className = 'scoreboard-subtitle';
+        boardSub.innerText = 'Tap a player to expand song-by-song scoring.';
+        board.appendChild(boardSub);
+
+        data.game_summary.players.forEach((playerEntry, idx) => {
+            const details = document.createElement('details');
+            details.className = 'score-player';
+
+            const summary = document.createElement('summary');
+            summary.innerHTML = `
+                <span class="rank-badge">#${idx + 1}</span>
+                <span class="player-name">${playerEntry.player}</span>
+                <span class="player-total">${playerEntry.score} pts</span>
+            `;
+            details.appendChild(summary);
+
+            const songList = document.createElement('div');
+            songList.className = 'score-song-list';
+
+            playerEntry.songs.forEach(song => {
+                const songItem = document.createElement('div');
+                songItem.className = 'score-song-item';
+                const noGuessBadge = song.no_guess ? '<span class="no-guess-pill">No Guess</span>' : '';
+
+                songItem.innerHTML = `
+                    <div class="song-row-head">
+                        <strong>Song ${song.round_number}</strong>
+                        <span class="song-round-points">+${song.round_score}</span>
+                    </div>
+                    <div class="song-row-meta">Answer: ${song.answer} by ${song.artist}</div>
+                    <div class="song-row-meta">Guess: ${song.title_guess} | ${song.artist_guess} ${noGuessBadge}</div>
+                    <div class="song-row-meta">Breakdown: title +${song.title_score}, artist +${song.artist_score}, both +${song.both_bonus}, early +${song.early_lock_bonus}</div>
+                    <div class="song-row-total">Running Total: ${song.total_score} pts</div>
+                `;
+                songList.appendChild(songItem);
+            });
+
+            details.appendChild(songList);
+            board.appendChild(details);
+        });
+
+        resultsDiv.appendChild(board);
+    }
 });
 
 window.addEventListener('beforeunload', () => {

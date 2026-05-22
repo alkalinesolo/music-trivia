@@ -6389,7 +6389,7 @@
 {
     "title": "Body Like a Back Road",
     "artist": "Sam Hunt",
-    "genre": "country pop",
+    "genre": "country",
     "year": 2017,
     "lyric1": "Body like a back road, drivin' with my eyes closed, I know every curve like the back of my hand, doin' fifteen in a thirty, I ain't in no hurry, I'ma take it slow just as fast as I can",
     "lyric2": "Got a girl from the Southside, got braids in her hair, first time I seen her walk by, man, I 'bout fell up out my chair, had to get her number, it took me like six weeks, now me and her go way back like Cadillac seats",
@@ -6563,7 +6563,7 @@
 {
     "title": "Die a Happy Man",
     "artist": "Thomas Rhett",
-    "genre": "country pop",
+    "genre": "country",
     "year": 2015,
     "lyric1": "If I never get to see the Northern lights, or if I never get to see the Eiffel Tower at night, oh, if all I got is your hand in my hand, baby, I could die a happy man",
     "lyric2": "Baby, last night was hands down one of the best nights that I've had no doubt",
@@ -6572,7 +6572,7 @@
   {
     "title": "Ex's & Oh's",
     "artist": "Elle King",
-    "genre": "alternative rock",
+    "genre": "rock",
     "year": 2014,
     "lyric1": "One, two, three, they gonna run back to me, 'cause I'm the best baby that they never gonna keep",
     "lyric2": "Ex's and the oh's they haunt me, like ghosts they want me, to make em oh oh oh",
@@ -6581,7 +6581,7 @@
 {
     "title": "Can't Feel My Face",
     "artist": "The Weeknd",
-    "genre": "dance-pop",
+    "genre": "pop",
     "year": 2015,
     "lyric1": "I can't feel my face when I'm with you, but I love it, but I love it, oh",
     "lyric2": "And I know she'll be the death of me, at least we'll both be numb",
@@ -6590,12 +6590,213 @@
   {
     "title": "Perfect",
     "artist": "One Direction",
-    "genre": "pop rock",
+    "genre": "pop",
     "year": 2015,
     "lyric1": "But if you like causing trouble up in hotel rooms, and if you like having secret little rendezvous",
     "lyric2": "If you like to do the things you know that we shouldn't do, then baby, I'm perfect, baby, I'm perfect for you",
     "lyric3": "And if you like midnight driving with the windows down, and if you like going places we can't even pronounce"
+  }, 
+  {
+    "title": "Uptown Funk",
+    "artist": "Mark Ronson featuring Bruno Mars",
+    "genre": "pop",
+    "year": 2014,
+    "lyric1": "This hit, that ice cold, Michelle Pfeiffer, that white gold",
+    "lyric2": "Girls hit your hallelujah (whoo), girls hit your hallelujah (whoo), girls hit your hallelujah (whoo), 'cause Uptown Funk gon' give it to you",
+    "lyric3": "Don't believe me, just watch"
+  }, 
+  {
+    "title": "Thinking Out Loud",
+    "artist": "Ed Sheeran",
+    "genre": "pop",
+    "year": 2014,
+    "lyric1": "When your legs don't work like they used to before, and I can't sweep you off of your feet",
+    "lyric2": "Take me into your loving arms, kiss me under the light of a thousand stars",
+    "lyric3": "And darling, I will be loving you 'til we're seventy, and baby, my heart could still fall as hard at twenty-three"
+  }, 
+  {
+    "title": "Sugar",
+    "artist": "Maroon 5",
+    "genre": "pop",
+    "year": 2015,
+    "lyric1": "I'm hurting, baby, I'm broken down, I need your loving, loving, I need it now",
+    "lyric2": "Sugar, yes, please, won't you come and put it down on me?",
+    "lyric3": "I don't wanna be needing your love, I just wanna be deep in your love, and it's killing me when you're away"
+  }, {
+    "title": "Shut Up and Dance",
+    "artist": "Walk the Moon",
+    "genre": "pop",
+    "year": 2014,
+    "lyric1": "Oh, don't you dare look back, just keep your eyes on me, I said, 'You're holding back', she said, 'Shut up and dance with me!'",
+    "lyric2": "We were victims of the night, the chemical, physical, kryptonite",
+    "lyric3": "A helpless to the groove, a passion in the throat, I deep in her eyes, I think I see the future"
+  },
+  {
+    "title": "Blank Space",
+    "artist": "Taylor Swift",
+    "genre": "pop",
+    "year": 2014,
+    "lyric1": "Nice to meet you, where you been? I could show you incredible things",
+    "lyric2": "So it's gonna be forever, or it's gonna go down in flames",
+    "lyric3": "Got a long list of ex-lovers, they'll tell you I'm insane, 'cause you know I love the players, and you love the game"
+  }, 
+  {
+    "title": "Love Me Like You Do",
+    "artist": "Ellie Goulding",
+    "genre": "pop",
+    "year": 2015,
+    "lyric1": "You're the light, you're the night, you're the color of my blood",
+    "lyric2": "Love me like you do, lo-lo-love me like you do, touch me like you do, to-to-touch me like you do",
+    "lyric3": "Fading in, fading out, on the edge of paradise"
+  }, 
+  {
+    "title": "Take Me to Church",
+    "artist": "Hozier",
+    "genre": "rock",
+    "year": 2013,
+    "lyric1": "Take me to church, I'll worship like a dog at the shrine of your lies, I'll tell you my sins and you can sharpen your knife",
+    "lyric2": "My lover's got humor, she's the giggle at a funeral, knows everybody's disapproval, I should've worshiped her sooner",
+    "lyric3": "If the Heavens ever did speak, she's the last true mouthpiece"
+  },
+  {
+    "title": "Bad Blood",
+    "artist": "Taylor Swift",
+    "genre": "pop",
+    "year": 2014,
+    "lyric1": "'Cause, baby, now we got bad blood, you know it used to be mad love",
+    "lyric2": "Now we got problems, and I don't think we can solve 'em, you made a really deep cut",
+    "lyric3": "Did you think we'd be fine? Still got scars on my back from your knife"
+  }, 
+{
+    "title": "Shake It Off",
+    "artist": "Taylor Swift",
+    "genre": "pop",
+    "year": 2014,
+    "lyric1": "I stay out too late, got nothing in my brain, that's what people say, mm-mm, that's what people say, mm-mm",
+    "lyric2": "'Cause the players gonna play, play, play, play, play, and the haters gonna hate, hate, hate, hate, hate, baby, I'm just gonna shake, shake, shake, shake, shake, I shake it off, I shake it off",
+    "lyric3": "I never miss a beat, I'm lightning on my feet, and that's what they don't see, mm-mm, that's what they don't see, mm-mm"
+  }, 
+  {
+    "title": "Lips Are Movin",
+    "artist": "Meghan Trainor",
+    "genre": "pop",
+    "year": 2014,
+    "lyric1": "If your lips are movin', if your lips are movin', if your lips are movin', then you're lyin', lyin', lyin'",
+    "lyric2": "You can buy me diamond rings and fly me to places I've never been, mix me up a drink and tell me I'm pretty",
+    "lyric3": "I know you're lyin', your lips are movin', tell me do you think I'm dumb?"
+  }, 
+  {
+    "title": "All About That Bass",
+    "artist": "Meghan Trainor",
+    "genre": "pop",
+    "year": 2014,
+    "lyric1": "Because you know I'm all about that bass, 'bout that bass, no treble",
+    "lyric2": "I see the magazine workin' that Photoshop, we know that shit ain't real, come on now, make it stop",
+    "lyric3": "Yeah, my mama she told me, 'Don't worry about your size', she says, 'Boys like a little more booty to hold at night'"
+  },
+  {
+    "title": "Take Your Time",
+    "artist": "Sam Hunt",
+    "genre": "country",
+    "year": 2014,
+    "lyric1": "I don't wanna steal your freedom, I don't wanna change your mind",
+    "lyric2": "I don't have to make you love me, I just wanna take your time",
+    "lyric3": "And I know you're likely thinking that a guy like me has got one thing on his mind"
+  },
+  {
+    "title": "Animals",
+    "artist": "Maroon 5",
+    "genre": "pop",
+    "year": 2014,
+    "lyric1": "Baby, I'm preying on you tonight, hunt you down eat you alive",
+    "lyric2": "Just like animals, animals, like animals-mals",
+    "lyric3": "Maybe you think that you can hide, I can smell your scent for miles"
+  },
+  {
+    "title": "Elastic Heart",
+    "artist": "Sia",
+    "genre": "pop",
+    "year": 2013,
+    "lyric1": "And I'll snap and I may break, I'll close my eyes not to see the pain",
+    "lyric2": "And another one bites the dust, oh why can I not conquer love?",
+    "lyric3": "I'm like a rubber band until you pull too hard, yeah, I may snap and I move fast"
+  },
+  {
+    "title": "Uma Thurman",
+    "artist": "Fall Out Boy",
+    "genre": "rock",
+    "year": 2015,
+    "lyric1": "She wants to dance like Uma Thurman, bury me till I confess",
+    "lyric2": "I can move mountains, I can work a miracle",
+    "lyric3": "Divide me down to the smallest I can be Put your, put your v v venom in me"
+  }, 
+  {
+    "title": "Dear Future Husband",
+    "artist": "Meghan Trainor",
+    "genre": "pop",
+    "year": 2015,
+    "lyric1": "Dear future husband, here's a few things you'll need to know if you wanna be my one and only all my life",
+    "lyric2": "Take me on a date, I deserve it, babe, and don't forget the flowers every anniversary",
+    "lyric3": "You got that 9 to 5, but, baby, so do I, so don't be thinking I'll be home and baking apple pies"
+  }, 
+  {
+    "title": "House Party",
+    "artist": "Sam Hunt",
+    "genre": "country",
+    "year": 2014,
+    "lyric1": "We'll wake up all the neighbors till the whole block hates us, till the cops show up try to shut us down",
+    "lyric2": "If you're gonna be a home body, we're gonna have a house party",
+    "lyric3": "Throw a neon T-shirt over the lamp shade, I'll take the furniture, slide it out of the way"
+  },
+  {
+    "title": "Chandelier",
+    "artist": "Sia",
+    "genre": "pop",
+    "year": 2014,
+    "lyric1": "I'm gonna swing from the chandelier, from the chandelier",
+    "lyric2": "Party girls don't get hurt, can't feel anything, when will I learn? I push it down, push it down",
+    "lyric3": "Sun is up, I'm a mess, gotta get out now, gotta run from this, here comes the shame, here comes the shame"
+  },
+  {
+    "title": "Happy",
+    "artist": "Pharrell Williams",
+    "genre": "pop",
+    "year": 2013,
+    "lyric1": "Because I'm happy, clap along if you feel like a room without a roof",
+    "lyric2": "It might seem crazy what I'm about to say, sunshine she's here, you can take a break",
+    "lyric3": "Bring me down, can't nothing bring me down, my level's too high to bring me down"
+  },
+  {
+    "title": "Timber",
+    "artist": "Pitbull featuring Kesha",
+    "genre": "pop",
+    "year": 2013,
+    "lyric1": "It's going down, I'm yelling timber, you better move, you better dance",
+    "lyric2": "Let's make a night, you won't remember, I'll be the one, you won't forget",
+    "lyric3": "Club jumping like LeBron now, Voli, order me another round now"
+  },
+  {
+    "title": "Pompeii",
+    "artist": "Bastille",
+    "genre": "pop",
+    "year": 2013,
+    "lyric1": "But if you close your eyes, does it almost feel like nothing changed at all?",
+    "lyric2": "Eh-eh-oh, eh-oh, eh-eh-oh, eh-oh",
+    "lyric3": "And the walls kept tumbling down in the city that we love, great clouds roll over the hills"
+  }, 
+  {
+    "title": "Shake It Off",
+    "artist": "Taylor Swift",
+    "genre": "pop",
+    "year": 2014,
+    "lyric1": "Cause the players gonna play, play, play, play, play and the haters gonna hate, hate, hate, hate, hate",
+    "lyric2": "I stay out too late, got nothing in my brain, that's what people say, mm-mm",
+    "lyric3": "You could've been getting down to this sick beat"
   }
+
+
+
+
 
 
   

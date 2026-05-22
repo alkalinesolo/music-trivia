@@ -5,7 +5,7 @@ const playerNameNormalized = playerNameRaw.trim().toLowerCase();
 const playerRoomCode = document.body.dataset.roomCode || '';
 
 const DECADES = ['1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s'];
-const GENRES = ['rock', 'pop', 'country', 'hip-hop/r&b', 'motown', 'reggae', 'grunge'];
+const GENRES = ['rock', 'pop', 'country', 'hip-hop/r&b', 'reggae'];
 
 let countdownInterval = null;
 let playerRevealTimeouts = [];
@@ -395,14 +395,17 @@ function setClue(element, text) {
     }
 }
 
-function renderPlayerClues(clues, timing, gameMode) {
+function renderPlayerClues(clues, timing, gameMode, roundInfo = {}) {
     const totalTime = Number((timing || {}).total_time) || 60;
     const remainingTime = Number((timing || {}).remaining_time) || totalTime;
     const elapsed = Math.max(0, totalTime - remainingTime);
     const lyric2At = Number((timing || {}).lyric2_reveal_at);
     const lyric1At = Number((timing || {}).lyric1_reveal_at);
+    const roundNumber = Number(roundInfo.roundNumber) || 0;
+    const totalRounds = Number(roundInfo.totalRounds) || 0;
+    const songProgress = roundNumber > 0 && totalRounds > 0 ? `Song ${roundNumber}/${totalRounds} | ` : '';
 
-    el.playerMeta.innerText = `Genre: ${clues.genre_label || clues.genre} | Year: ${clues.year}`;
+    el.playerMeta.innerText = `${songProgress}Genre: ${clues.genre_label || clues.genre} | Year: ${clues.year}`;
 
     if (gameMode === 'music_only') {
         setClue(el.lyric3, 'Music Only round. Use the preview player to identify the track.');

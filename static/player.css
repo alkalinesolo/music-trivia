@@ -318,6 +318,116 @@ input:disabled {
     padding: 10px 12px;
 }
 
+.final-scoreboard {
+    margin-top: 14px;
+    background: linear-gradient(150deg, rgba(52, 214, 138, 0.13), rgba(26, 35, 48, 0.86));
+    border: 1px solid rgba(52, 214, 138, 0.3);
+    border-radius: 14px;
+    padding: 12px;
+}
+
+.scoreboard-title {
+    margin: 0;
+}
+
+.scoreboard-subtitle {
+    margin: 4px 0 12px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.score-player {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: rgba(26, 35, 48, 0.75);
+    margin-bottom: 9px;
+    overflow: hidden;
+}
+
+.score-player summary {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 46px 1fr auto;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.score-player summary::-webkit-details-marker {
+    display: none;
+}
+
+.rank-badge {
+    display: inline-flex;
+    justify-content: center;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 4px 6px;
+    background: rgba(230, 166, 74, 0.18);
+    border: 1px solid rgba(230, 166, 74, 0.45);
+    color: #f7d39f;
+}
+
+.player-name {
+    font-weight: 700;
+}
+
+.player-total {
+    color: #bff5df;
+    font-weight: 700;
+}
+
+.score-song-list {
+    border-top: 1px solid var(--line);
+    padding: 10px;
+}
+
+.score-song-item {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--bg-soft);
+    padding: 8px;
+    margin-bottom: 8px;
+}
+
+.song-row-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.song-round-points {
+    color: #bff5df;
+    font-weight: 700;
+}
+
+.song-row-meta {
+    color: var(--text-muted);
+    font-size: 0.87rem;
+    margin-top: 3px;
+}
+
+.song-row-total {
+    margin-top: 5px;
+    font-weight: 700;
+    color: #f3d6a9;
+    font-size: 0.88rem;
+}
+
+.no-guess-pill {
+    display: inline-block;
+    border-radius: 999px;
+    padding: 2px 7px;
+    margin-left: 6px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #ffd6d6;
+    background: rgba(232, 101, 101, 0.2);
+    border: 1px solid rgba(232, 101, 101, 0.45);
+}
+
 .guess-player {
     font-weight: 700;
     margin-bottom: 4px;

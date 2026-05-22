@@ -39,11 +39,14 @@ def get_room_state(room_code):
             "phase": "lobby",
             "players": [],
             "leaderboard": {},
+            "round_history": [],
             "guesses": {},
             "current_song": None,
             "round_timer": None,
             "round_started_at": None,
             "last_results": None,
+            "round_number": 0,
+            "game_completed": False,
             "owner_sid": None,
             "owner_name": None,
             "rounds_per_game": 5,
@@ -52,7 +55,7 @@ def get_room_state(room_code):
             "quick_clue_key": None,
             "round_preview": None,
             "decades_filter": {"1960s", "1970s", "1980s", "1990s", "2000s", "2010s", "2020s"},
-            "genres_filter": {"rock", "pop", "country", "hip-hop/r&b", "motown", "reggae", "grunge"},
+            "genres_filter": {"rock", "pop", "country", "hip-hop/r&b", "reggae"},
         }
     return rooms[room_code]
 

@@ -57,6 +57,12 @@ def canonicalize_genre_key(raw_genre):
     if not normalized:
         return ''
 
+    if normalized == 'grunge':
+        return 'rock'
+
+    if normalized == 'motown':
+        return 'hip-hop/r&b'
+
     if 'rock' in normalized:
         return 'rock'
 
@@ -217,6 +223,8 @@ def handle_host_join(data):
                 total_time=room_state.get('round_total_time'),
                 round_audio=room_state.get('round_preview')
             ),
+            'round_number': room_state.get('round_number', 1),
+            'rounds_per_game': max(1, int(room_state.get('rounds_per_game', 5))),
             'total_players': len(room_state['players'])
         }, to=request.sid)
         emit('guess_count', {
@@ -272,14 +280,18 @@ def handle_player_join(data):
         emit('game_state', {'state': 'guessing'}, to=request.sid)
         emit(
             'new_round',
-            build_round_payload(
-                room_state['current_song'],
-                remaining_time,
-                game_mode=room_state.get('game_mode', 'full'),
-                quick_clue_key=room_state.get('quick_clue_key'),
-                total_time=room_state.get('round_total_time'),
-                round_audio=room_state.get('round_preview')
-            ),
+            {
+                **build_round_payload(
+                    room_state['current_song'],
+                    remaining_time,
+                    game_mode=room_state.get('game_mode', 'full'),
+                    quick_clue_key=room_state.get('quick_clue_key'),
+                    total_time=room_state.get('round_total_time'),
+                    round_audio=room_state.get('round_preview')
+                ),
+                'round_number': room_state.get('round_number', 1),
+                'rounds_per_game': max(1, int(room_state.get('rounds_per_game', 5)))
+            },
             to=request.sid
         )
     elif room_state["phase"] == "results":
@@ -297,6 +309,18 @@ def start_round_for_room(room_code):
 
     if len(room_state['players']) == 0:
         emit('host_error', {'message': 'At least one player must join before starting.'}, to=request.sid)
+        return
+
+    if room_state.get('game_completed'):
+        room_state['leaderboard'] = {player: 0 for player in room_state['players']}
+        room_state['round_number'] = 0
+        room_state['game_completed'] = False
+        room_state['round_history'] = []
+
+    total_rounds = max(1, int(room_state.get('rounds_per_game', 5)))
+    played_rounds = int(room_state.get('round_number', 0))
+    if played_rounds >= total_rounds:
+        emit('host_error', {'message': 'This game is complete. Start a new game to play more songs.'}, to=request.sid)
         return
 
     room_state['guesses'] = {}
@@ -337,6 +361,7 @@ def start_round_for_room(room_code):
     elif room_state.get('game_mode') != 'music_only':
         room_state['round_preview'] = None
     room_state['round_total_time'] = get_round_total_time(room_state)
+    room_state['round_number'] = played_rounds + 1
     room_state['phase'] = 'guessing'
     room_state['round_started_at'] = time.time()
     room_state['last_results'] = None
@@ -349,13 +374,17 @@ def start_round_for_room(room_code):
     # Send lyric to players
     emit(
         'new_round',
-        build_round_payload(
-            room_state['current_song'],
-            game_mode=room_state.get('game_mode', 'full'),
-            quick_clue_key=room_state.get('quick_clue_key'),
-            total_time=room_state.get('round_total_time'),
-            round_audio=room_state.get('round_preview')
-        ),
+        {
+            **build_round_payload(
+                room_state['current_song'],
+                game_mode=room_state.get('game_mode', 'full'),
+                quick_clue_key=room_state.get('quick_clue_key'),
+                total_time=room_state.get('round_total_time'),
+                round_audio=room_state.get('round_preview')
+            ),
+            'round_number': room_state.get('round_number', 1),
+            'rounds_per_game': total_rounds
+        },
         room=get_player_room(room_code)
     )
 
@@ -370,6 +399,8 @@ def start_round_for_room(room_code):
                 total_time=room_state.get('round_total_time'),
                 round_audio=room_state.get('round_preview')
             ),
+            'round_number': room_state.get('round_number', 1),
+            'rounds_per_game': total_rounds,
             'total_players': len(room_state['players'])
         },
         room=get_host_room(room_code)
@@ -563,12 +594,94 @@ def finalize_results_for_room(room_code):
 
     results.sort(key=lambda x: x['score'], reverse=True)
 
+    current_round = int(room_state.get('round_number', 0))
+    total_rounds = max(1, int(room_state.get('rounds_per_game', 5)))
+
+    round_history = room_state.setdefault('round_history', [])
+    round_history.append({
+        'round_number': current_round,
+        'answer': correct_title,
+        'artist': correct_artist,
+        'results': [
+            {
+                'player': result['player'],
+                'title_guess': result['title_guess'],
+                'artist_guess': result['artist_guess'],
+                'title_score': result['title_score'],
+                'artist_score': result['artist_score'],
+                'both_bonus': result['both_bonus'],
+                'early_lock_bonus': result['early_lock_bonus'],
+                'round_score': result['round_score'],
+                'total_score': result['total_score'],
+                'no_guess': result['no_guess']
+            }
+            for result in results
+        ]
+    })
+
+    game_over = current_round >= total_rounds
+    if game_over:
+        room_state['game_completed'] = True
+
+    game_summary = None
+    if game_over:
+        standings = sorted(
+            [
+                {'player': player, 'score': score}
+                for player, score in room_state['leaderboard'].items()
+            ],
+            key=lambda row: row['score'],
+            reverse=True
+        )
+
+        per_player_history = []
+        for standing in standings:
+            player_name = standing['player']
+            song_breakdown = []
+
+            for round_entry in round_history:
+                player_round = next(
+                    (entry for entry in round_entry['results'] if entry['player'] == player_name),
+                    None
+                )
+                if not player_round:
+                    continue
+
+                song_breakdown.append({
+                    'round_number': round_entry['round_number'],
+                    'answer': round_entry['answer'],
+                    'artist': round_entry['artist'],
+                    'title_guess': player_round.get('title_guess') or '[No Guess]',
+                    'artist_guess': player_round.get('artist_guess') or '[No Guess]',
+                    'round_score': player_round.get('round_score', 0),
+                    'total_score': player_round.get('total_score', 0),
+                    'title_score': player_round.get('title_score', 0),
+                    'artist_score': player_round.get('artist_score', 0),
+                    'both_bonus': player_round.get('both_bonus', 0),
+                    'early_lock_bonus': player_round.get('early_lock_bonus', 0),
+                    'no_guess': player_round.get('no_guess', False)
+                })
+
+            per_player_history.append({
+                'player': player_name,
+                'score': standing['score'],
+                'songs': song_breakdown
+            })
+
+        game_summary = {
+            'standings': standings,
+            'players': per_player_history
+        }
+
     payload = {
         'answer': correct_title,
         'artist': correct_artist,
         'genre': room_state['current_song'].get('genre', 'unknown'),
         'genre_label': format_genre_label(room_state['current_song'].get('genre', 'unknown')),
         'year': get_song_year(room_state['current_song']),
+        'round_number': current_round,
+        'rounds_per_game': total_rounds,
+        'game_over': game_over,
         'game_mode': room_state.get('game_mode', 'full'),
         'preview': fetch_itunes_preview(correct_title, correct_artist),
         'scoring': {
@@ -579,7 +692,8 @@ def finalize_results_for_room(room_code):
             'early_before_lyric1_points': EARLY_LOCK_BEFORE_LYRIC1_POINTS
         },
         'results': results,
-        'leaderboard': room_state['leaderboard']
+        'leaderboard': room_state['leaderboard'],
+        'game_summary': game_summary
     }
     room_state['last_results'] = payload
 

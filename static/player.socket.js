@@ -41,7 +41,10 @@ socket.on('new_round', (data) => {
     el.artistInput.value = '';
 
     const mode = data.game_mode || 'full';
-    renderPlayerClues(data.clues, data.timing, mode);
+    renderPlayerClues(data.clues, data.timing, mode, {
+        roundNumber: data.round_number,
+        totalRounds: data.rounds_per_game
+    });
 
     if (mode === 'music_only') {
         loadRoundAudio(data.round_audio, {
@@ -62,8 +65,19 @@ socket.on('round_results', (data) => {
 
     const answerHeader = document.createElement('div');
     answerHeader.className = 'status-banner';
-    answerHeader.innerHTML = `<strong>Answer:</strong> ${data.answer} by ${data.artist} (${data.year}, ${data.genre_label || data.genre})`;
+    answerHeader.innerHTML = `<strong>Song ${data.round_number || 0}/${data.rounds_per_game || 0} Answer:</strong> ${data.answer} by ${data.artist} (${data.year}, ${data.genre_label || data.genre})`;
     el.feedback.appendChild(answerHeader);
+
+    if (data.game_over) {
+        const endBanner = document.createElement('div');
+        endBanner.className = 'status-banner';
+        endBanner.style.marginTop = '8px';
+        endBanner.innerText = 'Game complete. Start a new game from host controls.';
+        el.feedback.appendChild(endBanner);
+        setHostControlMode('lobby');
+    } else {
+        setHostControlMode('active');
+    }
 
     const myResult = data.results.find(result => result.player.trim().toLowerCase() === playerNameNormalized);
 
@@ -129,6 +143,60 @@ socket.on('round_results', (data) => {
         guessList.appendChild(card);
     });
     el.feedback.appendChild(guessList);
+
+    if (data.game_over && data.game_summary && Array.isArray(data.game_summary.players)) {
+        const board = document.createElement('section');
+        board.className = 'final-scoreboard';
+
+        const boardTitle = document.createElement('h3');
+        boardTitle.className = 'scoreboard-title';
+        boardTitle.innerText = 'Final Scoreboard';
+        board.appendChild(boardTitle);
+
+        const boardSub = document.createElement('p');
+        boardSub.className = 'scoreboard-subtitle';
+        boardSub.innerText = 'Tap a player to expand song-by-song scoring.';
+        board.appendChild(boardSub);
+
+        data.game_summary.players.forEach((playerEntry, idx) => {
+            const details = document.createElement('details');
+            details.className = 'score-player';
+
+            const summary = document.createElement('summary');
+            summary.innerHTML = `
+                <span class="rank-badge">#${idx + 1}</span>
+                <span class="player-name">${playerEntry.player}</span>
+                <span class="player-total">${playerEntry.score} pts</span>
+            `;
+            details.appendChild(summary);
+
+            const songList = document.createElement('div');
+            songList.className = 'score-song-list';
+
+            playerEntry.songs.forEach(song => {
+                const songItem = document.createElement('div');
+                songItem.className = 'score-song-item';
+                const noGuessBadge = song.no_guess ? '<span class="no-guess-pill">No Guess</span>' : '';
+
+                songItem.innerHTML = `
+                    <div class="song-row-head">
+                        <strong>Song ${song.round_number}</strong>
+                        <span class="song-round-points">+${song.round_score}</span>
+                    </div>
+                    <div class="song-row-meta">Answer: ${song.answer} by ${song.artist}</div>
+                    <div class="song-row-meta">Guess: ${song.title_guess} | ${song.artist_guess} ${noGuessBadge}</div>
+                    <div class="song-row-meta">Breakdown: title +${song.title_score}, artist +${song.artist_score}, both +${song.both_bonus}, early +${song.early_lock_bonus}</div>
+                    <div class="song-row-total">Running Total: ${song.total_score} pts</div>
+                `;
+                songList.appendChild(songItem);
+            });
+
+            details.appendChild(songList);
+            board.appendChild(details);
+        });
+
+        el.feedback.appendChild(board);
+    }
 });
 
 socket.on('guess_locked', () => {

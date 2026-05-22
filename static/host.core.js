@@ -6,7 +6,7 @@ let hostRevealTimeouts = [];
 let currentHostPreviewAudio = null;
 
 const DECADES = ['1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s'];
-const GENRES = ['rock', 'pop', 'country', 'hip-hop/r&b', 'motown', 'reggae', 'grunge'];
+const GENRES = ['rock', 'pop', 'country', 'hip-hop/r&b', 'reggae'];
 
 let hostSettings = {
     rounds: 5,
@@ -191,15 +191,18 @@ function clearHostRevealTimers() {
     hostRevealTimeouts = [];
 }
 
-function renderHostClues(clues, timing) {
+function renderHostClues(clues, timing, roundInfo = {}) {
     const totalTime = Number((timing || {}).total_time) || 60;
     const remainingTime = Number((timing || {}).remaining_time) || totalTime;
     const elapsed = Math.max(0, totalTime - remainingTime);
     const lyric2At = Number((timing || {}).lyric2_reveal_at);
     const lyric1At = Number((timing || {}).lyric1_reveal_at);
     const quickLabel = clues.quick_label || 'Lyric';
+    const roundNumber = Number(roundInfo.roundNumber) || 0;
+    const totalRounds = Number(roundInfo.totalRounds) || 0;
+    const songProgress = roundNumber > 0 && totalRounds > 0 ? `Song ${roundNumber}/${totalRounds} | ` : '';
 
-    document.getElementById('host-meta').innerText = `Genre: ${clues.genre_label || clues.genre} | Year: ${clues.year}`;
+    document.getElementById('host-meta').innerText = `${songProgress}Genre: ${clues.genre_label || clues.genre} | Year: ${clues.year}`;
 
     if (!Number.isFinite(lyric2At) && !Number.isFinite(lyric1At)) {
         document.getElementById('lyric3').innerText = clues.lyric3 ? `${quickLabel}: "${clues.lyric3}"` : '';
