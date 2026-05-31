@@ -6086,7 +6086,7 @@
         "artist":  "Bruno Mars",
         "genre":  "hip-hop/r\u0026b",
         "year":  2017,
-        "lyric1":  "Gold jewelry shining so bright, strawberry champagne on ice, lucky for you, that\u0027s what I like, that\u0027s what I like, sex by the fire at night, silk sheets and diamonds all white, lucky for you, that\u0027s what I like, that\u0027s what I like",
+        "lyric1":  "Gold jewelry shining so bright, strawberry champagne on ice, lucky for you, that\u0027s what I like, that\u0027s what I like",
         "lyric2":  "I got a condo in Manhattan, baby, girl, what\u0027s up? You and your ass invited, so pop it on in, Versace on the floor, take it off for me, girl, take it off for me, girl",
         "lyric3":  "If you say you want a good time, well, here I am, baby, here I am, baby, talk to me, talk to me, talk to me, tell me what\u0027s on your mind"
     },
@@ -6637,7 +6637,7 @@
         "genre":  "hip-hop/r\u0026b",
         "year":  2008,
         "lyric1":  "Stacks on deck, patron on ice, and we can pop bottles all night, baby, you can have whatever you like, said you can have whatever you like, yeah.",
-        "lyric2":  "Late night sex so good, so tight, gas up the jet for a solo flight, girl, you can have whatever you like, said you can have whatever you like, yeah.",
+        "lyric2":  "So good, so tight, gas up the jet for a solo flight, girl, you can have whatever you like, said you can have whatever you like, yeah.",
         "lyric3":  "I want your body, need your body, long as you got me you won\u0027t need nobody, you want it? I got it, go bond it, I buy it, tell them other broke boys \u0027Be quiet\u0027."
     },
     {
@@ -6997,7 +6997,7 @@
         "genre":  "pop",
         "year":  2010,
         "lyric1":  "Feels so good being bad, there\u0027s no way I\u0027m turning back, standard deviance in the dark.",
-        "lyric2":  "Cause I may be bad, but I\u0027m perfectly good at it, sex in the air, I don\u0027t care, I love the smell of it.",
+        "lyric2":  "Cause I may be bad, but I\u0027m perfectly good at it.",
         "lyric3":  "Sticks and stones may break my bones, but chains and whips excite me, keep the rhythm running hot."
     },
     {
@@ -7106,8 +7106,7 @@
         "year":  2011,
         "lyric1":  "You think you left me broken down? You think I\u0027m running out of options on this playground?",
         "lyric2":  "What doesn\u0027t kill you makes you stronger, stand a little taller, doesn\u0027t mean I\u0027m lonely when I\u0027m alone.",
-        "lyric3":  "You know the bed feels warmer
-Sleepin' here alone (Sleepin' here alone)"
+        "lyric3":  "You know the bed feels warmer Sleepin' here alone (Sleepin' here alone)"
     },
     {
         "title":  "Set Fire to the Rain",
@@ -7116,10 +7115,7 @@ Sleepin' here alone (Sleepin' here alone)"
         "year":  2011,
         "lyric1":  "I let it fall, my heart, and as it fell, you rose to claim it, taking over the entire layout.",
         "lyric2":  "But I set fire to the rain, watched it pour as I touched your face.",
-        "lyric3":  "When I lay with you
-I could stay there, close my eyes
-Feel you here forever
-You and me together, nothing is better"
+        "lyric3":  "When I lay with you I could stay there, close my eyes Feel you here forever You and me together, nothing is better"
     },
     {
         "title":  "Glad You Came",
@@ -7127,12 +7123,8 @@ You and me together, nothing is better"
         "genre":  "pop",
         "year":  2011,
         "lyric1":  "The sun goes down, the stars come out, And all that counts is here and now",
-        "lyric2":  "Turn the lights out now
-Now, I'll take you by the hand
-Hand you another drink
-Drink it if you can",
-        "lyric3":  "You cast a spell on me, spell on me
-You hit me like the sky fell on me, fell on me"
+        "lyric2":  "Turn the lights out now Now, I'll take you by the hand Hand you another drink Drink it if you can",
+        "lyric3":  "You cast a spell on me, spell on me You hit me like the sky fell on me, fell on me"
     },
     {
         "title":  "Starships",
@@ -7151,5 +7143,646 @@ You hit me like the sky fell on me, fell on me"
         "lyric1":  "Days like this I want to drive away, pack my bags and watch your memory fade in the rearview glass.",
         "lyric2":  "This is the part of me that you\u0027re never gonna take away from me, no, core architecture secure.",
         "lyric3":  "Throw your sticks and stones, throw your bombs and your blows, but you\u0027re not breaking my code."
-    }
+    },
+    {
+    "title": "Animal",
+    "artist": "Neon Trees",
+    "genre": "alternative rock/indie pop",
+    "year": 2010,
+    "lyric1": "Here we go again, I kinda wanna be more than friends.",
+    "lyric2": "Oh, oh, I want some more, oh, oh, what are you waiting for?",
+    "lyric3": "Take a bite of my heart tonight."
+  },
+  {
+    "title": "Remind Me",
+    "artist": "Brad Paisley and Carrie Underwood",
+    "genre": "country pop/country",
+    "year": 2011,
+    "lyric1": "We didn't care if people stared, we'd make out in a crowd somewhere, somebody'd tell us to get a room, it's hard to believe that was me and you, now we keep saying that we're ok, but I don't want to settle for good not great, I miss the way that it felt back then, I wanna feel that way again",
+    "lyric2": "Remember the airport dropping me off, we were kissing goodbye and we couldn't stop, I felt bad 'cause you missed your flight, but that meant we had one more night, do you remember how it used to be, we'd turn out the lights and didn't just sleep?",
+    "lyric3": "Oh, so on fire, so in love, that look in your eyes that I miss so much, remind me, baby, remind me, I wanna feel that way, yeah, I wanna hold you close, oh, if you still love me, don't just assume I know, remind me, remind me"
+  },
+  {
+    "title": "Country Girl (Shake It for Me)",
+    "artist": "Luke Bryan",
+    "genre": "country pop/country rap",
+    "year": 2011,
+    "lyric1": "Country girl, shake it for me, girl, shake it for me, girl, shake it for me, country girl, shake it for me, girl, shake it for me, girl, shake it for me, buzz back yard, pull up a seat, get a little dirt on your bare feet, drop the tailgate down, hit the lights, turn a little country song up loud, let it ride",
+    "lyric2": "Got a little boom in my big truck, gonna open up the doors and turn it up, gonna stomp my boots in the Georgia mud, gonna watch you make me fall in love, get up on the hood of my daddy's tractor, up on the tool box, it don't matter, down on the tailgate, girl I can't wait to watch you do your thing",
+    "lyric3": "Shake it for the young bucks sittin' in the honky-tonks, for the rednecks rockin' till the break of dawn, for the DJ spinnin' that country song, come on, come on, come on, shake it for the birds, shake it for the bees, shake it for the catfish swimming down deep in the creek, for the crickets and the critters and the squirrels, shake it to the moon, shake it for me girl"
+  }, 
+  {
+    "title": "Like a G6",
+    "artist": "Far East Movement featuring The Cataracs and Dev",
+    "genre": "electro-hop/dance-pop",
+    "year": 2010,
+    "lyric1": "Poppin' bottles in the ice, like a blizzard, when we drink, we do it right, gettin' slizzard, sippin' sizzurp in my ride, like Three 6, now I'm feelin' so fly like a G6, like a G6, feelin' so fly like a G6",
+    "lyric2": "Give me that water, girl, 'cause I'm about to pass out, style with a swagger, fully loaded with the cash out, automatically, we super-sonic when we smash out, got them baseline subwoofers thumpin' in my cash route",
+    "lyric3": "Gettin' high-high-high, high-high-high, girl, I'm higher than a standard baseline fly, feelin' so fly like a G6, like a G6, feelin' so fly like a G6"
+  },
+  {
+    "title": "Back to December",
+    "artist": "Taylor Swift",
+    "genre": "country",
+    "year": 2010,
+    "lyric1": "I'd go back to December, turn around and make it all right, I go back to December all the time, this is me swallowing my pride, standing in front of you saying, 'I'm sorry for that night'",
+    "lyric2": "Your guard is up and I know why, because the last time you saw me is still burned in the back of your mind, you gave me roses and I left them there to die",
+    "lyric3": "I miss your tanned skin, your sweet smile, so good to me, so right, and how you held me in your arms that September night, the first time you ever saw me cry"
+  },
+  {
+    "title": "Honey Bee",
+    "artist": "Blake Shelton",
+    "genre": "country",
+    "year": 2011,
+    "lyric1": "You'll be my soft and sweet, I'll be your strong and steady, you'll be my glass of wine, I'll be your shot of whiskey, you'll be my sunny day, I'll be your shade tree, you'll be my honeysuckle, I'll be your honey bee",
+    "lyric2": "Girl, I been thinkin' 'bout us, and you know I ain't good at this stuff, but these feelings piling up won't give me no rest, this might come out a little crazy, a little sideways, yeah, maybe, I don't know how long it'll take me, but I'll do my best",
+    "lyric3": "If you'll be my Louisiana, I'll be your Mississippi, you'll be my little Loretta, I'll be your Conway Twitty"
+  },
+  {
+    "title": "If I Die Young",
+    "artist": "The Band Perry",
+    "genre": "country",
+    "year": 2010,
+    "lyric1": "If I die young, bury me in satin, lay me down on a bed of roses, sink me in the river at dawn, send me away with the words of a love song, uh oh, uh oh",
+    "lyric2": "no, ain't even grey, but she buries her baby The sharp knife of a short life",
+    "lyric3": "A penny for my thoughts, oh, no, I'll sell 'em for a dollar, they're worth so much more after I'm a goner"
+  },
+  {
+    "title": "Just a Kiss",
+    "artist": "Lady A",
+    "genre": "country",
+    "year": 2011,
+    "lyric1": "Just a kiss on your lips in the moonlight, just a touch of the fire burning so bright",
+    "lyric2": "We don't need to rush this, lets just take it slow",
+    "lyric3": "Lying here with you so close to me It's hard to fight these feelings when it feels so hard to breathe"
+  },
+  {
+    "title": "We R Who We R",
+    "artist": "Kesha",
+    "genre": "pop",
+    "year": 2010,
+    "lyric1": "Tonight we're going hard, hard, ha-ha-hard, just like the world is our, our, ou-ou-ours",
+    "lyric2": "DJ turn it up up up up up",
+    "lyric3": "Got that glitter on my eyes, stockings ripped all up the sides, looking sick and sexy-fied, so let's go-o-o, let's go-o-o"
+  },
+  {
+    "title": "S&M",
+    "artist": "Rihanna",
+    "genre": "dance-pop/electro house",
+    "year": 2010,
+    "lyric1": "sticks and stones may break my bones, but chains and whips excite me",
+    "lyric2": "Na-na-na, come on, come on, come on, I like it, like it, come on, come on, come on, I like it, like it, come on, come on, come on, I like it, like it, come on, come on, come on",
+    "lyric3": "Feels so good being bad, there's no way I'm turning back, as the night connects the plays, and we're skin to skin, light to dark"
+  },
+  {
+    "title": "Pumped Up Kicks",
+    "artist": "Foster the People",
+    "genre": "indie pop/indie rock",
+    "year": 2010,
+    "lyric1": "All the other kids with the pumped up kicks, you better run, better run, outrun my gun, all the other kids with the pumped up kicks, you better run, better run, faster than my bullet",
+    "lyric2": "Robert's got a quick hand, he'll look around the room, he won't tell you his plan, he's got a rolled cigarette hanging out his mouth, he's a cowboy kid",
+    "lyric3": "Daddy works a long day, he be coming home late, yeah, he's coming home late, and he's bringing me a surprise, 'cause dinner's in the kitchen and it's packed in ice"
+  },
+  {
+    "title": "Stereo Hearts",
+    "artist": "Gym Class Heroes feat. Adam Levine",
+    "genre": "pop rap/reggae pop",
+    "year": 2011,
+    "lyric1": "My heart's a stereo, it beats for you, so listen close, hear my thoughts in every no-o-o-te, make me your radio, and turn me up when you feel low, this melody was meant for you, just sing along to my stereo",
+    "lyric2": "If I was just another dusty record on the shelf, would you blow me off and play me like everybody else? If I ask you to scratch my back, could you manage that? Like check it Travie, I can handle that",
+    "lyric3": "I only pray you'll never leave me behind, because good music can be so hard to find, I take your hand and hold it closer to mine, thought love was dead, but now you're changing my mind"
+  },
+  {
+    "title": "We Are Never Ever Getting Back Together",
+    "artist": "Taylor Swift",
+    "genre": "dance-pop/pop rock",
+    "year": 2012,
+    "lyric1": "I remember when we broke up the first time, saying, 'This is it, I've had enough,' 'cause like, we hadn't seen each other in a month when you said you needed space (What?)",
+    "lyric2": "I'm really gonna miss you picking fights, and me falling for it, screaming that I'm right",
+    "lyric3": "I used to think that we were forever ever, and I used to say, 'Never say never,'"
+  },
+  {
+    "title": "Right Round",
+    "artist": "Flo Rida",
+    "genre": "rap",
+    "year": 2009,
+    "lyric1": "You spin my head right 'round, right 'round, when you go down, when you go down, down.",
+    "lyric2": "Hey, walk out that door, bye, bye, bye, I shake my money, ain't got no time for that play, play, play.",
+    "lyric3": "From the top of the pole I watch her go down, she got me open and running my mouth."
+  },
+  {
+    "title": "I'm Yours",
+    "artist": "Jason Mraz",
+    "genre": "pop",
+    "year": 2008,
+    "lyric1": "Well, you done done me and you bet I felt it, I tried to be chill but you're so hot that I melted.",
+    "lyric2": "I won't hesitate no more, no more, it cannot wait, I'm yours.",
+    "lyric3": "Open up your mind and see like me, open up your plans and damn you're free."
+  },
+  {
+    "title": "Single Ladies (Put a Ring on It)",
+    "artist": "Beyoncé",
+    "genre": "pop",
+    "year": 2008,
+    "lyric1": "All the single ladies, all the single ladies, now put your hands up.",
+    "lyric2": "If you liked it, then you should have put a ring on it, don't be mad once you see that he want it.",
+    "lyric3": "I need no permission, did I mention don't pay him any attention, 'cause you had your turn and now you gonna learn how it really feels to miss me."
+  },
+  {
+    "title": "You Found Me",
+    "artist": "The Fray",
+    "genre": "pop",
+    "year": 2008,
+    "lyric1": "Lost and insecure, you found me, you found me, lying on the floor, surrounded, surrounded.",
+    "lyric2": "I found God on the corner of First and Amistad, lost and looking for a sign.",
+    "lyric3": "Where were you when everything was falling apart? All my days were spent by the telephone that never rang, and all I needed was a call, that never came to the corner of First and Amistad."
+  },
+  {
+    "title": "Live Your Life",
+    "artist": "T.I. featuring Rihanna",
+    "genre": "rap",
+    "year": 2008,
+    "lyric1": "So live your life, you steady chasin' that paper, just live your life. Ain't got no time for no haters",
+    "lyric2": "You're gonna be a shinin' star, in fancy clothes and fancy cars. And then you'll see you're gonna go far, 'cause everyone knows just who ya are.",
+    "lyric3": "Never mind what haters say, ignore 'em till they fade away. Amazing, they ungrateful after all the game I gave away."
+  },
+  {
+    "title": "Low",
+    "artist": "Flo Rida featuring T-Pain",
+    "genre": "rap",
+    "year": 2007,
+    "lyric1": "Shawty had them apple bottom jeans, boots with the fur. The whole club was lookin' at her. She hit the floor, next thing you know, shawty got low, low, low, low, low, low, low, low.",
+    "lyric2": "Hey, I ain't never seen nothin' that'll make me go This crazy all night, spending my dough",
+    "lyric3": "Yeah, she turned around and gave that big booty a slap. Hey, bumped into her and she turned around and she snapped."
+  },
+  {
+    "title": "Bleeding Love",
+    "artist": "Leona Lewis",
+    "genre": "pop",
+    "year": 2007,
+    "lyric1": "But I don't care what they say, I'm in love with you. They try to pull me away, but they don't know the truth. My heart's crippled by the vein that I keep on closing. You cut me open and I keep bleeding, keep, keep bleeding love.",
+    "lyric2": "Closed off from love, I didn't need the pain. Once or twice was enough, and it was all in vain. Time starts to pass, before you know it, you're frozen.",
+    "lyric3": "Trying hard not to hear, but they talk so loud. Their piercing sounds fill my ears, try to fill me with doubt. Yet I know that the goal is to keep me from falling."
+  },
+  {
+    "title": "Love in This Club",
+    "artist": "Usher featuring Young Jeezy",
+    "genre": "rap",
+    "year": 2008,
+    "lyric1": "I wanna make love in this club, in this club, in this club, in this club.",
+    "lyric2": "You say you're searching for somebody that'll take you out and do you right. Well, come here baby and let daddy show you what it feels like.",
+    "lyric3": "I'm what you want, I'm what you need. He got you trapped, I'll set you free."
+  },
+  {
+    "title": "Viva la Vida",
+    "artist": "Coldplay",
+    "genre": "pop",
+    "year": 2008,
+    "lyric1": " For some reason I can't explain, I know St Peter won't call my name",
+    "lyric2": "I used to rule the world, seas would rise when I gave the word. Now in the morning I sleep alone, sweep the streets I used to own.",
+    "lyric3": "It was a wicked and wild wind, blew down the doors to let me in. Shattered windows and the sound of drums, people couldn't believe what I'd become."
+  },
+  {
+    "title": "I Kissed a Girl",
+    "artist": "Katy Perry",
+    "genre": "pop",
+    "year": 2008,
+    "lyric1": "I kissed a girl and I liked it, the taste of her cherry chapstick. I kissed a girl just to try it, I hope my boyfriend don't mind it.",
+    "lyric2": "This was never the way I planned, not my intention. I got so brave, drink in hand, lost my discretion.",
+    "lyric3": "No, I don't even know your name, it doesn't matter. You're my experimental game, just human nature."
+  },
+  {
+    "title": "Paralyzer",
+    "artist": "Finger Eleven",
+    "genre": "rock",
+    "year": 2007,
+    "lyric1": "I dig the way that you dance, you lady, rockin' the pants. You turn me on, break me down, talk me up. Believin' I'm a paralyzed, paralyzed, paralyzed, paralyzed by you.",
+    "lyric2": "I hold on, well now I'm not so sure. I take one step and then I close the door. One more step and I'm across the line. I hit the floor and then I'm running out of time.",
+    "lyric3": "Well I, I step into the club and I, I look into your eyes and I, I see that you're alone. You look like you could use a guy like me to buy a drink and get you groovin' to this song."
+  },
+  {
+    "title": "Tattoo",
+    "artist": "Jordin Sparks",
+    "genre": "pop",
+    "year": 2007,
+    "lyric1": "No matter what you say about love, I keep the picture of your smile in my mind. 'Cause I can't look at you and heartlessly fly away, no. Just like a tattoo, I'll always have you, I'll always have you, I'll always have you under my skin.",
+    "lyric2": "Just beautiful as you are, you're still a scar on my heart. Just because it didn't work out, doesn't mean that it's over now, not inside my mind. Because I tossed and turned, and your lessons learned, and the memory burns.",
+    "lyric3": "Take a look at me now, you think I'm doing just fine. But I'm going crazy, you're still in my head, you're still in my mind. I'm fighting the feelings, I'm trying to find a way to let you go."
+  },
+  {
+    "title": "Paper Planes",
+    "artist": "M.I.A.",
+    "genre": "rap",
+    "year": 2007,
+    "lyric1": "All I wanna do is *bang bang bang bang* and *ka-ching* and take your money. All I wanna do is *bang bang bang bang* and *ka-ching* and take your money.",
+    "lyric2": "I fly like paper, get high like planes. If you catch me at the border I got visas in my name. If you come around here, I make 'em take a cruise. Blown intersecting lines, and everybody's rules.",
+    "lyric3": "Sometimes I think sitting on trains. Every stop I get to I'm clocking the game. Everyone's a winner now we're making that hit. Bona fide hustler making my living on the street."
+  },
+  {
+    "title": "Hot n Cold",
+    "artist": "Katy Perry",
+    "genre": "pop",
+    "year": 2008,
+    "lyric1": "You're hot then you're cold, you're yes then you're no. You're in then you're out, you're up then you're down. You're wrong when it's right, it's black and it's white. We fight, we break up, we kiss, we make up.",
+    "lyric2": "You change your mind like a girl changes clothes.",
+    "lyric3": "We used to be just like twins, so in sync. The same energy now's a dead battery. Used to laugh 'bout nothing, now you're plain boring. I should know that you're not gonna change."
+  },
+  {
+    "title": "Our Song",
+    "artist": "Taylor Swift",
+    "genre": "country",
+    "year": 2007,
+    "lyric1": "Our song is the slamming screen door, sneakin' out late, tapping on your window. When we're on the phone and you talk real slow, 'cause it's late and your mama don't know.",
+    "lyric2": "I was riding shotgun with my hair undone in the front seat of his car. He's got a one-hand on the steering wheel, the other on my heart.",
+    "lyric3": "I've heard every album, listened to the radio, waiting for something to come along that was as good as our song."
+  },
+  {
+    "title": "All Summer Long",
+    "artist": "Kid Rock",
+    "genre": "rock",
+    "year": 2008,
+    "lyric1": "Singing 'Sweet Home Alabama' all summer long. Singing 'Sweet Home Alabama' all summer long.",
+    "lyric2": "It was 1989, my thoughts were short my hair was long. Caught between a boy and man, she was seventeen and she was far from in-between. It was summertime in Northern Michigan.",
+    "lyric3": "And we were trying different things, we were smoking funny things. Making love out by the lake to our favorite songs"
+  },
+  {
+    "title": "Umbrella",
+    "artist": "Rihanna featuring Jay-Z",
+    "genre": "pop",
+    "year": 2007,
+    "lyric1": "When the sun shines, we'll shine together. Told you I'll be here forever. You can stand under my umbrella.",
+    "lyric2": "No clouds in my stones, let it rain, I hydroplane in the bank. We fly higher than weather, in G5s or better.",
+    "lyric3": "These fancy things will never come in between. You're part of my entity, here for infinity."
+  },
+  {
+    "title": "Big Girls Don't Cry",
+    "artist": "Fergie",
+    "genre": "pop",
+    "year": 2007,
+    "lyric1": "I hope you know, I hope you know that this has nothing to do with you. It's personal, myself and I. We got some straightening out to do.",
+    "lyric2": "I'm gonna miss you like a child misses their blanket. But I've got to get a move on with my life. It's time to be a big girl now, and big girls don't cry.",
+    "lyric3": "Like a little schoolmate in the schoolyard, we'll play jacks and uno cards. I'll be your best friend, and you'll be mine, Valentine."
+  },
+  {
+    "title": "The Sweet Escape",
+    "artist": "Gwen Stefani featuring Akon",
+    "genre": "pop",
+    "year": 2006,
+    "lyric1": "If I could escape, I would but, first of all, let me say, I must apologize for acting stinky, treating you this way.",
+    "lyric2": "I know I've been a real bad girl. I didn't mean for you to get hurt whatsoever.",
+    "lyric3": "Instead of clowning around, let's look for some common ground"
+  }, 
+  {
+    "title": "Irreplaceable",
+    "artist": "Beyoncé",
+    "genre": "pop",
+    "year": 2006,
+    "lyric1": "To the left, to the left. Everything you own in the box to the left. In the closet, that's my stuff. Yes, if I bought it please don't touch.",
+    "lyric2": "You must not know 'bout me, you must not know 'bout me. I can have another you in a minute. Matter of fact, he'll be here in a minute, baby.",
+    "lyric3": "So since I'm not your everything, how about I'll be nothing? Nothing at all to you. Baby, I won't shed a tear for you, I won't lose a wink of sleep."
+  },
+  {
+    "title": "Hey There Delilah",
+    "artist": "Plain White T's",
+    "genre": "pop",
+    "year": 2006,
+    "lyric1": "Hey there, Delilah, what's it like in New York City? I'm a thousand miles away, but girl, tonight you look so pretty. Yes, you do.",
+    "lyric2": "don't you worry about the distance. I'm right there if you get lonely, give this song another listen. Close your eyes.",
+    "lyric3": "Oh, it's what you do to me. Oh, it's what you do to me."
+  },
+  {
+    "title": "Before He Cheats",
+    "artist": "Carrie Underwood",
+    "genre": "country",
+    "year": 2006,
+    "lyric1": "I dug my key into the side of his pretty little souped-up four-wheel drive. Carved my name into his leather seats. I took a Louisville Slugger to both headlights.",
+    "lyric2": "Slashed a hole in all four tires. Maybe next time he'll think before he cheats.",
+    "lyric3": "Right now, she's probably up singing some white-trash version of Shania karaoke."
+  },
+  {
+    "title": "Glamorous",
+    "artist": "Fergie featuring Ludacris",
+    "genre": "pop",
+    "year": 2007,
+    "lyric1": "We flying first class, up in the sky. Poppin' champagne, livin' the life. In the fast lane, and I won't change for the glamorous, oh, the flossy flossy.",
+    "lyric2": "Are you ready? G-L-A-M-O-R-O-U-S, yeah. G-L-A-M-O-R-O-U-S. We flying first class, up in the sky.",
+    "lyric3": "I still go to Taco Bell, drive-through, raw as hell I don't care, I'm still real"
+  },
+  {
+    "title": "Girlfriend",
+    "artist": "Avril Lavigne",
+    "genre": "pop",
+    "year": 2007,
+    "lyric1": "Hey, hey, you, you, I don't like your girlfriend. No way, no way, I think you need a new one. Hey, hey, you, you, I could be your girlfriend.",
+    "lyric2": "She's like so whatever, and you can do so much better. I think we should get together now. And that's what everyone's talking about.",
+    "lyric3": "Don't pretend, I think you know I'm damn precious. And hell yeah, I'm the motherfucking princess. I can see the way you look at me."
+  },
+  {
+    "title": "How to Save a Life",
+    "artist": "The Fray",
+    "genre": "rock",
+    "year": 2005,
+    "lyric1": "Step one, you say, 'We need to talk.' He walks, you say, 'Sit down, it's just a talk.' He smiles politely back at you, you stare politely shoulder-through.",
+    "lyric2": "Where did I go wrong? I lost a friend somewhere along in the bitterness. And I would have stayed up with you all night, had I known how to save a life.",
+    "lyric3": "As he begins to raise his voice, you lower yours and grant him one last choice. Drive until you lose the road, or break with the ones you've followed."
+  },
+  {
+    "title": "Stronger",
+    "artist": "Kanye West",
+    "genre": "rap",
+    "year": 2007,
+    "lyric1": "N-now th-that that don't kill me can only make me stronger. I need you to hurry up now, 'cause I can't wait much longer.",
+    "lyric2": "I need you to right now, 'cause I can't get much wronger. Man, I've been waiting all night now, that's how long I've been on ya.",
+    "lyric3": "Work it, make it, do it, makes us harder, better, faster, stronger."
+  },
+  {
+    "title": "Beautiful Girls",
+    "artist": "Sean Kingston",
+    "genre": "pop",
+    "year": 2007,
+    "lyric1": "You're way too beautiful, girl. That's why it'll never work. You'll have me suicidal, suicidal, when you say it's over.",
+    "lyric2": "it was back in '99, watchin' movies all the time",
+    "lyric3": "Now we're fussin', and now we're fighting Please tell me why I'm feelin' slighted"
+  },
+  {
+    "title": "This Ain't a Scene, It's an Arms Race",
+    "artist": "Fall Out Boy",
+    "genre": "rock",
+    "year": 2007,
+    "lyric1": "This ain't a scene, it's a goddamn arms race.",
+    "lyric2": "I am an arms dealer fitting you with weapons in the form of words.",
+    "lyric3": "I'm the leading man and the lies I weave are oh-so-intricate, oh-so-intricate."
+  },
+  {
+    "title": "Rockstar",
+    "artist": "Nickelback",
+    "genre": "rock",
+    "year": 2005,
+    "lyric1": "I'm through with standing in lines to clubs I'll never get in. It's like the bottom of the ninth and I'm never gonna win.",
+    "lyric2": "I want a brand new house on an episode of Cribs. And a bathroom I can play baseball in. And a billboard on top of the Orient.",
+    "lyric3": "'Cause we all wanna be big rockstars and live in hilltop houses driving custom cars. The girls come easy and the drugs come cheap."
+  },
+  {
+    "title": "Thnks fr th Mmrs",
+    "artist": "Fall Out Boy",
+    "genre": "rock",
+    "year": 2007,
+    "lyric1": "I'm the first kid to write of hearts, lies, and friends. And I am sorry my conscious calls you to think of me until you forget.",
+    "lyric2": "Thanks for the memories, even though they weren't so great. 'He tastes like you, only sweeter.' One night, yeah, and one more time.",
+    "lyric3": "Been looking at your photograph, and I wish I could marry it. Oh, I'm pressing cells to glass, and kissing and whispering."
+  },
+  {
+    "title": "What I've Done",
+    "artist": "Linkin Park",
+    "genre": "rock",
+    "year": 2007,
+    "lyric1": "In this farewell, there's no open door. Whicheverist, I'm cleaning this slate with the hands of uncertainty.",
+    "lyric2": "So let mercy come and wash away what I've done. I'll face myself to cross out what I've become. Erase myself and let go of what I've done.",
+    "lyric3": "Put to rest what you thought of me. While I clean this slate with the hands of uncertainty. So let mercy come and wash away."
+  },
+  {
+    "title": "Face Down",
+    "artist": "The Red Jumpsuit Apparatus",
+    "genre": "rock",
+    "year": 2006,
+    "lyric1": "Face down in the dirt, she said, 'This doesn't hurt.' She said, 'I finally had enough.'",
+    "lyric2": "Do you feel like a man when you push her around? Do you feel better now, as she falls to the ground?",
+    "lyric3": "Hey girl, you know you drive me crazy. One look puts the rhythm in my hand."
+  },
+  {
+    "title": "Welcome to the Black Parade",
+    "artist": "My Chemical Romance",
+    "genre": "rock",
+    "year": 2006,
+    "lyric1": "When I was a young boy, my father took me into the city to see a marching band. He said, 'Son, when you grow up, would you be the savior of the broken, the beaten and the damned?'",
+    "lyric2": "He said, 'Will you defeat them, your demons, and all the non-believers? The plans that they have made?'",
+    "lyric3": "We'll carry on, we'll carry on And though you're dead and gone, beleive me, your memory will carry on"
+  },
+  {
+    "title": "Chasing Cars",
+    "artist": "Snow Patrol",
+    "genre": "rock",
+    "year": 2006,
+    "lyric1": "We'll do it all, everything, on our own. We don't need anything, or anyone.",
+    "lyric2": "If I lay here, if I just lay here, would you lie with me and just forget the world?",
+    "lyric3": "I don't quite know how to say how I feel. Those three words are said too much, they're not enough."
+  },
+  {
+    "title": "Keep Holding On",
+    "artist": "Avril Lavigne",
+    "genre": "rock",
+    "year": 2006,
+    "lyric1": "You're not alone, together we stand. I'll be by your side, you know I'll take your hand.",
+    "lyric2": "Keep holding on, 'cause you know we'll make it through, we'll make it through. Just stay strong, 'cause you know I'm here for you, I'm here for you.",
+    "lyric3": "There's nothing you could say, nothing you could do. There's no other way when it comes to the truth."
+  },
+  {
+    "title": "Who Knew",
+    "artist": "Pink",
+    "genre": "pop",
+    "year": 2006,
+    "lyric1": "You took my hand, you showed me how. You promised me you'd be around. Uh-huh, that's right. I took your words and I believed in everything you said to me. Yeah, that's right.",
+    "lyric2": "If someone said three years from now, you'd be long gone, I'd stand up and punch them out. 'Cause they're all wrong.",
+    "lyric3": "When someone said count your blessings now 'fore they're long gone, I guess I just didn't know how I was all wrong"
+  },
+  {
+    "title": "Rehab",
+    "artist": "Amy Winehouse",
+    "genre": "r&b",
+    "year": 2006,
+    "lyric1": "They tried to make me go to rehab, but I said, 'No, no, no.' Yes, I've been black, but when I come back, you'll know, know, know.",
+    "lyric2": "I ain't got the time, and if my daddy thinks I'm fine, he's tried to make me go to rehab, but I won't go, go, go.",
+    "lyric3": "I'd rather be at home with Ray. I ain't got seventy days. 'Cause there's nothin', there's nothin' you can teach me that I can't learn from Mister Hathaway."
+  },
+  {
+    "title": "The Great Escape",
+    "artist": "Boys Like Girls",
+    "genre": "pop punk",
+    "year": 2007,
+    "lyric1": "Paper bags and plastic hearts, all our belongings in shopping carts. It's goodbye, but we got one more night. Let's get drunk and ride around and make peace with an empty town. We can make it right.",
+    "lyric2": "Throw it away, forget yesterday, we'll make the great escape. And we won't hear a word they say, they don't know us anyway. Watch it burn, let it die, 'cause we are finally free tonight.",
+    "lyric3": "Tonight will change our lives, it's so good to be by your side, but we'll cry, we won't give up the fight. We'll scream loud at the top of our lungs and they'll think it's just 'cause we're young, and we'll feel so alive."
+  },
+  {
+    "title": "Shut Up and Drive",
+    "artist": "Rihanna",
+    "genre": "pop",
+    "year": 2007,
+    "lyric1": "I've been looking for a driver who is qualified. So if you think that you're the one, step into my ride. I'm a fine-tuned supersonic speed machine, with a sunroof top and a gangsta lean.",
+    "lyric2": "Can you handle the curves? Can you run all the lights? If you can, baby boy, then we can go all night. 'Cause it's 0 to 60 in 3.5. Baby, you got the keys. Now shut up and drive.",
+    "lyric3": "You look like you can handle what's under my hood. You keep saying that you will, boy, I wish you would. So if you feel me, let me know, know, know. Come on now, what you waiting for, for, for?"
+  },
+  {
+    "title": "Bad Day",
+    "artist": "Daniel Powter",
+    "genre": "pop",
+    "year": 2005,
+    "lyric1": "Where is the moment we needed the most? You kick up the leaves and the magic is lost. They tell me your blue skies fade to gray, they tell me your passion's gone away. And I don't need no carryin' on.",
+    "lyric2": "Because you had a bad day, you're taking one down. You sing a sad song just to turn it around. You say you don't know, you tell me, don't lie. You work at a smile and you go for a ride.",
+    "lyric3": "You stand in the line just to hit a new low. You're faking a smile with the coffee to go. You tell me your life's been way off line, you're falling to pieces every time. And I don't need no carryin' on."
+  },
+  {
+    "title": "Temperature",
+    "artist": "Sean Paul",
+    "genre": "pop",
+    "year": 2005,
+    "lyric1": "The gyal them Schillaci, Sean da Paul. So me give it to, so me give to, so me give it to, to all girls. Five million and forty naughty shorty.",
+    "lyric2": "Well, woman the way the time cold I wanna be keepin' you warm. I got the right temperature fi shelter you from the storm. Oh Lord, gyal, I got the right tactics to turn you on.",
+    "lyric3": "Make I see the gyal dem bruk out pon the floor. From you don't want no worthless performer. From you don't want no man weh can't turn you on. Gyal, make I see your hand dem up on ya."
+  },
+  {
+    "title": "Promiscuous",
+    "artist": "Nelly Furtado featuring Timbaland",
+    "genre": "pop",
+    "year": 2006,
+    "lyric1": "Promiscuous girl, wherever you are, I'm all alone, and it's you that I want. Promiscuous boy, you already know, that I'm all yours, what you waiting for?",
+    "lyric2": "How you doin', young lady? That feeling that you giving really drives me crazy.",
+    "lyric3": "Roses are red, some diamonds are blue. Chivalry is dead, but you're still kinda cute."
+  }, 
+  {
+    "title": "You're Beautiful",
+    "artist": "James Blunt",
+    "genre": "pop",
+    "year": 2004,
+    "lyric1": "You're beautiful, you're beautiful. You're beautiful, it's true. I saw your face in a crowded place, and I don't know what to do, 'cause I'll never be with you.",
+    "lyric2": "My life is brilliant. My life is brilliant. My love is pure. I saw an angel of that I'm sure.",
+    "lyric3": "Yes, she caught my eye as we walked on by. She could see from my face that I was fuckin' high."
+  },
+  {
+    "title": "Hips Don't Lie",
+    "artist": "Shakira featuring Wyclef Jean",
+    "genre": "pop",
+    "year": 2006,
+    "lyric1": "I'm on tonight, you know my hips don't lie and I'm starting to feel it's right. All the attraction, the tension, don't you see, baby? This is perfection.",
+    "lyric2": "I never really knew that she could dance like this. She make a man wanna speak Spanish. ¿Cómo se llama, bonita? Mi casa, su casa.",
+    "lyric3": "Hey girl, I can see your body moving and it's driving me crazy."
+  },
+  {
+    "title": "Unwritten",
+    "artist": "Natasha Bedingfield",
+    "genre": "pop",
+    "year": 2004,
+    "lyric1": "Feel the rain on your skin, no one else can feel it for you. Only you can let it in, no one else, no one else can speak the words on your lips.",
+    "lyric2": "I am unwritten, can't read my mind, I'm undefined. I'm just beginning, the pen's in my hand, ending unplanned. Staring at the blank page before you.",
+    "lyric3": "I break tradition, sometimes my tries are outside the lines. We've been conditioned to not make mistakes, but I can't live that way."
+  },
+  {
+    "title": "Crazy",
+    "artist": "Gnarls Barkley",
+    "genre": "pop",
+    "year": 2006,
+    "lyric1": "I think you're crazy. I think you're crazy. I think you're crazy, just like me.",
+    "lyric2": "I remember when, I remember, I remember when I lost my mind. There was something so pleasant about that place. Even your emotions had an echo in so much space. ",
+    "lyric3": "And I hope that you are having the time of your life. But think twice, that's my only advice."
+  },
+  {
+    "title": "I Write Sins Not Tragedies",
+    "artist": "Panic! at the Disco",
+    "genre": "pop punk",
+    "year": 2005,
+    "lyric1": "I chimed in with a \"Haven't you people ever heard of closing a goddamn door?\" No, it's much better to face these kinds of things with a sense of poise and rationality.",
+    "lyric2": "I can't help but to hear, no, I can't help but to hear an exchanging of words: \"What a beautiful wedding! What a beautiful wedding!\" says a bridesmaid to a waiter.",
+    "lyric3": "Oh, well, in fact, well, I'll look at it this way, I mean, technically our marriage is saved. Well, this calls for a toast, so pour the champagne."
+  },
+{
+    "title": "Move Along",
+    "artist": "The All-American Rejects",
+    "genre": "pop punk",
+    "year": 2005,
+    "lyric1": "When all you got to keep is strong, move along, move along like I know you do.",
+    "lyric2": "Go ahead as you waste your days with thinking. When you fall, everyone stands.",
+    "lyric3": "So a day when you've lost yourself completely could be a night when your life ends."
+  },
+  {
+    "title": "Dani California",
+    "artist": "Red Hot Chili Peppers",
+    "genre": "rock",
+    "year": 2006,
+    "lyric1": "California, rest in peace, simultaneous release. California, show your teeth, she's my priestess, I'm your priest.",
+    "lyric2": "Gettin' born in the state of Mississippi, Her Papa was a copper and her Mama was a hippie.",
+    "lyric3": "Deep in the valley of the Earth, where the hills are groovin', Arizona rising up and the state is movin'."
+  },
+    {
+    "title": "Dance, Dance",
+    "artist": "Fall Out Boy",
+    "genre": "pop punk",
+    "year": 2005,
+    "lyric1": "Dance, dance, we're falling apart to half time, Dance, dance, and these are the lives you'd love to lead",
+    "lyric2": "I'm gonna make you bend and break, It sends you to me without wait",
+    "lyric3": "Why don't you show me a little bit of spine you've been saving for his mattress"
+  },
+  {
+    "title": "Gold Digger",
+    "artist": "Kanye West featuring Jamie Foxx",
+    "genre": "hip-hop",
+    "year": 2005,
+    "lyric1": "I ain't sayin' she a gold digger, But she ain't messin' with no broke niggas",
+    "lyric2": "She take my money when I'm in need, Yeah, she's a triflin' friend indeed",
+    "lyric3": "You will see him on TV any given Sunday, Won the Super Bowl and drive off in a Hyundai"
+  },
+  {
+    "title": "Photograph",
+    "artist": "Nickelback",
+    "genre": "post-grunge",
+    "year": 2005,
+    "lyric1": "Look at this photograph, every time I do it makes me laugh",
+    "lyric2": "Every time I see it I can't believe it's true, How did I get so far from you?",
+    "lyric3": "And if you were here, I'd never have a single thing to fear"
+  },
+  {
+    "title": "My Humps",
+    "artist": "The Black Eyed Peas",
+    "genre": "hip-hop",
+    "year": 2005,
+    "lyric1": "My hump, my hump, my hump, my hump, my hump, My hump, my hump, my hump, my lovely lady lumps",
+    "lyric2": "What you gon' do with all that junk, All that junk inside your trunk?",
+    "lyric3": "I'ma get-get-get-get you drunk, Get you love drunk off my hump"
+  },
+  {
+    "title": "Dirty Little Secret",
+    "artist": "The All-American Rejects",
+    "genre": "pop punk",
+    "year": 2005,
+    "lyric1": "I'll keep you my dirty little secret, Dirty little secret, Don't tell anyone or you'll be just another regret",
+    "lyric2": "Let me know that I've done wrong, When I've known this all along",
+    "lyric3": "I go around a time or two, Just to waste my time with you, Tell me all that you've thrown away"
+  },
+  {
+    "title": "Shake That",
+    "artist": "Eminem",
+    "genre": "hip-hop",
+    "year": 2005,
+    "lyric1": "Get buzzed, get drunk, get crunk, get fuuuuuucked uuup",
+    "lyric2": "We bout to have a party (turn the music up) Lets get it started (Go 'head and shake your butt)",
+    "lyric3": "I'm a menace, a dentist, an oral hygienist"
+  },
+  {
+    "title": "Sugar, We're Goin Down",
+    "artist": "Fall Out Boy",
+    "genre": "pop punk",
+    "year": 2005,
+    "lyric1": "We're going down, down in an earlier round, And sugar, we're going down swinging",
+    "lyric2": "I'll be your number one with a bullet, A loaded God complex, cock it and pull it",
+    "lyric3": "Am I more than you bargained for yet? I've been dying to tell you anything you want to hear"
+  },
+  {
+    "title": "Waiting on the World to Change",
+    "artist": "John Mayer",
+    "genre": "pop",
+    "year": 2006,
+    "lyric1": "So we keep waiting, waiting on the world to change, We keep on waiting, waiting on the world to change",
+    "lyric2": "Me and all my friends, we're all misunderstood, They say we stand for nothing and there's no way we ever could",
+    "lyric3": "It's hard to beat the system when you're standing at a distance"
+  },
+  {
+    "title": "Feel Good Inc.",
+    "artist": "Gorillaz",
+    "genre": "pop",
+    "year": 2005,
+    "lyric1": "Windmill, windmill for the land, Turn forever hand in hand",
+    "lyric2": "Love forever, love is free, Let's turn forever, you and me",
+    "lyric3": "City's breaking down on a camel's back, They just have to go 'cause they don't know whack"
+  }
+  
+   
 ]
