@@ -79,9 +79,19 @@
 
 <div class="container">
     <h1>🎵 Music Trivia</h1>
-    <p>Enter your name to join the game session</p>
+    <p>Enter your name and room code to join. Hosting? Open <strong>/host</strong>.</p>
 
     <form action="/join" method="POST" onsubmit="return validateForm()">
+        <input 
+            type="text" 
+            id="join-room"
+            name="room_code" 
+            placeholder="Room code..." 
+            required
+            autocomplete="off"
+            maxlength="20"
+            value="{{ room_prefill or '' }}"
+        >
         <input 
             type="text" 
             id="join-name"
@@ -101,8 +111,16 @@
 
 <script>
 function validateForm() {
+    const roomInput = document.getElementById('join-room');
     const nameInput = document.getElementById('join-name');
+    const cleanedRoom = roomInput.value.trim().toUpperCase().replace(/[^A-Z0-9_-]/g, '').slice(0, 20);
     const cleanedName = nameInput.value.trim();
+
+    if (!cleanedRoom) {
+        alert("Please enter a valid room code.");
+        roomInput.value = "";
+        return false;
+    }
     
     // Explicitly reject purely whitespace submissions before they hit server sockets
     if (!cleanedName) {
@@ -111,7 +129,7 @@ function validateForm() {
         return false;
     }
     
-    // Update value to the cleaned version right before dispatching the POST redirect
+    roomInput.value = cleanedRoom;
     nameInput.value = cleanedName;
     return true;
 }

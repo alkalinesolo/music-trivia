@@ -3,287 +3,145 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Trivia Player</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='player.css') }}">
     <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
-    
-    <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #121212;
-            color: #ffffff;
-            text-align: center;
-            padding: 20px;
-            margin: 0;
-        }
-
-        .container {
-            max-width: 450px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        h2 {
-            color: #1db954;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 15px;
-            font-size: 18px;
-            border-radius: 8px;
-            border: 2px solid #333;
-            background: #222;
-            color: #fff;
-            box-sizing: border-box;
-            margin-bottom: 15px;
-        }
-
-        input[type="text"]:disabled {
-            background: #1a1a1a;
-            color: #777;
-            border-color: #222;
-        }
-
-        button {
-            width: 100%;
-            padding: 15px;
-            font-size: 18px;
-            font-weight: bold;
-            background: #1db954;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        button:disabled {
-            background: #222;
-            color: #555;
-            cursor: not-allowed;
-        }
-
-        .phase-view {
-            background: #1c1c1c;
-            padding: 25px;
-            border-radius: 12px;
-            margin-top: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        .lyric-box {
-            font-size: 20px;
-            font-style: italic;
-            color: #e0e0e0;
-            margin-bottom: 25px;
-            line-height: 1.4;
-        }
-
-        .status-message {
-            font-size: 18px;
-            color: #b3b3b3;
-            margin-top: 15px;
-        }
-
-        .score-display {
-            font-size: 36px;
-            font-weight: bold;
-            color: #1db954;
-            margin: 15px 0;
-        }
-
-        /* Live Visual Timer Interface */
-        .timer-badge {
-            font-size: 24px;
-            font-weight: bold;
-            background: #282828;
-            border: 2px solid #1db954;
-            color: #1db954;
-            display: inline-block;
-            padding: 5px 20px;
-            border-radius: 20px;
-            margin-bottom: 15px;
-        }
-
-        .timer-warning {
-            border-color: #ff5555 !important;
-            color: #ff5555 !important;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-    </style>
 </head>
-<body>
+<body data-player-name="{{ name }}" data-room-code="{{ room_code }}">
 
 <div class="container">
-    <h1>📱 Mobile Controller</h1>
-    <h3>Player: <span style="color: #1db954;">{{ name }}</span></h3>
-    <hr style="border-color: #252525;">
-
-    <!-- ========================= -->
-    <!-- LOBBY VIEW                -->
-    <!-- ========================= -->
-    <div id="lobby-view" class="phase-view">
-        <h2>Joined Lobby!</h2>
-        <p class="status-message">Hang tight. The round will begin as soon as the host starts the game on the main screen.</p>
-    </div>
-
-    <!-- ========================= -->
-    <!-- GUESSING VIEW             -->
-    <!-- ========================= -->
-    <div id="guessing-view" class="phase-view hidden">
-        <div id="timer-display" class="timer-badge">--</div>
-        <div class="lyric-box" id="player-lyric"></div>
-        
-        <div id="input-area">
-            <input type="text" id="player-guess" placeholder="Type song title here..." autocomplete="off">
-            <button id="btn-submit" onclick="submitGuess()">Lock In Guess</button>
+    <section class="card header">
+        <h1>Music Trivia</h1>
+        <div class="header-meta">
+            <div class="meta-tile">
+                <div class="meta-label">Player</div>
+                <div class="meta-value">{{ name }}</div>
+            </div>
+            <div class="meta-tile">
+                <div class="meta-label">Room</div>
+                <div class="meta-value">{{ room_code }}</div>
+            </div>
         </div>
-        
-        <div id="lock-status" class="status-message hidden">
-            🔒 Guess submitted! Waiting for the timer to expire or other players to finish...
-        </div>
-    </div>
+    </section>
 
-    <!-- ========================= -->
-    <!-- RESULTS VIEW              -->
-    <!-- ========================= -->
-    <div id="results-view" class="phase-view hidden">
-        <h2>Round Ended</h2>
+    <section id="host-controls" class="card host-controls">
+        <div id="host-controls-lobby" class="btn-row two">
+            <button class="btn btn-primary" onclick="startRoundAsHost()">Start Round</button>
+            <button class="btn btn-secondary" onclick="openHostSettings()">Settings</button>
+        </div>
+        <div id="host-controls-active" class="btn-row two hidden">
+            <button class="btn btn-primary" onclick="nextSongAsHost()">Next Song</button>
+            <button class="btn btn-secondary" onclick="showResultsAsHost()">Show Results</button>
+            <button class="btn btn-neutral" onclick="openHostSettings()">Settings</button>
+            <button class="btn btn-danger" onclick="exitGameAsHost()">Exit</button>
+        </div>
+    </section>
+
+    <section id="lobby-view" class="card phase-view active">
+        <div class="title-row">
+            <h2>Lobby</h2>
+            <span class="muted">Waiting for round start</span>
+        </div>
+        <div class="status-banner">When the host starts a round, your timer begins and your guesses auto-lock when time expires.</div>
+    </section>
+
+    <section id="guessing-view" class="card phase-view">
+        <div class="title-row">
+            <h2>Guessing</h2>
+            <span id="timer-display" class="timer-value">0s</span>
+        </div>
+
+        <div class="timer-wrap">
+            <div class="timer-header">
+                <span>Time Left</span>
+                <span class="muted">Auto-lock at 0</span>
+            </div>
+            <div class="progress-outer">
+                <div id="timer-progress" class="progress-inner"></div>
+            </div>
+        </div>
+
+        <div id="player-meta" class="muted" style="margin-top: 12px;"></div>
+
+        <div id="player-lyric3" class="clue-box"></div>
+        <div id="player-lyric2" class="clue-box hidden"></div>
+        <div id="player-lyric1" class="clue-box hidden"></div>
+
+        <div id="round-audio-player" class="audio-card hidden">
+            <div class="audio-head">
+                <div>
+                    <div class="audio-title">Preview</div>
+                    <div id="audio-track" class="audio-track"></div>
+                </div>
+                <button id="audio-play-btn" class="btn btn-neutral" type="button">Play</button>
+            </div>
+            <input id="audio-progress" class="audio-range" type="range" min="0" max="100" value="0">
+            <div class="audio-time">
+                <span id="audio-current">0:00</span>
+                <span id="audio-total">0:00</span>
+            </div>
+        </div>
+
+        <div id="input-area" class="field-grid" style="margin-top: 12px;">
+            <div>
+                <div class="field-label">Song Title</div>
+                <input id="player-title-guess" type="text" autocomplete="off" placeholder="Type song title">
+            </div>
+            <div>
+                <div class="field-label">Artist</div>
+                <input id="player-artist-guess" type="text" autocomplete="off" placeholder="Type artist name">
+            </div>
+            <button id="btn-submit" class="btn btn-primary" type="button" onclick="submitGuess()">Lock Guess</button>
+        </div>
+
+        <div id="lock-status" class="status-banner hidden" style="margin-top: 10px;"></div>
+    </section>
+
+    <section id="results-view" class="card phase-view">
+        <div class="title-row">
+            <h2>Results</h2>
+            <span class="muted">Round breakdown</span>
+        </div>
         <div id="personal-feedback"></div>
+    </section>
+</div>
+
+<div id="player-settings-modal" class="overlay" aria-hidden="true">
+    <div class="modal">
+        <h3>Host Settings</h3>
+
+        <div class="modal-section">
+            <label class="field-label" for="player-rounds-input">Rounds</label>
+            <input id="player-rounds-input" type="number" min="1" max="25" value="5">
+        </div>
+
+        <div class="modal-section">
+            <div class="field-label">Game Mode</div>
+            <div class="option-grid">
+                <label class="option-item"><input id="player-game-mode-quick" type="radio" name="player-game-mode" value="quick" checked><span>Quick (30s, 1 lyric)</span></label>
+                <label class="option-item"><input id="player-game-mode-full" type="radio" name="player-game-mode" value="full"><span>Full (45s + reveals)</span></label>
+                <label class="option-item"><input id="player-game-mode-music-only" type="radio" name="player-game-mode" value="music_only"><span>Music Only (30s)</span></label>
+            </div>
+        </div>
+
+        <div class="modal-section">
+            <div class="field-label">Decades</div>
+            <div id="player-decades-container" class="option-scroll"></div>
+        </div>
+
+        <div class="modal-section">
+            <div class="field-label">Genres</div>
+            <div id="player-genres-container" class="option-scroll"></div>
+        </div>
+
+        <div class="btn-row two" style="margin-top: 12px;">
+            <button class="btn btn-neutral" type="button" onclick="closeHostSettings()">Cancel</button>
+            <button class="btn btn-primary" type="button" onclick="saveHostSettings()">Save</button>
+        </div>
     </div>
 </div>
 
-<script>
-const socket = io();
-
-// Fix 1: Normalize name parameters globally to safeguard string match routines
-const playerNameRaw = "{{ name }}";
-const playerNameNormalized = playerNameRaw.trim().toLowerCase();
-
-let countdownInterval = null;
-
-// Announce presence to the backend socket network
-socket.emit('player_join', { name: playerNameRaw });
-
-function changeView(activeViewId) {
-    document.querySelectorAll('.phase-view').forEach(view => {
-        view.classList.add('hidden');
-    });
-    document.getElementById(activeViewId).classList.remove('hidden');
-}
-
-function startUiTimer(seconds) {
-    // Clear any dangling interval instances safely
-    if (countdownInterval) clearInterval(countdownInterval);
-    
-    let timeLeft = seconds;
-    const timerEl = document.getElementById("timer-display");
-    
-    timerEl.innerText = timeLeft;
-    timerEl.classList.remove("timer-warning");
-
-    countdownInterval = setInterval(() => {
-        timeLeft--;
-        timerEl.innerText = timeLeft;
-
-        if (timeLeft <= 5) {
-            timerEl.classList.add("timer-warning");
-        }
-
-        if (timeLeft <= 0) {
-            clearInterval(countdownInterval);
-        }
-    }, 1000);
-}
-
-function submitGuess() {
-    const guessInput = document.getElementById('player-guess');
-    const guessValue = guessInput.value.trim();
-    
-    if (!guessValue) return;
-
-    // Immediately lock controls to prevent multi-tap submission spikes
-    guessInput.disabled = true;
-    document.getElementById('btn-submit').disabled = true;
-    document.getElementById('input-area').classList.add('hidden');
-    document.getElementById('lock-status').classList.remove('hidden');
-
-    socket.emit('submit_guess', {
-        name: playerNameRaw,
-        guess: guessValue
-    });
-}
-
-// Global engine state coordinator subscription
-socket.on('game_state', (data) => {
-    if (data.state === 'guessing') {
-        // Fix 5: Clean old result text elements instantly to clear visual ghosting
-        document.getElementById('personal-feedback').innerHTML = '';
-        
-        document.getElementById('player-guess').disabled = false;
-        document.getElementById('btn-submit').disabled = false;
-        document.getElementById('input-area').classList.remove('hidden');
-        document.getElementById('lock-status').classList.add('hidden');
-        changeView('guessing-view');
-    } else if (data.state === 'results') {
-        if (countdownInterval) clearInterval(countdownInterval);
-        changeView('results-view');
-    } else if (data.state === 'lobby') {
-        // Fix 2: Handle explicit session resets down to baseline lobby
-        if (countdownInterval) clearInterval(countdownInterval);
-        changeView('lobby-view');
-    }
-});
-
-// Fix 3: Standardize text input wiping and state unlocking within the round creation hook
-socket.on('new_round', (data) => {
-    document.getElementById('player-lyric').innerText = `"${data.lyric}"`;
-    
-    const guessInput = document.getElementById('player-guess');
-    guessInput.value = '';
-    guessInput.disabled = false;
-});
-
-// Fix 4: Intercept host timer updates to synchronize the client tracking widget
-socket.on('host_round_started', (data) => {
-    if (data && data.time) {
-        startUiTimer(data.time);
-    }
-});
-
-socket.on('round_results', (data) => {
-    const feedbackDiv = document.getElementById('personal-feedback');
-    feedbackDiv.innerHTML = '';
-
-    // Fix 1 Mapping Verification: Match objects safely using the standardized key mapping formula
-    const myResult = data.results.find(r => r.player.trim().toLowerCase() === playerNameNormalized);
-
-    if (myResult) {
-        const scoreHeader = document.createElement('div');
-        
-        if (myResult.no_guess) {
-            scoreHeader.innerHTML = `
-                <p class="status-message" style="color: #ff5555;">Time ran out before you guessed!</p>
-                <div class="score-display" style="color: #ff5555;">+0</div>
-            `;
-        } else {
-            scoreHeader.innerHTML = `
-                <p class="status-message">Your guess: <strong>${myResult.guess}</strong></p>
-                <p class="status-message">Accuracy Score:</p>
-                <div class="score-display">+${myResult.round_score}</div>
-            `;
-        }
-        
-        const runningTotal = document.createElement('p');
-        runningTotal.className = 'status-message';
-        runningTotal.innerHTML = `Your Running Total: <strong>${myResult.total_score} pts</strong>`;
-        
-        feedbackDiv.appendChild(scoreHeader);
-        feedbackDiv.appendChild(runningTotal);
-    }
-});
-</script>
+<script src="{{ url_for('static', filename='player.core.js') }}"></script>
+<script src="{{ url_for('static', filename='player.socket.js') }}"></script>
 
 </body>
 </html>

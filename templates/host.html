@@ -1,219 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Trivia Host</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='host.css') }}">
     <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-    <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #111;
-            color: white;
-            text-align: center;
-            padding: 30px;
-            margin: 0;
-        }
-
-        button {
-            padding: 15px 30px;
-            font-size: 20px;
-            margin: 10px;
-            cursor: pointer;
-            border-radius: 8px;
-            border: none;
-            background: #1db954;
-            color: white;
-            font-weight: bold;
-        }
-
-        button:hover {
-            background: #1ed760;
-        }
-
-        #players li {
-            list-style: none;
-            margin: 8px;
-            font-size: 22px;
-            display: inline-block;
-            background: #222;
-            padding: 5px 15px;
-            border-radius: 20px;
-        }
-
-        #qrcode {
-            display: flex;
-            justify-content: center;
-            margin: 20px auto;
-            padding: 10px;
-            background: white;
-            width: 200px;
-            height: 200px;
-            border-radius: 10px;
-        }
-
-        .result {
-            background: #222;
-            padding: 15px;
-            margin: 15px auto;
-            width: 500px;
-            border-radius: 10px;
-            border-left: 5px solid #1db954;
-            text-align: left;
-        }
-
-        .result h3 {
-            margin: 0 0 5px 0;
-            color: #1db954;
-        }
-
-        .result p {
-            margin: 5px 0;
-            font-size: 18px;
-        }
-
-        #lyric {
-            font-size: 42px;
-            margin: 40px auto;
-            max-width: 80%;
-            color: #f5f5f5;
-            font-style: italic;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-    </style>
+    <script src="{{ url_for('static', filename='qrcode.min.js') }}"></script>
 </head>
-<body>
+<body data-join-url="{{ join_url }}">
 
-<h1>🎵 Music Trivia Host</h1>
+<h1>Music Trivia Host</h1>
 <hr style="border-color: #333;">
 
-<!-- ========================= -->
-<!-- LOBBY SCREEN              -->
-<!-- ========================= -->
 <div id="lobby-view" class="game-phase">
-    <h2>Room Code: <span style="color: #1db954;">{{ room_code }}</span></h2>
-    <p>Scan to Join Game:</p>
+    <h2>Host Room</h2>
+    <div style="max-width: 460px; margin: 12px auto;">
+        <input id="room-code-input" type="text" placeholder="Room code" maxlength="20" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #333; background: #1b1b1b; color: #fff;">
+        <button onclick="setHostRoom()">Set Room</button>
+    </div>
+
+    <h2>Active Room: <span id="active-room-code" style="color: #1db954;">-</span></h2>
+    <p>Join Link: <a id="join-link" href="#" target="_blank" rel="noopener noreferrer" style="color: #7ee5af;">Set room to generate link</a></p>
     <div id="qrcode"></div>
-    
+
+    <button id="btn-settings" onclick="openSettings()" disabled>Settings</button>
+
     <h2>Connected Players</h2>
     <ul id="players"></ul>
 </div>
 
-<!-- ========================= -->
-<!-- GAMEPLAY VIEW             -->
-<!-- ========================= -->
 <div id="game-view" class="game-phase hidden">
     <h2 id="guessCount" style="color: #aaa;">Guesses: 0/0</h2>
-    <h1 id="lyric"></h1>
+    <h2 id="host-timer" style="color: #f4ca82;">Time Left: 0s</h2>
+    <h3 id="host-meta" style="color: #c5d0dc;"></h3>
+    <h1 id="lyric3"></h1>
+    <h2 id="lyric2"></h2>
+    <h3 id="lyric1"></h3>
 </div>
 
-<!-- ========================= -->
-<!-- RESULTS VIEW              -->
-<!-- ========================= -->
 <div id="results-view" class="game-phase hidden"></div>
 
-<!-- ========================= -->
-<!-- HOST CONTROLS             -->
-<!-- ========================= -->
-<div id="controls" style="margin-top: 40px;">
-    <button id="btn-start" onclick="startRound()">Start Round</button>
+<div id="controls" style="margin-top: 30px;">
+    <button id="btn-start" onclick="startRound()" disabled>Start Round</button>
     <button id="btn-results" onclick="showResults()" class="hidden">Show Results</button>
 </div>
 
-<script>
-const socket = io();
+<div id="settings-modal" class="hidden" style="position: fixed; inset: 0; background: rgba(0, 0, 0, 0.55);">
+    <div style="max-width: 620px; margin: 6vh auto; background: #171717; border: 1px solid #333; border-radius: 12px; padding: 16px; text-align: left;">
+        <h2 style="margin-top: 0;">Game Settings</h2>
 
-// Join host session on load
-socket.emit('host_join');
+        <label for="rounds-input"><strong>Rounds</strong></label>
+        <input id="rounds-input" type="number" min="1" max="25" value="5" style="display: block; margin-top: 6px; width: 140px; padding: 8px; border-radius: 8px; border: 1px solid #333; background: #111; color: #fff;">
 
-// Fixed: Safely uses the backend variable passed explicitly from app.py
-const joinURL = "{{ join_url }}";
+        <div style="margin-top: 12px;">
+            <strong>Game Mode</strong>
+            <label style="display:block; margin-top: 8px;"><input type="radio" id="game-mode-quick" name="game-mode" value="quick" checked> Quick (1 lyric, 30s)</label>
+            <label style="display:block; margin-top: 6px;"><input type="radio" id="game-mode-full" name="game-mode" value="full"> Full (45s, reveals at 30s and 15s left)</label>
+            <label style="display:block; margin-top: 6px;"><input type="radio" id="game-mode-music-only" name="game-mode" value="music_only"> Music Only (30s preview)</label>
+        </div>
 
-new QRCode(document.getElementById("qrcode"), {
-    text: joinURL,
-    width: 200,
-    height: 200
-});
+        <div style="display: grid; gap: 12px; grid-template-columns: 1fr 1fr; margin-top: 12px;">
+            <div>
+                <strong>Decades</strong>
+                <div id="decades-container" style="margin-top: 8px; display: grid; gap: 8px;"></div>
+            </div>
+            <div>
+                <strong>Genres</strong>
+                <div id="genres-container" style="margin-top: 8px; display: grid; gap: 8px;"></div>
+            </div>
+        </div>
 
-// Centralized Phase Controller
-function showView(activeViewId) {
-    // Hide all main game views instantly
-    document.querySelectorAll('.game-phase').forEach(view => {
-        view.classList.add('hidden');
-    });
-    // Un-hide just the active one
-    document.getElementById(activeViewId).classList.remove('hidden');
-}
+        <div style="display: flex; gap: 10px; margin-top: 16px; justify-content: flex-end;">
+            <button onclick="closeSettings()" style="background: #3a3a3a;">Cancel</button>
+            <button onclick="saveSettings()">Save Settings</button>
+        </div>
+    </div>
+</div>
 
-function startRound() {
-    // Completely wipe out previous results DOM element tree and reset counters
-    document.getElementById('results-view').innerHTML = '';
-    document.getElementById('guessCount').innerText = 'Guesses: 0/0';
-    
-    // Switch Views via central state switcher
-    showView('game-view');
-    
-    // Manage control buttons state
-    document.getElementById('btn-start').innerText = "Next Round";
-    document.getElementById('btn-start').classList.add('hidden');
-    document.getElementById('btn-results').classList.remove('hidden');
-
-    socket.emit('start_round');
-}
-
-function showResults() {
-    document.getElementById('btn-results').classList.add('hidden');
-    document.getElementById('btn-start').classList.remove('hidden');
-    socket.emit('show_results');
-}
-
-socket.on('update_players', (data) => {
-    const list = document.getElementById('players');
-    list.innerHTML = '';
-
-    data.players.forEach(player => {
-        const li = document.createElement('li');
-        li.textContent = player;
-        list.appendChild(li);
-    });
-});
-
-socket.on('host_round_started', (song) => {
-    document.getElementById('lyric').innerText = `"${song.lyric}"`;
-});
-
-socket.on('guess_count', (data) => {
-    document.getElementById('guessCount').innerText = `Guesses: ${data.count}/${data.total}`;
-});
-
-socket.on('round_results', (data) => {
-    const resultsDiv = document.getElementById('results-view');
-    resultsDiv.innerHTML = '';
-    
-    // Force View Shift to Results Screen
-    showView('results-view');
-
-    const title = document.createElement('h2');
-    title.style.color = "#1db954";
-    title.innerText = `Answer: ${data.answer} by ${data.artist}`;
-    resultsDiv.appendChild(title);
-
-    data.results.forEach(result => {
-        const div = document.createElement('div');
-        div.className = 'result';
-        div.innerHTML = `
-            <h3>${result.player}</h3>
-            <p><strong>Guess:</strong> ${result.guess}</p>
-            <p><strong>Round Points:</strong> +${result.score}</p>
-            <p><strong>Total Running Score:</strong> ${result.total_score}</p>
-        `;
-        resultsDiv.appendChild(div);
-    });
-});
-</script>
+<script src="{{ url_for('static', filename='host.core.js') }}"></script>
+<script src="{{ url_for('static', filename='host.socket.js') }}"></script>
 
 </body>
 </html>

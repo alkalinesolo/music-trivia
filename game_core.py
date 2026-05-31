@@ -247,9 +247,17 @@ def build_clues(song, game_mode="full", quick_clue_key=None):
         }
 
     if game_mode == "quick":
-        preferred_key = quick_clue_key if quick_clue_key in {"lyric1", "lyric2"} else "lyric2"
-        fallback_key = "lyric1" if preferred_key == "lyric2" else "lyric2"
-        quick_clue = song.get(preferred_key) or song.get(fallback_key) or ""
+        preferred_key = quick_clue_key if quick_clue_key in {"lyric1", "lyric2", "lyric3"} else "lyric3"
+        fallback_order = ["lyric3", "lyric2", "lyric1"]
+        if preferred_key in fallback_order:
+            fallback_order.remove(preferred_key)
+            fallback_order.insert(0, preferred_key)
+
+        quick_clue = ""
+        for key in fallback_order:
+            quick_clue = song.get(key) or ""
+            if quick_clue:
+                break
 
         return {
             "genre": song.get("genre", "unknown"),
