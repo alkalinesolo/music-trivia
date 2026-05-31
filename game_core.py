@@ -1,19 +1,126 @@
 from urllib.parse import quote_plus
 from urllib.request import urlopen
 import json
+import os
+import re
 import time
 
-TOTAL_ROUND_TIME = 60
+TOTAL_ROUND_TIME = 45
 QUICK_ROUND_TIME = 30
 MUSIC_ONLY_ROUND_TIME = 30
 LYRIC2_REVEAL_AT = 15
-LYRIC1_REVEAL_AT = 45
+LYRIC1_REVEAL_AT = 30
 DEFAULT_ROOM_CODE = "MAIN"
 TITLE_POINTS = 60
 ARTIST_POINTS = 40
 BOTH_BONUS_POINTS = 30
 EARLY_LOCK_BEFORE_LYRIC2_POINTS = 20
 EARLY_LOCK_BEFORE_LYRIC1_POINTS = 10
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+NORMALIZATION_HELPERS_PATH = os.path.join(BASE_DIR, "data", "answer_normalization.json")
+
+DEFAULT_NORMALIZATION_HELPERS = {
+    "contractions": {
+        "i'm": "i am",
+        "you're": "you are",
+        "we're": "we are",
+        "they're": "they are",
+        "it's": "it is",
+        "that's": "that is",
+        "what's": "what is",
+        "who's": "who is",
+        "there's": "there is",
+        "here's": "here is",
+        "can't": "cannot",
+        "won't": "will not",
+        "don't": "do not",
+        "didn't": "did not",
+        "doesn't": "does not",
+        "isn't": "is not",
+        "aren't": "are not",
+        "wasn't": "was not",
+        "weren't": "were not",
+        "haven't": "have not",
+        "hasn't": "has not",
+        "hadn't": "had not",
+        "couldn't": "could not",
+        "wouldn't": "would not",
+        "shouldn't": "should not",
+        "I'll": "i will",
+        "you'll": "you will",
+        "we'll": "we will",
+        "they'll": "they will",
+        "I've": "i have",
+        "you've": "you have",
+        "we've": "we have",
+        "they've": "they have",
+        "I'd": "i would",
+        "you'd": "you would",
+        "we'd": "we would",
+        "they'd": "they would"
+    }
+}
+
+NUMBER_WORD_VALUES = {
+    "zero": 0,
+    "one": 1,
+    "two": 2,
+    "three": 3,
+    "four": 4,
+    "five": 5,
+    "six": 6,
+    "seven": 7,
+    "eight": 8,
+    "nine": 9,
+    "ten": 10,
+    "eleven": 11,
+    "twelve": 12,
+    "thirteen": 13,
+    "fourteen": 14,
+    "fifteen": 15,
+    "sixteen": 16,
+    "seventeen": 17,
+    "eighteen": 18,
+    "nineteen": 19,
+    "twenty": 20,
+    "thirty": 30,
+    "forty": 40,
+    "fifty": 50,
+    "sixty": 60,
+    "seventy": 70,
+    "eighty": 80,
+    "ninety": 90,
+}
+
+NUMBER_SCALES = {
+    "hundred": 100,
+    "thousand": 1000,
+    "million": 1000000,
+}
+
+
+def load_normalization_helpers():
+    merged = dict(DEFAULT_NORMALIZATION_HELPERS)
+    merged["contractions"] = dict(DEFAULT_NORMALIZATION_HELPERS.get("contractions", {}))
+
+    try:
+        with open(NORMALIZATION_HELPERS_PATH, "r", encoding="utf-8") as file:
+            parsed = json.load(file)
+    except Exception:
+        return merged
+
+    if isinstance(parsed, dict):
+        contractions = parsed.get("contractions")
+        if isinstance(contractions, dict):
+            for key, value in contractions.items():
+                if key and value:
+                    merged["contractions"][str(key).lower()] = str(value).lower()
+
+    return merged
+
+
+NORMALIZATION_HELPERS = load_normalization_helpers()
 
 rooms = {}
 host_room_by_sid = {}
@@ -50,7 +157,7 @@ def get_room_state(room_code):
             "owner_sid": None,
             "owner_name": None,
             "rounds_per_game": 5,
-            "game_mode": "full",
+            "game_mode": "quick",
             "round_total_time": TOTAL_ROUND_TIME,
             "quick_clue_key": None,
             "round_preview": None,
@@ -198,8 +305,108 @@ def sanitize_text(text):
     return text.strip()
 
 
+def expand_contractions(text):
+    raw = str(text or "")
+    contractions = NORMALIZATION_HELPERS.get("contractions", {})
+
+    for contraction, expanded in sorted(contractions.items(), key=lambda item: len(item[0]), reverse=True):
+        if not contraction or not expanded:
+            continue
+        pattern = r"\b" + re.escape(contraction.lower()) + r"\b"
+        raw = re.sub(pattern, expanded.lower(), raw, flags=re.IGNORECASE)
+
+    return raw
+
+
+def parse_number_words(words, start_index):
+    current = 0
+    total = 0
+    consumed = 0
+    idx = start_index
+
+    while idx < len(words):
+        token = words[idx]
+
+        if token == "and":
+            idx += 1
+            consumed += 1
+            continue
+
+        if token in NUMBER_WORD_VALUES:
+            current += NUMBER_WORD_VALUES[token]
+            idx += 1
+            consumed += 1
+            continue
+
+        if token == "hundred":
+            if current == 0:
+                current = 1
+            current *= NUMBER_SCALES[token]
+            idx += 1
+            consumed += 1
+            continue
+
+        if token in {"thousand", "million"}:
+            if current == 0:
+                current = 1
+            total += current * NUMBER_SCALES[token]
+            current = 0
+            idx += 1
+            consumed += 1
+            continue
+
+        break
+
+    if consumed == 0:
+        return None, 0
+
+    return total + current, consumed
+
+
+def normalize_number_token(token):
+    cleaned = str(token).replace(",", "").strip()
+    if cleaned.isdigit():
+        try:
+            return str(int(cleaned))
+        except Exception:
+            return cleaned
+    return cleaned
+
+
+def normalize_numeric_phrases(text):
+    raw_tokens = re.findall(r"[a-zA-Z]+|\d[\d,]*", str(text or ""))
+    lowered = [token.lower() for token in raw_tokens]
+
+    result = []
+    idx = 0
+    while idx < len(lowered):
+        token = lowered[idx]
+
+        if re.fullmatch(r"\d[\d,]*", token):
+            result.append(normalize_number_token(token))
+            idx += 1
+            continue
+
+        number_value, consumed = parse_number_words(lowered, idx)
+        if consumed > 0 and number_value is not None:
+            result.append(str(number_value))
+            idx += consumed
+            continue
+
+        result.append(token)
+        idx += 1
+
+    return " ".join(result)
+
+
+def normalize_for_matching(text):
+    expanded = expand_contractions(text)
+    number_normalized = normalize_numeric_phrases(expanded)
+    return sanitize_text(number_normalized)
+
+
 def split_words(text):
-    clean = sanitize_text(text)
+    clean = normalize_for_matching(text)
     return [word for word in clean.split() if word]
 
 
@@ -207,8 +414,8 @@ def calculate_title_score(guess, answer):
     if not guess:
         return 0, False
 
-    guess_clean = sanitize_text(guess)
-    answer_clean = sanitize_text(answer)
+    guess_clean = normalize_for_matching(guess)
+    answer_clean = normalize_for_matching(answer)
     if guess_clean == answer_clean:
         return TITLE_POINTS, True
 
@@ -226,8 +433,8 @@ def calculate_artist_score(guess, artist):
     if not guess:
         return 0, "none"
 
-    guess_clean = sanitize_text(guess)
-    artist_clean = sanitize_text(artist)
+    guess_clean = normalize_for_matching(guess)
+    artist_clean = normalize_for_matching(artist)
     if guess_clean == artist_clean:
         return ARTIST_POINTS, "full"
 

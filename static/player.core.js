@@ -8,15 +8,19 @@ const DECADES = ['1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s'];
 const GENRES = ['rock', 'pop', 'country', 'hip-hop/r&b', 'reggae'];
 
 let countdownInterval = null;
+let roundAutoLockTimeout = null;
+let roundTimerDeadlineAt = 0;
 let playerRevealTimeouts = [];
 let isRoomHost = false;
 let activeAudio = null;
+let activeAudioCandidates = [];
+let activeAudioCandidateIndex = 0;
 let isGuessLocked = false;
 let currentRoundTotalTime = 0;
 let hostControlMode = 'lobby';
 let hostSettings = {
     rounds: 5,
-    gameMode: 'full',
+    gameMode: 'quick',
     decades: new Set(DECADES),
     genres: new Set(GENRES)
 };
@@ -105,6 +109,8 @@ function stopAudio() {
     activeAudio.currentTime = 0;
     activeAudio.src = '';
     activeAudio = null;
+    activeAudioCandidates = [];
+    activeAudioCandidateIndex = 0;
     el.audioWrap.classList.add('hidden');
     el.audioPlayBtn.innerText = 'Play';
     el.audioProgress.value = 0;
@@ -126,6 +132,41 @@ function syncAudioUi() {
     el.audioPlayBtn.innerText = activeAudio.paused ? 'Play' : 'Pause';
 }
 
+function attachAudioCandidate(index) {
+    const candidate = activeAudioCandidates[index];
+    if (!candidate || !candidate.preview_url) {
+        return false;
+    }
+
+    if (activeAudio) {
+        activeAudio.pause();
+        activeAudio.currentTime = 0;
+        activeAudio.src = '';
+    }
+
+    activeAudio = new Audio(candidate.preview_url);
+    activeAudio.preload = 'auto';
+    activeAudio.crossOrigin = 'anonymous';
+    activeAudio.setAttribute('playsinline', '');
+    activeAudio.setAttribute('webkit-playsinline', '');
+    activeAudio.addEventListener('timeupdate', syncAudioUi);
+    activeAudio.addEventListener('loadedmetadata', syncAudioUi);
+    activeAudio.addEventListener('ended', syncAudioUi);
+    activeAudio.addEventListener('error', () => {
+        const nextIndex = activeAudioCandidateIndex + 1;
+        if (nextIndex < activeAudioCandidates.length) {
+            activeAudioCandidateIndex = nextIndex;
+            if (attachAudioCandidate(nextIndex)) {
+                el.audioTrack.innerText = `Preview source switched (${nextIndex + 1}/${activeAudioCandidates.length})`;
+                syncAudioUi();
+            }
+        }
+    });
+
+    activeAudioCandidateIndex = index;
+    return true;
+}
+
 function loadRoundAudio(audioData, options = {}) {
     if (!audioData || !audioData.preview_url) {
         el.audioWrap.classList.add('hidden');
@@ -136,11 +177,14 @@ function loadRoundAudio(audioData, options = {}) {
     const hideMetadata = !!options.hideMetadata;
 
     stopAudio();
-    activeAudio = new Audio(audioData.preview_url);
-    activeAudio.preload = 'auto';
-    activeAudio.addEventListener('timeupdate', syncAudioUi);
-    activeAudio.addEventListener('loadedmetadata', syncAudioUi);
-    activeAudio.addEventListener('ended', syncAudioUi);
+    activeAudioCandidates = Array.isArray(audioData.candidates) && audioData.candidates.length > 0
+        ? audioData.candidates.filter(item => item && item.preview_url)
+        : [audioData];
+
+    if (!attachAudioCandidate(0)) {
+        el.audioWrap.classList.add('hidden');
+        return;
+    }
 
     if (hideMetadata) {
         el.audioTrack.innerText = 'Preview locked until results';
@@ -213,7 +257,7 @@ function syncHostSettingsFromServer(settings) {
     if (settings.game_mode === 'quick' || settings.game_mode === 'music_only') {
         hostSettings.gameMode = settings.game_mode;
     } else {
-        hostSettings.gameMode = 'full';
+        hostSettings.gameMode = 'quick';
     }
 
     if (Array.isArray(settings.decades)) {
@@ -255,7 +299,7 @@ function saveHostSettings() {
 
     const roundsValue = parseInt(el.roundsInput.value, 10);
     hostSettings.rounds = Number.isFinite(roundsValue) ? roundsValue : 5;
-    hostSettings.gameMode = document.querySelector('input[name="player-game-mode"]:checked')?.value || 'full';
+    hostSettings.gameMode = document.querySelector('input[name="player-game-mode"]:checked')?.value || 'quick';
 
     hostSettings.decades.clear();
     hostSettings.genres.clear();
@@ -364,22 +408,36 @@ function lockGuessOnTimeout() {
     submitGuess({ autoLock: true });
 }
 
-function startUiTimer(seconds) {
+function clearRoundTimerHandles() {
     if (countdownInterval) {
         clearInterval(countdownInterval);
+        countdownInterval = null;
     }
+    if (roundAutoLockTimeout) {
+        clearTimeout(roundAutoLockTimeout);
+        roundAutoLockTimeout = null;
+    }
+    roundTimerDeadlineAt = 0;
+}
+
+function startUiTimer(seconds) {
+    clearRoundTimerHandles();
 
     let timeLeft = Math.max(0, Number(seconds) || 0);
     currentRoundTotalTime = Math.max(timeLeft, 1);
     updateTimerVisual(timeLeft, currentRoundTotalTime);
+    roundTimerDeadlineAt = Date.now() + (timeLeft * 1000);
+
+    roundAutoLockTimeout = setTimeout(() => {
+        lockGuessOnTimeout();
+    }, Math.max(0, timeLeft * 1000 + 60));
 
     countdownInterval = setInterval(() => {
         timeLeft -= 1;
         updateTimerVisual(timeLeft, currentRoundTotalTime);
 
         if (timeLeft <= 0) {
-            clearInterval(countdownInterval);
-            countdownInterval = null;
+            clearRoundTimerHandles();
             lockGuessOnTimeout();
         }
     }, 1000);

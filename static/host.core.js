@@ -10,7 +10,7 @@ const GENRES = ['rock', 'pop', 'country', 'hip-hop/r&b', 'reggae'];
 
 let hostSettings = {
     rounds: 5,
-    gameMode: 'full',
+    gameMode: 'quick',
     decades: new Set(DECADES),
     genres: new Set(GENRES)
 };
@@ -66,7 +66,7 @@ function closeSettings() {
 
 function saveSettings() {
     hostSettings.rounds = parseInt(document.getElementById('rounds-input').value, 10) || 5;
-    hostSettings.gameMode = document.querySelector('input[name="game-mode"]:checked')?.value || 'full';
+    hostSettings.gameMode = document.querySelector('input[name="game-mode"]:checked')?.value || 'quick';
 
     hostSettings.decades.clear();
     document.querySelectorAll('.decade-checkbox:checked').forEach(cb => {
@@ -102,7 +102,7 @@ function syncHostSettingsFromServer(settings) {
     if (settings.game_mode === 'quick' || settings.game_mode === 'music_only') {
         hostSettings.gameMode = settings.game_mode;
     } else {
-        hostSettings.gameMode = 'full';
+        hostSettings.gameMode = 'quick';
     }
 
     if (Array.isArray(settings.decades)) {

@@ -7,17 +7,14 @@ socket.on('game_state', (data) => {
         changeView('guessing');
         setHostControlMode('active');
     } else if (data.state === 'results') {
-        if (countdownInterval) {
-            clearInterval(countdownInterval);
-            countdownInterval = null;
+        if (!isGuessLocked && roundTimerDeadlineAt > 0 && Date.now() >= roundTimerDeadlineAt) {
+            lockGuessOnTimeout();
         }
+        clearRoundTimerHandles();
         changeView('results');
         setHostControlMode('active');
     } else if (data.state === 'lobby') {
-        if (countdownInterval) {
-            clearInterval(countdownInterval);
-            countdownInterval = null;
-        }
+        clearRoundTimerHandles();
         clearPlayerRevealTimers();
         stopAudio();
         changeView('lobby');
