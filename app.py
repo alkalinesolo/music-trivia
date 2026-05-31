@@ -5,7 +5,6 @@ import os
 import random
 import threading
 import time
-import eventlet
 
 from game_core import (
     DEFAULT_ROOM_CODE,
@@ -30,12 +29,9 @@ from game_core import (
     claim_room_owner,
 )
 
-
-eventlet.monkey_patch()
-
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret"
-socketio = SocketIO(app, cors_allowed_origins="*")
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
 
 with open("data/songs.json", "r", encoding="utf-8") as f:
     songs = json.load(f)
