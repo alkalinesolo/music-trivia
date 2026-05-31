@@ -7,8 +7,10 @@ socket.on('game_state', (data) => {
         changeView('guessing');
         setHostControlMode('active');
     } else if (data.state === 'results') {
-        if (!isGuessLocked && roundTimerDeadlineAt > 0 && Date.now() >= roundTimerDeadlineAt) {
-            lockGuessOnTimeout();
+        if (!isGuessLocked) {
+            // Round already ended on server; lock local UI without emitting a late submit.
+            isGuessLocked = true;
+            lockUiForGuess('Round ended. Waiting for results.');
         }
         clearRoundTimerHandles();
         changeView('results');
@@ -112,13 +114,15 @@ socket.on('round_results', (data) => {
             autoplay: shouldAutoplayResultsPreview,
             hideMetadata: false
         });
-        const audioHint = document.createElement('p');
-        audioHint.className = 'muted';
-        audioHint.style.margin = '10px 0 0 0';
-        audioHint.innerText = shouldAutoplayResultsPreview
-            ? 'Preview autoplayed for host controls.'
-            : 'Preview ready. Tap Play to listen.';
-        el.feedback.appendChild(audioHint);
+        if (data.game_mode !== 'music_only') {
+            const audioHint = document.createElement('p');
+            audioHint.className = 'muted';
+            audioHint.style.margin = '10px 0 0 0';
+            audioHint.innerText = shouldAutoplayResultsPreview
+                ? 'Preview autoplayed for host controls.'
+                : 'Preview ready. Tap Play to listen.';
+            el.feedback.appendChild(audioHint);
+        }
     }
 
     const listTitle = document.createElement('h3');

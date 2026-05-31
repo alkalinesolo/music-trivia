@@ -212,9 +212,11 @@ def finalize_round(room_code):
         title_score, title_correct = calculate_title_score(title_guess, title_answer)
         artist_score, artist_match = calculate_artist_score(artist_guess, artist_answer)
         both_bonus = 30 if title_correct and artist_match == "full" else 0
+        no_guess = not title_guess and not artist_guess
 
         early_bonus = 0
-        if not guess.get("auto_lock"):
+        guessed_something_right = bool(title_score > 0 or artist_score > 0)
+        if (not guess.get("auto_lock")) and guessed_something_right:
             early_bonus = calculate_early_lock_bonus(
                 room_state.get("round_started_at"),
                 guess.get("submitted_at"),
@@ -234,7 +236,7 @@ def finalize_round(room_code):
             "early_lock_bonus": int(early_bonus),
             "round_score": round_score,
             "total_score": int(leaderboard[player]),
-            "no_guess": False,
+            "no_guess": no_guess,
         }
         results.append(result)
         room_state["round_history"].append({
