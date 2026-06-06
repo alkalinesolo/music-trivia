@@ -103,6 +103,10 @@
         </div>
         <div id="personal-feedback"></div>
     </section>
+
+    <section class="card" style="text-align:center; padding: 10px;">
+        <button class="btn btn-neutral" style="font-size:0.85rem;" onclick="leaderboardOpen()">View Leaderboard</button>
+    </section>
 </div>
 
 <div id="player-settings-modal" class="overlay" aria-hidden="true">
@@ -142,6 +146,10 @@
 
 <script src="{{ url_for('static', filename='player.core.js') }}"></script>
 <script src="{{ url_for('static', filename='player.socket.js') }}"></script>
+<script>
+    var leaderboardRoomCode = playerRoomCode;
+</script>
+<script src="{{ url_for('static', filename='leaderboard.js') }}"></script>
 
 </body>
 </html>

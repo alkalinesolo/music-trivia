@@ -45,6 +45,10 @@
     <button id="btn-results" onclick="showResults()" class="hidden">Show Results</button>
 </div>
 
+<div style="margin-top: 16px; text-align: center;">
+    <button onclick="leaderboardOpen()" style="background: none; border: none; color: #7ee5af; cursor: pointer; font-size: 0.9rem; text-decoration: underline; padding: 4px;">View Leaderboard</button>
+</div>
+
 <div id="settings-modal" class="hidden" style="position: fixed; inset: 0; background: rgba(0, 0, 0, 0.55);">
     <div style="max-width: 620px; margin: 6vh auto; background: #171717; border: 1px solid #333; border-radius: 12px; padding: 16px; text-align: left;">
         <h2 style="margin-top: 0;">Game Settings</h2>
@@ -79,6 +83,10 @@
 
 <script src="{{ url_for('static', filename='host.core.js') }}"></script>
 <script src="{{ url_for('static', filename='host.socket.js') }}"></script>
+<script>
+    function leaderboardRoomCode() { return activeRoomCode || ''; }
+</script>
+<script src="{{ url_for('static', filename='leaderboard.js') }}"></script>
 
 </body>
 </html>

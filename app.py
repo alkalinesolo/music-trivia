@@ -1,10 +1,18 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, jsonify
 from flask_socketio import SocketIO, emit, join_room
+from datetime import datetime
 import json
 import os
 import random
 import threading
 import time
+
+try:
+    from zoneinfo import ZoneInfo
+    _PACIFIC_TZ = ZoneInfo("America/Los_Angeles")
+except ImportError:
+    from datetime import timezone, timedelta
+    _PACIFIC_TZ = timezone(timedelta(hours=-8))
 
 from game_core import (
     DEFAULT_ROOM_CODE,
@@ -32,6 +40,34 @@ from game_core import (
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret"
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
+
+# Daily leaderboard: {room_code: {"date": "YYYY-MM-DD", "quick": [...], "full": [...], "music_only": [...]}}
+daily_leaderboards = {}
+
+
+def get_pacific_date():
+    return datetime.now(_PACIFIC_TZ).strftime("%Y-%m-%d")
+
+
+def get_daily_leaderboard(room_code):
+    today = get_pacific_date()
+    if room_code not in daily_leaderboards or daily_leaderboards[room_code].get("date") != today:
+        daily_leaderboards[room_code] = {
+            "date": today,
+            "quick": [],
+            "full": [],
+            "music_only": [],
+        }
+    return daily_leaderboards[room_code]
+
+
+def record_game_to_daily_leaderboard(room_code, game_mode, leaderboard):
+    board = get_daily_leaderboard(room_code)
+    mode_key = game_mode if game_mode in ("quick", "full", "music_only") else "quick"
+    for player, score in leaderboard.items():
+        board[mode_key].append({"player": str(player), "score": int(score)})
+    board[mode_key].sort(key=lambda x: x["score"], reverse=True)
+    board[mode_key] = board[mode_key][:5]
 
 with open("data/songs.json", "r", encoding="utf-8") as f:
     songs = json.load(f)
@@ -269,13 +305,14 @@ def finalize_round(room_code):
 
     if game_over:
         payload["game_summary"] = build_game_summary(room_state)
+        record_game_to_daily_leaderboard(room_code, room_state.get("game_mode", "quick"), leaderboard)
 
     room_state["last_results"] = payload
 
-    emit("game_state", {"state": "results"}, room=get_player_room(room_code))
-    emit("game_state", {"state": "results"}, room=get_host_room(room_code))
-    emit("round_results", payload, room=get_player_room(room_code))
-    emit("round_results", payload, room=get_host_room(room_code))
+    socketio.emit("game_state", {"state": "results"}, room=get_player_room(room_code))
+    socketio.emit("game_state", {"state": "results"}, room=get_host_room(room_code))
+    socketio.emit("round_results", payload, room=get_player_room(room_code))
+    socketio.emit("round_results", payload, room=get_host_room(room_code))
 
 
 @app.route("/")
@@ -310,6 +347,18 @@ def room(room_code):
         name=name,
         room_code=safe_room,
     )
+
+
+@app.route("/api/leaderboard/<room_code>")
+def api_leaderboard(room_code):
+    safe_room = normalize_room_code(room_code) or DEFAULT_ROOM_CODE
+    board = get_daily_leaderboard(safe_room)
+    return jsonify({
+        "date": board["date"],
+        "quick": board["quick"],
+        "full": board["full"],
+        "music_only": board["music_only"],
+    })
 
 
 @socketio.on("host_join")
